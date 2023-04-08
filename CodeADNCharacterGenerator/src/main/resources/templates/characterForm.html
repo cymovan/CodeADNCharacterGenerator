@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="#{website.title}"></title>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css} " />
+</head>
+<body>
+	<nav ~{fragments/nav :: nav}></nav>
+	<span th:text="#{species.HUMAN}"></span>
+	<div th:if="${message}">
+		<p th:text="${message}"></p>
+	</div>
+
+	<div th:fragment="content">
+		<!-- Content of each page goes here -->
+		<div th:fragment="content">
+			<h1>Generate Character</h1>
+			<form method="post" th:action="@{/generate}">
+				<label for="name">Name:</label> <input type="text" id="name"
+					name="name" required> <br> <label for="age">Age:</label>
+				<input type="number" id="age" name="age" required> <br>
+				<button type="submit">Generate</button>
+			</form>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/3.6.4/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
