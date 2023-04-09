@@ -4,7 +4,8 @@
 </head>
 <body>
 	<div th:replace="~{fragments/menu :: menu}"></div>
-	<h1 class="text-light">Une erreur est survenue.</h1>
+	<h1 class="text-light" th:if="${errorParam} != null" th:text="#{''+${errorParam}}"></h1>
+	<h1 class="text-light" th:if="${errorParam} == null" th:text="#{error.other}"></h1>
 	<div th:replace="~{fragments/footer :: footer}"></div>
-</body>
+</body>1
 </html>

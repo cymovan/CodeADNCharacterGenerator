@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import ch.qos.logback.core.model.Model;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -18,6 +20,11 @@ import jakarta.servlet.http.HttpServletRequest;
  */
 @Controller
 public abstract class AbstractWebSiteController {
+	private static final String ERROR_CODE_VAR = "errorParam";
+	private static final String ERROR_VIEW = "error";
+	private static final String I18N_ERROR_ROOT = "error.";
+	private static final String I18N_ERROR_OTHER = "other";
+	
 	protected static final Logger logger = LoggerFactory.getLogger(AbstractWebSiteController.class);
 	protected ModelMap templateModelMap = new ModelMap();
 
@@ -44,17 +51,22 @@ public abstract class AbstractWebSiteController {
 	 * Error Page
 	 */
 	@GetMapping("/error")
-	public String error(HttpServletRequest request) {
+	public ModelAndView error(HttpServletRequest request) {
+		String errorI18n = "";
+		ModelMap modelMap = new ModelMap();
 		Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 		if (status != null) {
 			Integer statusCode = Integer.valueOf(status.toString());
-			if (statusCode == HttpStatus.NOT_FOUND.value()) {
-				return "error-404";
-			} else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-				return "error-500";
+			if (statusCode == HttpStatus.NOT_FOUND.value() || statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+				System.out.println("Test" + statusCode);
+				errorI18n = I18N_ERROR_ROOT + statusCode;
+			} else {
+				System.out.println("Test autre" + statusCode);
+				errorI18n = I18N_ERROR_ROOT + I18N_ERROR_OTHER;
 			}
 		}
-		return "error";
+		modelMap.addAttribute(ERROR_CODE_VAR, errorI18n);
+		return new ModelAndView(ERROR_VIEW, modelMap);
 	}
 
 }
