@@ -8,7 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -25,12 +24,12 @@ public abstract class AbstractWebSiteController {
 	private static final String I18N_ERROR_ROOT = "error.";
 	private static final String I18N_ERROR_OTHER = "other";
 	
-	protected static final Logger logger = LoggerFactory.getLogger(AbstractWebSiteController.class);
+	protected final Logger logger = LoggerFactory.getLogger(AbstractWebSiteController.class);
 	protected ModelMap templateModelMap = new ModelMap();
 
 	protected static final String URL_HOME = "/";
 	public static final String URL_CHARACTERS = "/characters";
-	
+
 	/**
 	 * Default controller.
 	 */
@@ -58,7 +57,7 @@ public abstract class AbstractWebSiteController {
 		if (status != null) {
 			Integer statusCode = Integer.valueOf(status.toString());
 			if (statusCode == HttpStatus.NOT_FOUND.value() || statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-				System.out.println("Test" + statusCode);
+				logger.error(errorI18n);
 				errorI18n = I18N_ERROR_ROOT + statusCode;
 			} else {
 				System.out.println("Test autre" + statusCode);

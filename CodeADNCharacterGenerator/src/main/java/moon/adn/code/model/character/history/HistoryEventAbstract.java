@@ -6,9 +6,14 @@ import java.util.List;
 
 import moon.adn.code.system.RandomDiceUtil;
 
+/**
+ * @author cdelr
+ *
+ */
 public abstract class HistoryEventAbstract {
 	private static final String NUMBER_FORMAT = "00";
 	private static final String ROOT_I18n = "hist.";
+	
 	protected List<Integer> segments = new ArrayList<>();
 	protected String i18nPrefix;
 
@@ -20,7 +25,7 @@ public abstract class HistoryEventAbstract {
 
 	protected int getPositionFromIntervals(int MaxSides) {
 		int valeur = RandomDiceUtil.random(MaxSides);
-		for (int i = 0; i < segments.size() - 1; i++) {
+		for (int i = 0; i < segments.size(); i++) {
 			if (valeur <= segments.get(i)) {
 				return i;
 			}

@@ -22,16 +22,22 @@
 						<!-- 						th:object="${characterForm}"> -->
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="species">Species</label>
+<!-- 								<label for="species" th:text="#{modal.formgroup.species}"></label> -->
 <!-- 								<select -->
 <!-- 									class="form-control" id="species" name="species" -->
 <!-- 									th:field="*{speciesEnum}"> -->
 								<fieldset>
-								<legend> Quelles espèces ? </legend>
-									<th:block th:each="spec : ${species}">
-									<input type="checkbox" name="species" th:id="${spec.name}" th:value="${spec.name}" >
-									<label for="${spec.name}" th:text="#{'species.' + ${spec.name}}"></label><br>
-									</th:block>
+								<legend th:text="#{modal.legend.species}"></legend>
+									<div class="container">
+										<div class="row">
+										<th:block th:each="spec, index : ${species}">
+											<div class="col-sm">
+												<input type="checkbox" name="species" th:id="${spec.name}" th:value="${spec.name}" >
+												<label th:for="${spec.name}" th:text="#{'species.' + ${spec.name}}"></label>
+											</div>
+										</th:block>
+										</div>
+									</div>
 								</fieldset>
 							</div>
 <!-- 							<div class="form-group"> -->

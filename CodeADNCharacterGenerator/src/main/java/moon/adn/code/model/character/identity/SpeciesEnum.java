@@ -17,13 +17,16 @@ import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.paleElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.sylvanElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.urbanElfSkills;
+import static moon.adn.code.system.RandomDiceUtil.d2;
+import static moon.adn.code.system.RandomDiceUtil.d3;
+import static moon.adn.code.system.RandomDiceUtil.d4;
 
 import java.util.Random;
 
 import lombok.Getter;
 import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
+import moon.adn.code.model.character.history.HistoryHelper;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
-import moon.adn.code.system.RandomDiceUtil;
 
 /**
  * All species of Code 🧬.
@@ -41,10 +44,13 @@ public enum SpeciesEnum {
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
 	private @Getter SkillsSpeciesModifiers SkillModifiers;
 
+//	private int[] destinyInterval = {19, 29, 49, 74, 99, 124, 125, 1000};
+//	private int[] destinyElfDices = {2, 3, 8, 6, 5, 8, 5, 4};
+
 	private static Random random = new Random();
 	public static final String MESSAGE_PREFIX = "species.";
 
-	public static SpeciesEnum randomSpecies() {
+	public static SpeciesEnum random() {
 		return values()[random.nextInt(values().length)];
 	}
 
@@ -77,16 +83,58 @@ public enum SpeciesEnum {
 		int siblingCount = 0;
 		switch (this) {
 		case HUMAN, S_SYLV, S_DARK: {
-			siblingCount = RandomDiceUtil.d4() - 1;
+			siblingCount = d4() - 1;
+			break;
 		}
 		case S_URB, S_PALE, S_GREY, S_NIGHT, S_AQUA: {
-			siblingCount = RandomDiceUtil.d3() - 1;
+			siblingCount = d3() - 1;
+			break;
 		}
 		case S_GOLD: {
-			siblingCount = RandomDiceUtil.d2() - 1;
+			siblingCount = d2() - 1;
+			break;
 		}
 		default:
 			return siblingCount;
 		}
+		return siblingCount;
+	}
+
+	public int ageDiffSibling() {
+		int minDiff = 0, maxDiff = 20;
+		int ageDiff = 2;
+		switch (this) {
+		case HUMAN: {
+			maxDiff = 20;
+			break;
+		}
+		case S_DARK: {
+			maxDiff = 150;
+			break;
+		}
+		case S_SYLV, S_URB: {
+			minDiff = 25;
+			maxDiff = 150;
+			break;
+		}
+		case S_PALE, S_GREY: {
+			minDiff = 80;
+			maxDiff = 100;
+			break;
+		}
+		case S_NIGHT, S_AQUA: {
+			minDiff = 80;
+			maxDiff = 100;
+			break;
+		}
+		case S_GOLD: {
+			minDiff = 100;
+			maxDiff = 200;
+			break;
+		}
+		default:
+			return ageDiff;
+		}
+		return HistoryHelper.randomValuesBetween(minDiff, maxDiff);
 	}
 }

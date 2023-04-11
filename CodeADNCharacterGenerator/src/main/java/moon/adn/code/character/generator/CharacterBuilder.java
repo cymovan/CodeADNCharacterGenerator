@@ -17,10 +17,12 @@ import moon.adn.code.model.character.builder.Modifier;
 import moon.adn.code.model.character.builder.SocialOriginSkillsHelper;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
+import moon.adn.code.model.character.history.CharacterHistory;
+import moon.adn.code.model.character.history.CharacterHistoryGenerator;
 import moon.adn.code.model.character.identity.Identity;
+import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SocialOriginEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
-import moon.adn.code.model.character.identity.sexEnum;
 import moon.adn.code.model.character.identity.apparence.EyesColorEnum;
 import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 import moon.adn.code.model.character.skills.SkillEnum;
@@ -41,9 +43,9 @@ public class CharacterBuilder {
 
 	private static Random random = new Random();
 
-	// Parametrized random generations
+	// Parameterized random generations
 	private Optional<Set<SpeciesEnum>> selectedSpeciesforRandom = Optional.empty();
-	private Optional<sexEnum> selectedSex = Optional.empty();
+	private Optional<SexEnum> selectedSex = Optional.empty();
 
 	private Map<CaracteristicEnum, CaractValues> caracteristicsMap = new HashMap<>();
 	private Map<SkillEnum, SkillValues> skillsMap = new HashMap<>();
@@ -52,6 +54,8 @@ public class CharacterBuilder {
 
 	private CaracteristicSpeciesModifiers caracteristicsModifiers = new CaracteristicSpeciesModifiers();
 	private SkillsSpeciesModifiers skillsModifiers = new SkillsSpeciesModifiers();
+
+	private CharacterHistoryGenerator chg;
 
 	/**
 	 * Build and consolidate Datas of the character.
@@ -62,6 +66,7 @@ public class CharacterBuilder {
 		caracteristicSpeciesModifiers();
 		socialOriginSkillsInit();
 		skillsSpeciesModifiers();
+		speciesSpecializations();
 		applySpeciesModifiers();
 
 		// Generate final character with simplified values
@@ -70,8 +75,25 @@ public class CharacterBuilder {
 		character.setCaracteristicsMap(caracteristicsMap);
 		character.setSkillsMap(skillsMap);
 
+		// Siblings
+		chg = new CharacterHistoryGenerator(character);
+		CharacterHistory ch = chg.generate();
+		character.setSiblingsMap(ch.getSiblingsMap());
+		
+		// Family events
+		
+		
 		CharacterFileHelper.saveCharacter(character);
 		return character;
+	}
+
+	/**
+	 * Build and consolidate Datas of the character.
+	 */
+	public CharacterHistory buildHistory() {
+		Character characterLoaded = CharacterFileHelper.loadCharacter("character");
+		chg = new CharacterHistoryGenerator(characterLoaded);
+		return chg.generate();
 	}
 
 	private void applySpeciesModifiers() {
@@ -95,6 +117,10 @@ public class CharacterBuilder {
 		}
 	}
 
+	private void speciesSpecializations() {
+		
+	}
+	
 	private Identity generateIdentity() {
 		Identity identity = new Identity();
 
@@ -105,7 +131,7 @@ public class CharacterBuilder {
 			SpeciesEnum[] tabSpecies = speciesSet.stream().toArray(SpeciesEnum[]::new);
 			species = tabSpecies[random.nextInt(tabSpecies.length)];
 		} else {
-			species = SpeciesEnum.randomSpecies();
+			species = SpeciesEnum.random();
 		}
 
 		// Sex
@@ -113,7 +139,7 @@ public class CharacterBuilder {
 		if (selectedSex.isPresent()) {
 			identity.setSex(selectedSex.get());
 		} else {
-			identity.setSex(sexEnum.randomSpecies());
+			identity.setSex(SexEnum.random());
 		}
 
 		// Eyes Color

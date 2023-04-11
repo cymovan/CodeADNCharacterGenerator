@@ -13,14 +13,22 @@ import java.util.TreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import moon.adn.code.character.generator.CharacterBuilder;
 import moon.adn.code.character.generator.CharacterGenerator;
+import moon.adn.code.character.generator.HistoryGenerator;
+import moon.adn.code.character.generator.RAECGenerator;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.CharacterFileHelper;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
+import moon.adn.code.model.character.history.CharacterHistory;
+import moon.adn.code.model.character.history.CharacterHistoryGenerator;
+import moon.adn.code.model.character.history.raec.RAEC;
+import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
@@ -30,8 +38,10 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  *
  */
 @RestController
-public class CharacterRestController implements CharacterGenerator {
+@RequestMapping(CharacterRestController.PATH_REST_CHARACTERS)
+public class CharacterRestController implements CharacterGenerator, RAECGenerator, HistoryGenerator {
 
+	static final String PATH_REST_CHARACTERS = "/restCharacters";
 	private static final String CHARACTER_PATH = "/character";
 	private static final String HEROIC_CHARACTER_PATH = "/heroicCharacter";
 	private static final String ELF_CHARACTER_PATH = "/elfCharacter";
@@ -70,6 +80,24 @@ public class CharacterRestController implements CharacterGenerator {
 	@GetMapping(WEAK_CHARACTER_PATH)
 	public Character createWeakCaracter() {
 		return generateWeakCharacter();
+	}
+
+	@GetMapping("RAEC/species/{species}/age/{age}")
+	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) int age) {
+		return new RAECProcedure(species, age).generate();
+	}
+
+	@GetMapping("RAEC")
+	public RAEC generateRAEC() {
+		return new RAECProcedure().generate();
+	}
+
+	@GetMapping("RAEC/sibling/species/{species}/age/{age}")
+	public Map<Integer, RAEC> generateSibling(@PathVariable(required = true) SpeciesEnum species,
+			@PathVariable(required = true) int age) {
+		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
+		chg.generateSiblings();
+		return chg.getSiblingsMap();
 	}
 
 	private Character generate() {
@@ -131,5 +159,12 @@ public class CharacterRestController implements CharacterGenerator {
 			mapCaracteristics.put(caract, new CaractValues(d10Weak()));
 		}
 		return mapCaracteristics;
+	}
+
+	@Override
+	@GetMapping("characterHistory/{species}")
+	public CharacterHistory generate(@PathVariable SpeciesEnum species, @PathVariable(required = true) int age) {
+		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
+		return chg.generate();
 	}
 }

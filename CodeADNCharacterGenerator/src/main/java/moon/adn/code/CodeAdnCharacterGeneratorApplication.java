@@ -6,7 +6,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class CodeAdnCharacterGeneratorApplication implements WebMvcConfigurer {
-//	private static final Logger logger = LoggerFactory.getLogger(CodeAdnCharacterGeneratorApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(CodeAdnCharacterGeneratorApplication.class, args);

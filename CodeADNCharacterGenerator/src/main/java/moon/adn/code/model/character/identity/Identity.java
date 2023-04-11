@@ -21,6 +21,6 @@ public class Identity {
 	private HairColourEnum hairColor;
 	private EyesColorEnum eyeColor;
 	private SpeciesEnum species;
-	private sexEnum sex;
+	private SexEnum sex;
 	private int socialLevel, socialOrigin;
 }
