@@ -14,6 +14,8 @@ public class RandomDiceUtil {
 	private static final int MAX_D4 = 4;
 	private static final int MAX_D6 = 6;
 	private static final int MAX_D10 = 10;
+	private static final int MAX_D100 = 100;
+
 	private static final int MAX_WEAK = 7;
 	private static Random random = new Random();
 
@@ -50,6 +52,13 @@ public class RandomDiceUtil {
 	 */
 	public static int d10() {
 		return random(MAX_D10);
+	}
+
+	/**
+	 * @return value beetwen 1 and 100.
+	 */
+	public static int d100() {
+		return random(MAX_D100);
 	}
 
 	/**

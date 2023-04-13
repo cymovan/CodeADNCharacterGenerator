@@ -21,12 +21,15 @@ import static moon.adn.code.system.RandomDiceUtil.d2;
 import static moon.adn.code.system.RandomDiceUtil.d3;
 import static moon.adn.code.system.RandomDiceUtil.d4;
 
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.*;
+
 import java.util.Random;
 
 import lombok.Getter;
 import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
 import moon.adn.code.model.character.history.HistoryHelper;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
+import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 
 /**
  * All species of Code 🧬.
@@ -35,14 +38,18 @@ import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
  *
  */
 public enum SpeciesEnum {
-	HUMAN(humanModifiers()), S_URB(urbanElfModifiers(), urbanElfSkills()),
-	S_SYLV(sylvanElfModifiers(), sylvanElfSkills()), S_GREY(greyElfModifiers(), greyElfSkills()),
-	S_PALE(paleElfModifiers(), paleElfSkills()), S_GOLD(goldElfModifiers(), goldElfSkills()),
-	S_NIGHT(nightElfModifiers(), nightElfSkills()), S_AQUA(aquaticElfModifiers(), aquaticElfSkills()),
-	S_DARK(darkElfModifiers(), darkElfSkills());
+	HUMAN(humanModifiers()), S_URB(urbanElfModifiers(), urbanElfSkills(), urbanElfSpecializations()),
+	S_SYLV(sylvanElfModifiers(), sylvanElfSkills(), sylvanElfSpecializations()),
+	S_PALE(paleElfModifiers(), paleElfSkills(), paleElfSpecializations()),
+	S_GREY(greyElfModifiers(), greyElfSkills(), greyElfSpecializations()),
+	S_GOLD(goldElfModifiers(), goldElfSkills(), goldElfSpecializations()),
+	S_NIGHT(nightElfModifiers(), nightElfSkills(), nightElfSpecializations()),
+	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()),
+	S_DARK(darkElfModifiers(), darkElfSkills(), darkElfSpecializations());
 
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
 	private @Getter SkillsSpeciesModifiers SkillModifiers;
+	private @Getter SpecializationsAtCreation specializations = new SpecializationsAtCreation();
 
 //	private int[] destinyInterval = {19, 29, 49, 74, 99, 124, 125, 1000};
 //	private int[] destinyElfDices = {2, 3, 8, 6, 5, 8, 5, 4};
@@ -74,6 +81,12 @@ public enum SpeciesEnum {
 			SkillsSpeciesModifiers skillSpecicesModifier) {
 		this.caractModifiers = caractSpeciesModifier;
 		this.SkillModifiers = skillSpecicesModifier;
+	}
+
+	SpeciesEnum(CaracteristicSpeciesModifiers caractSpeciesModifier, SkillsSpeciesModifiers skillSpecicesModifier,
+			SpecializationsAtCreation specializations) {
+		this(caractSpeciesModifier, skillSpecicesModifier);
+		this.specializations = specializations;
 	}
 
 	/**

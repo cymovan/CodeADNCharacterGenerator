@@ -28,7 +28,7 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
-import moon.adn.code.model.character.specializations.Specialization;
+import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 
 /**
  * Builder of Character.
@@ -49,7 +49,8 @@ public class CharacterBuilder {
 
 	private Map<CaracteristicEnum, CaractValues> caracteristicsMap = new HashMap<>();
 	private Map<SkillEnum, SkillValues> skillsMap = new HashMap<>();
-	private Map<Specialization, Integer> specializationChoices = new HashMap<>();
+	private SpecializationsAtCreation speciesSpecializations = new SpecializationsAtCreation();
+	private Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
 	private SocialOriginEnum socialOriginEnum;
 
 	private CaracteristicSpeciesModifiers caracteristicsModifiers = new CaracteristicSpeciesModifiers();
@@ -75,14 +76,17 @@ public class CharacterBuilder {
 		character.setCaracteristicsMap(caracteristicsMap);
 		character.setSkillsMap(skillsMap);
 
+		// Add default Specializations
+		if (null != speciesSpecializations) {
+			character.setSpecializations(speciesSpecializations.getSpecializationsMap());
+		}
 		// Siblings
 		chg = new CharacterHistoryGenerator(character);
 		CharacterHistory ch = chg.generate();
 		character.setSiblingsMap(ch.getSiblingsMap());
-		
+
 		// Family events
-		
-		
+
 		CharacterFileHelper.saveCharacter(character);
 		return character;
 	}
@@ -118,9 +122,10 @@ public class CharacterBuilder {
 	}
 
 	private void speciesSpecializations() {
-		
+		SpeciesEnum species = identity.getSpecies();
+		speciesSpecializations = species.getSpecializations();
 	}
-	
+
 	private Identity generateIdentity() {
 		Identity identity = new Identity();
 

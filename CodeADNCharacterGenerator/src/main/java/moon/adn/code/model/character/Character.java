@@ -11,6 +11,8 @@ import moon.adn.code.model.character.history.raec.RAEC;
 import moon.adn.code.model.character.identity.Identity;
 import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
+import moon.adn.code.model.character.specializations.SpecializationEnum;
+import moon.adn.code.model.character.specializations.SpecializationValuesAbstract;
 
 /**
  * Character class for a PC or NPC in Code 🧬.
@@ -24,4 +26,5 @@ public class Character {
 	private Map<SkillEnum, SkillValues> skillsMap;
 	private Map<Integer, RAEC> siblingsMap = new TreeMap<>();
 	private Map<Integer, CharacterHistory> eventsMap = new TreeMap<>();
+	private Map<SpecializationEnum, SpecializationValuesAbstract> specializations;
 }

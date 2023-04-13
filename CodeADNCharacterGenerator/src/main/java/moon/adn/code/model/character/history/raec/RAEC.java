@@ -11,4 +11,5 @@ public class RAEC {
 	private @Getter @Setter SpeciesEnum species;
 	private @Setter JobCategoryEnum jobCategory;
 	private @Getter @Setter JobEnum job;
+	private @Getter @Setter RAECEnum RAECType;
 }

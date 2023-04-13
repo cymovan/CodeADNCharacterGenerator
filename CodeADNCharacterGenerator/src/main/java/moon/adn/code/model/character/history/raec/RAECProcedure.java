@@ -53,7 +53,17 @@ public class RAECProcedure {
 		people.setSpecies(species);
 		generateAgeDiff();
 		generateJob();
+		generateSiblingType();
 		return this.people;
+	}
+
+	private void generateSiblingType() {
+		if (people.getSex() == SexEnum.M) {
+			people.setRAECType(RAECEnum.BROTHER);
+		} else {
+			people.setRAECType(RAECEnum.SISTER);
+		}
+
 	}
 
 	private void generateAgeDiff() {

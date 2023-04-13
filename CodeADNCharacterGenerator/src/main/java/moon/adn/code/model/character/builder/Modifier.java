@@ -1,9 +1,10 @@
 package moon.adn.code.model.character.builder;
 
 import lombok.Data;
+import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
 /**
- * Modifier class used for species modifier of Caracteristic.
+ * Modifier class used for species modifier of {@link CaracteristicEnum}.
  * 
  * @author cdelr
  *

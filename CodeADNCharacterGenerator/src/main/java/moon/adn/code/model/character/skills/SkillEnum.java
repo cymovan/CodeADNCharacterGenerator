@@ -14,6 +14,11 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WIL
 import lombok.Getter;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
+/**
+ * All skills
+ * @author cdelr
+ *
+ */
 public enum SkillEnum {
 	// INT SKILLS
 	ASTRONOMY(INT), BIBLIO(INT), BIO(INT), BOTA(INT), CHEMISTRY(INT), DECODE(INT), DIAG(INT), LAW(INT), LISTEN(INT),
