@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeMap;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +32,7 @@ import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
 import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 
 /**
- * Builder of Character.
+ * Builder of {@link Character}.
  * 
  * @author cdelr
  *
@@ -39,16 +40,16 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 @Getter
 @Setter
 public class CharacterBuilder {
-	private Identity identity;
-
 	private static Random random = new Random();
+
+	private Identity identity;
 
 	// Parameterized random generations
 	private Optional<Set<SpeciesEnum>> selectedSpeciesforRandom = Optional.empty();
 	private Optional<SexEnum> selectedSex = Optional.empty();
 
-	private Map<CaracteristicEnum, CaractValues> caracteristicsMap = new HashMap<>();
-	private Map<SkillEnum, SkillValues> skillsMap = new HashMap<>();
+	private Map<CaracteristicEnum, CaractValues> caracteristicsMap = new TreeMap<>();
+	private Map<SkillEnum, SkillValues> skillsMap = new TreeMap<>();
 	private SpecializationsAtCreation speciesSpecializations = new SpecializationsAtCreation();
 	private Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
 	private SocialOriginEnum socialOriginEnum;
@@ -80,12 +81,11 @@ public class CharacterBuilder {
 		if (null != speciesSpecializations) {
 			character.setSpecializations(speciesSpecializations.getSpecializationsMap());
 		}
-		// Siblings
+		// Events
 		chg = new CharacterHistoryGenerator(character);
 		CharacterHistory ch = chg.generate();
-		character.setSiblingsMap(ch.getSiblingsMap());
-
-		// Family events
+		character.setEventsMap(ch.getEventsMap());
+		character.setRaecMap(ch.getRaecMap());
 
 		CharacterFileHelper.saveCharacter(character);
 		return character;

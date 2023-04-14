@@ -41,10 +41,15 @@ public class RAECProcedure {
 	}
 
 	public RAEC generate() {
+		return generate(RAECEnum.random());
+	}
+
+	public RAEC generate(RAECEnum raecEnum) {
 		generateCommon();
 		people.setSpecies(SpeciesEnum.random());
 		generateAgeDiff();
 		generateJob();
+		people.setRAECType(raecEnum);
 		return this.people;
 	}
 

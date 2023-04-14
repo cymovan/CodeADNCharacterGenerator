@@ -12,4 +12,5 @@ public class RAEC {
 	private @Setter JobCategoryEnum jobCategory;
 	private @Getter @Setter JobEnum job;
 	private @Getter @Setter RAECEnum RAECType;
+	private @Getter @Setter Boolean alive = true;
 }

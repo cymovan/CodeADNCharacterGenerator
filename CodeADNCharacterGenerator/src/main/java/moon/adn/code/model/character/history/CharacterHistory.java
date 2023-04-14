@@ -9,7 +9,6 @@ import moon.adn.code.model.character.history.raec.RAEC;
 @Data
 @NoArgsConstructor
 public class CharacterHistory {
-	private Map<Integer, HistoryEventAbstract> eventsList;
-	private Map<Integer, RAEC> siblingsMap;
+	private Map<Integer, String> eventsMap;
 	private Map<Integer, RAEC> raecMap;
 }

@@ -1,7 +1,5 @@
 package moon.adn.code.model.character.history;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -9,9 +7,11 @@ import lombok.Getter;
 import lombok.Setter;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.history.raec.RAEC;
+import moon.adn.code.model.character.history.raec.RAECEnum;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 import moon.adn.code.system.RandomDiceUtil;
+import static moon.adn.code.model.character.history.raec.RAECEnum.*;
 
 /**
  * @author cdelr
@@ -24,8 +24,8 @@ public class CharacterHistoryGenerator {
 	private int siblingCount = 0;
 	private SpeciesEnum species;
 	private int age;
-	private List<HistoryEventAbstract> eventsList = new ArrayList<>();
-	private Map<Integer, RAEC> siblingsMap = new TreeMap<>();
+	private Map<Integer, String> eventsMap = new TreeMap<>();
+	private Map<Integer, RAEC> raecMap = new TreeMap<>();
 
 	CharacterHistory characterHistory = new CharacterHistory();
 
@@ -48,7 +48,9 @@ public class CharacterHistoryGenerator {
 
 	public CharacterHistory generate() {
 		generateSiblings();
-		characterHistory.setSiblingsMap(siblingsMap);
+		generateHistoryEvents();
+		characterHistory.setRaecMap(raecMap);
+		characterHistory.setEventsMap(eventsMap);
 		return characterHistory;
 	}
 
@@ -56,8 +58,43 @@ public class CharacterHistoryGenerator {
 		this.siblingCount = species.randomSibling();
 		for (int i = 0; i < siblingCount; i++) {
 			RAEC sibling = new RAECProcedure(species, age).generateSibling();
-			siblingsMap.put(i+1, sibling);
+			raecMap.put(i + 1, sibling);
 		}
+	}
+
+	private void generateHistoryEvents() {
+		int nb = randomNbEvents();
+		for (int i = 0; i < nb; i++) {
+			eventsMap.put(i + 1, generateRandomEvent());
+		}
+	}
+
+	private String generateRandomEvent() {
+		HistoryEventTypeEnum randomEvent = HistoryEventTypeEnum.random();
+
+		switch (randomEvent) {
+		case LUCK: {
+			return new HistoryLuckEvent().randomEvent();
+		}
+		case BADLUCK: {
+			return new HistoryBadLuckEvent().randomEvent();
+		}
+		case FRIEND: {
+			generateRAEC(RAECEnum.FRIEND);
+			return new HistoryFriendEvent().randomEvent();
+		} case ENEMY: {
+			generateRAEC(RAECEnum.ENEMY);
+			return "Not Implemented yet !";
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + randomEvent);
+		}
+	}
+
+	private void generateRAEC(RAECEnum raecEnum) {
+		int count = raecMap.size();
+		RAEC raec = new RAECProcedure(species, age).generate(raecEnum);
+		raecMap.put(count + 1, raec);
 	}
 
 	private int randomNbEvents() {

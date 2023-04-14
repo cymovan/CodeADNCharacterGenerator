@@ -97,7 +97,7 @@ public class CharacterRestController implements CharacterGenerator, RAECGenerato
 			@PathVariable(required = true) int age) {
 		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
 		chg.generateSiblings();
-		return chg.getSiblingsMap();
+		return chg.getRaecMap();
 	}
 
 	private Character generate() {

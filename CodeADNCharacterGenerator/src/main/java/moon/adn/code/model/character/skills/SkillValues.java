@@ -20,6 +20,7 @@ public class SkillValues {
 
 	public SkillValues(int initScore) {
 		this.initScore = initScore;
+		this.currentScore= initScore;
 	}
 
 	public SkillValues(int initScore, Modifier modifier) {
