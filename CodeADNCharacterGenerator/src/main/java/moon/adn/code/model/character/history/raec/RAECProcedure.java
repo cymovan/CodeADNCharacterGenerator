@@ -1,5 +1,6 @@
 package moon.adn.code.model.character.history.raec;
 
+import moon.adn.code.model.character.history.HistoryRomanceEnum;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
@@ -50,6 +51,9 @@ public class RAECProcedure {
 		generateAgeDiff();
 		generateJob();
 		people.setRAECType(raecEnum);
+		if (RAECEnum.ROMANCE == raecEnum) {
+			people.setRomance(Romance.randomRomance());
+		}
 		return this.people;
 	}
 

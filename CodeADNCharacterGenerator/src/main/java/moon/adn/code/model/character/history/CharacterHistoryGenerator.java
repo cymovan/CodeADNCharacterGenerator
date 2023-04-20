@@ -24,7 +24,7 @@ public class CharacterHistoryGenerator {
 	private int siblingCount = 0;
 	private SpeciesEnum species;
 	private int age;
-	private Map<Integer, String> eventsMap = new TreeMap<>();
+	private Map<Integer, HistoryEventValue> eventsMap = new TreeMap<>();
 	private Map<Integer, RAEC> raecMap = new TreeMap<>();
 
 	CharacterHistory characterHistory = new CharacterHistory();
@@ -69,26 +69,43 @@ public class CharacterHistoryGenerator {
 		}
 	}
 
-	private String generateRandomEvent() {
+	private HistoryEventValue generateRandomEvent() {
 		HistoryEventTypeEnum randomEvent = HistoryEventTypeEnum.random();
-
+		HistoryEventValue hev = new HistoryEventValue();
 		switch (randomEvent) {
 		case LUCK: {
-			return new HistoryLuckEvent().randomEvent();
+			HistoryLuckEvent hle = new HistoryLuckEvent();
+			hev.setI18nCode(hle.randomEvent());
+			break;
 		}
 		case BADLUCK: {
-			return new HistoryBadLuckEvent().randomEvent();
+			HistoryBadLuckEvent hle = new HistoryBadLuckEvent();
+			hev.setI18nCode(hle.randomEvent());
+			break;
 		}
 		case FRIEND: {
 			generateRAEC(RAECEnum.FRIEND);
-			return new HistoryFriendEvent().randomEvent();
+			HistoryFriendEvent hle = new HistoryFriendEvent();
+			hev.setI18nCode(hle.randomEvent());
+			hev.setIdRAEC(getRaecMap().size());
+			break;
 		} case ENEMY: {
 			generateRAEC(RAECEnum.ENEMY);
-			return "Not Implemented yet !";
+			HistoryFriendEvent hle = new HistoryFriendEvent();
+			hev.setI18nCode(hle.randomEvent());
+			hev.setIdRAEC(getRaecMap().size());
+			break;
+		} case ROMANCE: {
+			generateRAEC(RAECEnum.ROMANCE);
+			HistoryRomanceEvent hle = new HistoryRomanceEvent();
+			hev.setI18nCode(hle.randomEvent());
+			hev.setIdRAEC(getRaecMap().size());
+			break;
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + randomEvent);
 		}
+		return hev;
 	}
 
 	private void generateRAEC(RAECEnum raecEnum) {

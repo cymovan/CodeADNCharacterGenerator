@@ -17,7 +17,7 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 @AllArgsConstructor
 public class Identity {
 	private String name;
-	private int yearOfBirth;
+	private int age;
 	private HairColourEnum hairColor;
 	private EyesColorEnum eyeColor;
 	private SpeciesEnum species;

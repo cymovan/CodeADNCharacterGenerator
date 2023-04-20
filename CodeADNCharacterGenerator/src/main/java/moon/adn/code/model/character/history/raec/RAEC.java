@@ -13,4 +13,5 @@ public class RAEC {
 	private @Getter @Setter JobEnum job;
 	private @Getter @Setter RAECEnum RAECType;
 	private @Getter @Setter Boolean alive = true;
+	private @Getter @Setter Romance romance;
 }

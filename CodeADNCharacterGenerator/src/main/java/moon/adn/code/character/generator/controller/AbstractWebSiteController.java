@@ -23,7 +23,7 @@ public abstract class AbstractWebSiteController {
 	private static final String ERROR_VIEW = "error";
 	private static final String I18N_ERROR_ROOT = "error.";
 	private static final String I18N_ERROR_OTHER = "other";
-	
+
 	protected final Logger logger = LoggerFactory.getLogger(AbstractWebSiteController.class);
 	protected ModelMap templateModelMap = new ModelMap();
 

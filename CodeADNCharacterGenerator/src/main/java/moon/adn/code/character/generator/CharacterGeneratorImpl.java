@@ -39,7 +39,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
  */
 @Getter
 @Setter
-public class CharacterBuilder {
+public class CharacterGeneratorImpl {
 	private static Random random = new Random();
 
 	private Identity identity;
@@ -139,6 +139,13 @@ public class CharacterBuilder {
 			species = SpeciesEnum.random();
 		}
 
+		// Random Age.
+		if(SpeciesEnum.HUMAN == species) {
+			identity.setAge(random.nextInt(25, 52));
+		} else {
+			identity.setAge(random.nextInt(35, 100));
+		}
+		
 		// Sex
 		identity.setSpecies(species);
 		if (selectedSex.isPresent()) {

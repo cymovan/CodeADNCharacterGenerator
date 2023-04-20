@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import moon.adn.code.character.generator.CharacterBuilder;
+import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.character.generator.CharacterGenerator;
 import moon.adn.code.character.generator.HistoryGenerator;
 import moon.adn.code.character.generator.RAECGenerator;
@@ -101,14 +101,14 @@ public class CharacterRestController implements CharacterGenerator, RAECGenerato
 	}
 
 	private Character generate() {
-		CharacterBuilder characterBuilder = new CharacterBuilder();
+		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
 	}
 
 	private Character generateElfic() {
-		CharacterBuilder characterBuilder = new CharacterBuilder();
+		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
 		Set<SpeciesEnum> speciesSet = new HashSet<>();
 		speciesSet.add(SpeciesEnum.S_AQUA);
 		speciesSet.add(SpeciesEnum.S_DARK);
@@ -124,14 +124,14 @@ public class CharacterRestController implements CharacterGenerator, RAECGenerato
 	}
 
 	private Character generateHeroic() {
-		CharacterBuilder characterBuilder = new CharacterBuilder();
+		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
 	}
 
 	private Character generateWeakCharacter() {
-		CharacterBuilder characterBuilder = new CharacterBuilder();
+		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomWeakCaracteristics());
 		Character character = characterBuilder.build();
 		return character;

@@ -26,10 +26,18 @@ public class HistoryHelper {
 		}
 		return intervalValues.length - 1;
 	}
-	
+
 	public static int randomValuesBetween(int min, int max) {
 		Random r = new Random();
 		int diff = r.nextInt((max - min) + 1) + min;
 		return diff;
+	}
+
+	public static void generateTragicStory() {
+		
+	}
+	
+	public static void generateProblematicStory() {
+		
 	}
 }

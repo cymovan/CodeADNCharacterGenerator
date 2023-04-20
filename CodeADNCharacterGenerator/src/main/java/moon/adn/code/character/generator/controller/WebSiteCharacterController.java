@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import moon.adn.code.character.generator.CharacterBuilder;
+import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 @Controller
@@ -29,7 +29,7 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 	}
 
 	@PostMapping
-	public String createCharacter(@ModelAttribute CharacterBuilder character) {
+	public String createCharacter(@ModelAttribute CharacterGeneratorImpl character) {
 		// Code pour créer le personnage
 		return "redirect:/characters/new";
 	}
