@@ -29,7 +29,7 @@ public class HistoryHelper {
 
 	public static int randomValuesBetween(int min, int max) {
 		Random r = new Random();
-		int diff = r.nextInt((max - min) + 1) + min;
+		int diff = r.nextInt(min, max);
 		return diff;
 	}
 

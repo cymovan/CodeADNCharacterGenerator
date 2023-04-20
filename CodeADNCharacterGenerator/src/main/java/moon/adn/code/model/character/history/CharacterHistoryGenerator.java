@@ -34,7 +34,7 @@ public class CharacterHistoryGenerator {
 	}
 
 	public CharacterHistoryGenerator(Character character) {
-		this(character.getIdentity().getSpecies(), 0);
+		this(character.getIdentity().getSpecies(), character.getIdentity().getAge());
 	}
 
 	/**
