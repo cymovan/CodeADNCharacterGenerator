@@ -42,7 +42,7 @@ public enum EyesColorEnum {
 	YELLOW;
 
 	public static final String MESSAGE_PREFIX = "hair.";
-	
+
 	@Setter
 	@Getter
 	private boolean sparkled;

@@ -1,13 +1,39 @@
 package moon.adn.code.model.character.specializations;
 
-import static moon.adn.code.system.RandomDiceUtil.*;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.ANIMAL_COMMUNICATION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.ANIMAL_EMPATHY;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.ANIMATION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.AQUATIC_GRACE;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.AQUATIC_VIBES;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.CHARISMA;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.CHARM;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.CLIMBING;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.COLD_RESISTANCE;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.CONJURING_SPIRITS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.DISEASES_RESIST;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.DIVE;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.EMOTIONS_CONCEALMENT;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.GUNSLINGER;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.HIDE_IN_SHADOWS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.HYPNOTIZE;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.INFRAVISION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.INVENTION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.LIGHT_AMPLI_VISION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.LOCAL_ECONOMY;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.LOOK;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.MEDICINAL_PLANTS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PAIN_RESIST;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PRECISION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PSYCHOLOGY;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.SPIRIT_NATURE_COMMUNICATION;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.STYLE;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.URBAN_DISCRETION;
+import static moon.adn.code.system.RandomDiceUtil.d100;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Data;
-
-import static moon.adn.code.model.character.specializations.SpecializationEnum.*;
 
 @Data
 public class SpecializationsCreationHelper {

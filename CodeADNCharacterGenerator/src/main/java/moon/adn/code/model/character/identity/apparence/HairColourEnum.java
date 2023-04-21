@@ -36,7 +36,7 @@ public enum HairColourEnum {
 	NONE;
 
 	public static final String MESSAGE_PREFIX = "hair.";
-	
+
 	public static Set<HairColourEnum> humanHairColors() {
 		Set<HairColourEnum> hairColors = new HashSet<>();
 		hairColors.add(BLACK);

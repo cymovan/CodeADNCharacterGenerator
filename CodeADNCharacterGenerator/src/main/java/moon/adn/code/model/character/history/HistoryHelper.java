@@ -1,9 +1,8 @@
 package moon.adn.code.model.character.history;
 
-import java.util.Random;
+import static moon.adn.code.system.RandomDiceUtil.random;
 
-import moon.adn.code.system.RandomDiceUtil;
-import static moon.adn.code.system.RandomDiceUtil.*;
+import java.util.Random;
 
 public class HistoryHelper {
 
@@ -34,10 +33,10 @@ public class HistoryHelper {
 	}
 
 	public static void generateTragicStory() {
-		
+
 	}
-	
+
 	public static void generateProblematicStory() {
-		
+
 	}
 }

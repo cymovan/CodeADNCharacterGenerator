@@ -140,12 +140,12 @@ public class CharacterGeneratorImpl {
 		}
 
 		// Random Age.
-		if(SpeciesEnum.HUMAN == species) {
+		if (SpeciesEnum.HUMAN == species) {
 			identity.setAge(random.nextInt(25, 52));
 		} else {
 			identity.setAge(random.nextInt(35, 100));
 		}
-		
+
 		// Sex
 		identity.setSpecies(species);
 		if (selectedSex.isPresent()) {

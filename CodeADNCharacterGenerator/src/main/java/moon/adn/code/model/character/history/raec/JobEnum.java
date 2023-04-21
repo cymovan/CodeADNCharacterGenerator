@@ -1,5 +1,6 @@
 package moon.adn.code.model.character.history.raec;
 
+import static moon.adn.code.model.character.history.HistoryHelper.getPositionFromIntervals;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.CORPO;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.ENTERTAINMENT;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.GOVERNMENT;
@@ -8,8 +9,6 @@ import static moon.adn.code.model.character.history.raec.JobCategoryEnum.LAW;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.NAOHM;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.STANDARD;
 import static moon.adn.code.model.character.history.raec.JobCategoryEnum.STREET;
-
-import static moon.adn.code.model.character.history.HistoryHelper.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,8 @@ public enum JobEnum implements I18N {
 	WORKER(STANDARD), SECRETARY(STANDARD), CLERK(STANDARD), ACCOUNTANT(STANDARD), CRAFTSMAN(STANDARD),
 	ENGINEER(STANDARD), COMMERCIAL(STANDARD), MARKETING(STANDARD), SENIOR_MANAGER(STANDARD), FREELANCE(STANDARD),
 	VENDOR(STANDARD), SHOPKEEPER(STANDARD), UBER(STANDARD), DOCTOR(STANDARD), NURSING_STAFF(STANDARD), PILOT(STANDARD),
-	SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD), STUDENT(STANDARD), TEACHER(STANDARD), PROFESSOR(STANDARD), SCIENTIST(STANDARD),
+	SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD), STUDENT(STANDARD), TEACHER(STANDARD), PROFESSOR(STANDARD),
+	SCIENTIST(STANDARD),
 
 	// Street jobs
 	ASSASSIN(STREET), BARTENDER(STREET), STREED_GUARD(STREET), BOUNCER(STREET), TAXI_DRIVER(STREET), CROOK(STREET),

@@ -21,7 +21,7 @@ public class CaractValues {
 	public CaractValues() {
 
 	}
-	
+
 	public CaractValues(int value) {
 		this.creationValue = value;
 		this.currentValue = value;

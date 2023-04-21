@@ -11,7 +11,6 @@ import moon.adn.code.model.character.history.raec.RAECEnum;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 import moon.adn.code.system.RandomDiceUtil;
-import static moon.adn.code.model.character.history.raec.RAECEnum.*;
 
 /**
  * @author cdelr
@@ -89,13 +88,15 @@ public class CharacterHistoryGenerator {
 			hev.setI18nCode(hle.randomEvent());
 			hev.setIdRAEC(getRaecMap().size());
 			break;
-		} case ENEMY: {
+		}
+		case ENEMY: {
 			generateRAEC(RAECEnum.ENEMY);
 			HistoryFriendEvent hle = new HistoryFriendEvent();
 			hev.setI18nCode(hle.randomEvent());
 			hev.setIdRAEC(getRaecMap().size());
 			break;
-		} case ROMANCE: {
+		}
+		case ROMANCE: {
 			generateRAEC(RAECEnum.ROMANCE);
 			HistoryRomanceEvent hle = new HistoryRomanceEvent();
 			hev.setI18nCode(hle.randomEvent());

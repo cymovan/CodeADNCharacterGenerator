@@ -17,11 +17,17 @@ import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.paleElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.sylvanElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.urbanElfSkills;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.aquaticElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.darkElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.goldElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.greyElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.nightElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.paleElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.sylvanElfSpecializations;
+import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.urbanElfSpecializations;
 import static moon.adn.code.system.RandomDiceUtil.d2;
 import static moon.adn.code.system.RandomDiceUtil.d3;
 import static moon.adn.code.system.RandomDiceUtil.d4;
-
-import static moon.adn.code.model.character.specializations.SpecializationsCreationHelper.*;
 
 import java.util.Random;
 

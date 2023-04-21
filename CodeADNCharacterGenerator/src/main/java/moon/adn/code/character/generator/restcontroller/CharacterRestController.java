@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.character.generator.CharacterGenerator;
+import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.character.generator.HistoryGenerator;
 import moon.adn.code.character.generator.RAECGenerator;
 import moon.adn.code.model.character.Character;

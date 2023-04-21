@@ -13,7 +13,7 @@ import moon.adn.code.system.RandomDiceUtil;
 public abstract class HistoryEventAbstract {
 	private static final String NUMBER_FORMAT = "00";
 	private static final String ROOT_I18n = "hist.";
-	
+
 	protected List<Integer> segments = new ArrayList<>();
 	protected String i18nPrefix;
 

@@ -3,8 +3,8 @@ package moon.adn.code.model.character.specializations;
 import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.FIGHTER;
 import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.GENERAL;
 import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.MYSTIC;
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.SPY;
 import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.SPY;
 
 import lombok.Getter;
 
@@ -62,8 +62,7 @@ public enum SpecializationEnum {
 	CREDIBILITY(GENERAL, new CarerSpecializationValues()), RAT(SPY, new CarerSpecializationValues()),
 	INTERFACE(SPY, new CarerSpecializationValues()), COMBAT_SENSE(FIGHTER, new CarerSpecializationValues()),
 	INGENIOUS_TINKERING(SCIENTIST, new CarerSpecializationValues()),
-	MEDICAL_TECHNICS(SCIENTIST, new CarerSpecializationValues())
-	;
+	MEDICAL_TECHNICS(SCIENTIST, new CarerSpecializationValues());
 
 	private @Getter SpecializationCategoryEnum specializationCategory;
 	private @Getter SpecializationValuesAbstract specializationValues = new StandardSpecializationValues();

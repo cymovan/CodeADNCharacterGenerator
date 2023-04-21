@@ -17,6 +17,7 @@ public interface CharacterGenerator {
 
 	/**
 	 * Only for tests
+	 * 
 	 * @return Elf {@link Character} with good stats.
 	 */
 	Character createElfCaracter();
