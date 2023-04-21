@@ -2,6 +2,7 @@ package moon.adn.code.model.character.history.raec;
 
 import lombok.Getter;
 import lombok.Setter;
+import moon.adn.code.model.character.history.details.Romance;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 

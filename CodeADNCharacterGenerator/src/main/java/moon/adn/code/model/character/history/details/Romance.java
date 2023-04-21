@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.history.raec;
+package moon.adn.code.model.character.history.details;
 
 import lombok.Data;
 import moon.adn.code.model.character.history.HistoryRomanceEnum;

@@ -13,15 +13,27 @@ import moon.adn.code.system.RandomDiceUtil;
 public abstract class HistoryEventAbstract {
 	private static final String NUMBER_FORMAT = "00";
 	private static final String ROOT_I18n = "hist.";
+	protected final int maxInterval;
 
+	protected int[] intervalValues = {0};
 	protected List<Integer> segments = new ArrayList<>();
 	protected String i18nPrefix;
 
-	protected HistoryEventAbstract(String i18nPrefix) {
+	protected HistoryEventAbstract(String i18nPrefix, int maxInterval) {
 		this.i18nPrefix = ROOT_I18n + i18nPrefix;
+		this.maxInterval = maxInterval;
+		initIntervalValues();
 	}
 
-	abstract String randomEvent();
+	private void initIntervalValues() {
+		for (int i : intervalValues) {
+			segments.add(i);
+		}
+	}
+
+	public String randomEvent() {
+		return i18nKey(getPositionFromIntervals(maxInterval));
+	}
 
 	protected int getPositionFromIntervals(int MaxSides) {
 		int valeur = RandomDiceUtil.random(MaxSides);

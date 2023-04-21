@@ -1,5 +1,6 @@
 package moon.adn.code.model.character.history.raec;
 
+import moon.adn.code.model.character.history.details.Romance;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
