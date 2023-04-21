@@ -120,6 +120,7 @@ public class CharacterHistoryGenerator {
 	}
 
 	private int randomNbEvents() {
+		// TODO : implement historyEvent game rules
 		return RandomDiceUtil.d6() * 2;
 	}
 }
