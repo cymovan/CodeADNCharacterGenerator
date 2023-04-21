@@ -15,17 +15,27 @@ public abstract class HistoryEventAbstract {
 	private static final String ROOT_I18n = "hist.";
 	protected final int maxInterval;
 
-	protected int[] intervalValues = {0};
+	protected int[] intervalValues = { 0 };
 	protected List<Integer> segments = new ArrayList<>();
 	protected String i18nPrefix;
 
 	protected HistoryEventAbstract(String i18nPrefix, int maxInterval) {
 		this.i18nPrefix = ROOT_I18n + i18nPrefix;
 		this.maxInterval = maxInterval;
-		initIntervalValues();
+		if(intervalValues.length == 1) {
+			initIntervalValues();
+		}
+		initFromIntervalValues();
 	}
 
 	private void initIntervalValues() {
+		intervalValues = new int[maxInterval];
+		for (int i = 0; i < maxInterval; i++) {
+			intervalValues[i] = i + 1;
+		}
+	}
+
+	private void initFromIntervalValues() {
 		for (int i : intervalValues) {
 			segments.add(i);
 		}

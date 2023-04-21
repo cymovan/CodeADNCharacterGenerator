@@ -11,4 +11,8 @@ public class HistoryEnemyEvent extends HistoryEventAbstract {
 	public HistoryEnemyEvent() {
 		super(ENEMY_PREFIX, MAX_INTERVAL);
 	}
+
+	public HistoryEnemyEvent(String i18nPrefix, int maxInterval) {
+		super(ENEMY_PREFIX + "." + i18nPrefix, maxInterval);
+	}
 }

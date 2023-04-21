@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.history.event.HistoryBadLuckEvent;
+import moon.adn.code.model.character.history.event.HistoryEnemyEvent;
 import moon.adn.code.model.character.history.event.HistoryFriendEvent;
 import moon.adn.code.model.character.history.event.HistoryLuckEvent;
 import moon.adn.code.model.character.history.event.HistoryRomanceEvent;
@@ -95,7 +96,7 @@ public class CharacterHistoryGenerator {
 		}
 		case ENEMY: {
 			generateRAEC(RAECEnum.ENEMY);
-			HistoryFriendEvent hle = new HistoryFriendEvent();
+			HistoryEnemyEvent hle = new HistoryEnemyEvent();
 			hev.setI18nCode(hle.randomEvent());
 			hev.setIdRAEC(getRaecMap().size());
 			break;

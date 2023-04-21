@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.history;
+package moon.adn.code.model.character.history.details.romance;
 
 import java.util.Random;
 

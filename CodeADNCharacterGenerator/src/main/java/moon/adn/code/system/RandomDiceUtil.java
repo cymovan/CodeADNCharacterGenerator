@@ -54,6 +54,22 @@ public class RandomDiceUtil {
 		return random(MAX_D10);
 	}
 
+	public static int d4Explode() {
+		return diceExplode(MAX_D4, 0);
+	}
+	
+	public static int d10Explode() {
+		return diceExplode(MAX_D10, 0);
+	}
+
+	private static int diceExplode(int diceValue, int score) {
+		int result = random(diceValue);
+		if (result == diceValue) {
+			return diceExplode(diceValue, score + diceValue);
+		}
+		return result + score;
+	}
+
 	/**
 	 * @return value beetwen 1 and 100.
 	 */

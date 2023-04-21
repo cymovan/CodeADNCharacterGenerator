@@ -1,6 +1,7 @@
 package moon.adn.code.model.character.history.raec;
 
-import moon.adn.code.model.character.history.details.Romance;
+import moon.adn.code.model.character.history.details.enemy.EnemyDetails;
+import moon.adn.code.model.character.history.details.romance.Romance;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
@@ -53,6 +54,9 @@ public class RAECProcedure {
 		people.setRAECType(raecEnum);
 		if (RAECEnum.ROMANCE == raecEnum) {
 			people.setRomance(Romance.randomRomance());
+		}
+		else if (RAECEnum.ENEMY == raecEnum) {
+			people.setEnemy(EnemyDetails.random());
 		}
 		return this.people;
 	}
