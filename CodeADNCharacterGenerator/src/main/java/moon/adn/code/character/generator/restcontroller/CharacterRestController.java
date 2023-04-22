@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import moon.adn.code.character.generator.CharacterGenerator;
 import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.character.generator.HistoryGenerator;
 import moon.adn.code.character.generator.RAECGenerator;
@@ -32,14 +31,14 @@ import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
- * Controler for Charater API.
+ * Controler for Character API.
  * 
  * @author cdelr
  *
  */
 @RestController
 @RequestMapping(CharacterRestController.PATH_REST_CHARACTERS)
-public class CharacterRestController implements CharacterGenerator, RAECGenerator, HistoryGenerator {
+public class CharacterRestController implements CharacterGeneratorController, RAECGenerator, HistoryGenerator {
 
 	static final String PATH_REST_CHARACTERS = "/restCharacters";
 	private static final String CHARACTER_PATH = "/character";

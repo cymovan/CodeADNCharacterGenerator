@@ -126,7 +126,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 		String first = generateFirstName(sex);
 		String lastName = "";
 		if (names.size() != 0) {
-			lastName = names.get(random.nextInt(names.size()));
+			lastName = names.get(random.nextInt(names.size())).toUpperCase();
 		}
 		return first + " " + lastName;
 	}
