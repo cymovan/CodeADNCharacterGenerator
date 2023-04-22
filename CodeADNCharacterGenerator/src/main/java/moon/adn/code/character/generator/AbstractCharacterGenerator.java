@@ -214,7 +214,6 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		while (loop++ < maxLoop && skillsPoints != 0) {
 			for (SkillEnum skill : skillsLearn) {
 				SkillValues value = getSkillsMap().get(skill);
-				int initValue = value.getInitScore();
 				int currentValue = value.getCurrentScore();
 				int choice = 0;
 				if (currentValue < maxScore) {

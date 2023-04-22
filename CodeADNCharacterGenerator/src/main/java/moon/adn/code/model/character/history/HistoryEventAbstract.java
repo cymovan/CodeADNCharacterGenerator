@@ -19,10 +19,20 @@ public abstract class HistoryEventAbstract {
 	protected List<Integer> segments = new ArrayList<>();
 	protected String i18nPrefix;
 
+	protected HistoryEventAbstract(String i18nPrefix, int[] intervalValues, int maxInterval) {
+		this.i18nPrefix = ROOT_I18n + i18nPrefix;
+		this.maxInterval = maxInterval;
+		this.intervalValues = intervalValues;
+		if (intervalValues.length == 1) {
+			initIntervalValues();
+		}
+		initFromIntervalValues();
+	}
+
 	protected HistoryEventAbstract(String i18nPrefix, int maxInterval) {
 		this.i18nPrefix = ROOT_I18n + i18nPrefix;
 		this.maxInterval = maxInterval;
-		if(intervalValues.length == 1) {
+		if (intervalValues.length == 1) {
 			initIntervalValues();
 		}
 		initFromIntervalValues();

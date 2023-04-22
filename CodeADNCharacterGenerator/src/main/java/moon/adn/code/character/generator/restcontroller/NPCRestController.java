@@ -13,7 +13,6 @@ import java.util.TreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,8 +26,6 @@ import moon.adn.code.model.character.NPC;
 import moon.adn.code.model.character.PunchingBall;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
-import moon.adn.code.model.character.history.CharacterHistory;
-import moon.adn.code.model.character.history.CharacterHistoryGenerator;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
