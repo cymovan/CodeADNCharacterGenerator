@@ -44,18 +44,20 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
  *
  */
 public enum SpeciesEnum {
-	HUMAN(humanModifiers()), S_URB(urbanElfModifiers(), urbanElfSkills(), urbanElfSpecializations()),
-	S_SYLV(sylvanElfModifiers(), sylvanElfSkills(), sylvanElfSpecializations()),
-	S_PALE(paleElfModifiers(), paleElfSkills(), paleElfSpecializations()),
-	S_GREY(greyElfModifiers(), greyElfSkills(), greyElfSpecializations()),
-	S_GOLD(goldElfModifiers(), goldElfSkills(), goldElfSpecializations()),
+	HUMAN(humanModifiers()),
+	S_URB(urbanElfModifiers(), urbanElfSkills(), urbanElfSpecializations()),
+	S_SYLV(sylvanElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), sylvanElfSkills(), sylvanElfSpecializations()),
+	S_PALE(paleElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), paleElfSkills(), paleElfSpecializations()),
+	S_GREY(greyElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), greyElfSkills(), greyElfSpecializations()),
+	S_GOLD(goldElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), goldElfSkills(), goldElfSpecializations()),
 	S_NIGHT(nightElfModifiers(), nightElfSkills(), nightElfSpecializations()),
-	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()),
-	S_DARK(darkElfModifiers(), darkElfSkills(), darkElfSpecializations());
+	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()), 
+	S_DARK(darkElfModifiers(), DarkElvesNamesGeneratorSingleton.getInstance(), darkElfSkills(), darkElfSpecializations());
 
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
 	private @Getter SkillsSpeciesModifiers SkillModifiers;
 	private @Getter SpecializationsAtCreation specializations = new SpecializationsAtCreation();
+	private @Getter NamesGenerator namesGenerator = HumanNamesGeneratorSingleton.getInstance();
 
 //	private int[] destinyInterval = {19, 29, 49, 74, 99, 124, 125, 1000};
 //	private int[] destinyElfDices = {2, 3, 8, 6, 5, 8, 5, 4};
@@ -93,6 +95,12 @@ public enum SpeciesEnum {
 			SpecializationsAtCreation specializations) {
 		this(caractSpeciesModifier, skillSpecicesModifier);
 		this.specializations = specializations;
+	}
+
+	SpeciesEnum(CaracteristicSpeciesModifiers caractSpeciesModifier, NamesGenerator test,
+			SkillsSpeciesModifiers skillSpecicesModifier, SpecializationsAtCreation specializations) {
+		this(caractSpeciesModifier, skillSpecicesModifier, specializations);
+		this.namesGenerator = test;
 	}
 
 	/**

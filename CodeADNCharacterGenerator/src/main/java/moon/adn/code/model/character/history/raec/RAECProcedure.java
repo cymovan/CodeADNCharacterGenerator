@@ -47,26 +47,25 @@ public class RAECProcedure {
 	}
 
 	public RAEC generate(RAECEnum raecEnum) {
-		generateCommon();
-		people.setSpecies(SpeciesEnum.random());
+		generateCommon(SpeciesEnum.random());
 		generateAgeDiff();
 		generateJob();
 		people.setRAECType(raecEnum);
 		if (RAECEnum.ROMANCE == raecEnum) {
 			people.setRomance(Romance.randomRomance());
-		}
-		else if (RAECEnum.ENEMY == raecEnum) {
+		} else if (RAECEnum.ENEMY == raecEnum) {
 			people.setEnemy(EnemyDetails.random());
 		}
+		people.setName(people.getSpecies().getNamesGenerator().generateCompleteName(people.getSex()));
 		return this.people;
 	}
 
 	public RAEC generateSibling() {
-		generateCommon();
-		people.setSpecies(species);
+		generateCommon(species);
 		generateAgeDiff();
 		generateJob();
 		generateSiblingType();
+		people.setName(species.getNamesGenerator().generateFirstName(people.getSex()));
 		return this.people;
 	}
 
@@ -83,9 +82,10 @@ public class RAECProcedure {
 		people.setAgeGap(ageCategory.ageDiffSibling(species, age));
 	}
 
-	private void generateCommon() {
+	private void generateCommon(SpeciesEnum species) {
 		people.setSex(SexEnum.random());
 		ageCategory = AgeCategoriesEnum.random();
+		people.setSpecies(species);
 	}
 
 	private void generateJob() {

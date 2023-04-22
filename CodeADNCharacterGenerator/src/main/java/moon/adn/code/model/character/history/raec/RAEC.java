@@ -9,6 +9,7 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
 
 public class RAEC {
 	private @Getter @Setter SexEnum sex;
+	private @Getter @Setter String name;
 	private @Getter @Setter int ageGap = 0;
 	private @Getter @Setter SpeciesEnum species;
 	private @Setter JobCategoryEnum jobCategory;

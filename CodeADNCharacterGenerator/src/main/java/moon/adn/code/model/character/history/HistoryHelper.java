@@ -31,12 +31,4 @@ public class HistoryHelper {
 		int diff = r.nextInt(min, max);
 		return diff;
 	}
-
-	public static void generateTragicStory() {
-
-	}
-
-	public static void generateProblematicStory() {
-
-	}
 }

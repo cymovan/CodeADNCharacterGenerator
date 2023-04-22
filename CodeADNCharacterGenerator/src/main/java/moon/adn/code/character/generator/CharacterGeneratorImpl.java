@@ -139,13 +139,6 @@ public class CharacterGeneratorImpl {
 			species = SpeciesEnum.random();
 		}
 
-		// Random Age.
-		if (SpeciesEnum.HUMAN == species) {
-			identity.setAge(random.nextInt(25, 52));
-		} else {
-			identity.setAge(random.nextInt(35, 100));
-		}
-
 		// Sex
 		identity.setSpecies(species);
 		if (selectedSex.isPresent()) {
@@ -154,6 +147,16 @@ public class CharacterGeneratorImpl {
 			identity.setSex(SexEnum.random());
 		}
 
+		// Random Age.
+		if (SpeciesEnum.HUMAN == species) {
+			identity.setAge(random.nextInt(25, 52));
+		} else {
+			identity.setAge(random.nextInt(35, 100));
+		}
+
+		// Random Name
+		identity.setName(species.getNamesGenerator().generateCompleteName(identity.getSex()));
+		
 		// Eyes Color
 		List<EyesColorEnum> eyesColorsList = EyesColorEnum.getSpeciesEyeColorsList(species);
 		Collections.shuffle(eyesColorsList);
