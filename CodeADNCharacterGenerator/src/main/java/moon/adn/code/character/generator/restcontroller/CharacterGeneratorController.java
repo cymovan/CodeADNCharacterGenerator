@@ -1,5 +1,6 @@
 package moon.adn.code.character.generator.restcontroller;
 
+import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.Character;
 
 /**
@@ -8,32 +9,32 @@ import moon.adn.code.model.character.Character;
  * @author cdelr
  *
  */
-public interface CharacterGeneratorController {
+public interface CharacterGeneratorController<Clazz extends AbstractCharacter>{
 
 	/**
 	 * @return Standard {@link Character}
 	 */
-	Character createCaracter();
+	Clazz createCaracter();
 
 	/**
 	 * Only for tests
 	 * 
 	 * @return Elf {@link Character} with good stats.
 	 */
-	Character createElfCaracter();
+	Clazz createElfCaracter();
 
 	/**
 	 * @return {@link Character} with good stats.
 	 */
-	Character createHeroicCaracter();
+	Clazz createHeroicCaracter();
 
 	/**
 	 * @return {@link Character} with weak attributes.
 	 */
-	Character createWeakCaracter();
+	Clazz createWeakCaracter();
 
 	/**
 	 * @return
 	 */
-	Character restoreCaracter();
+	Clazz restoreCaracter();
 }

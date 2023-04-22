@@ -19,14 +19,17 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 	public Character build() {
 		Character character = new Character();
 		commonBuild(character);
-		
+		spendSkillsPoints(0, 8);
+
 		// Events
 		chg = new CharacterHistoryGenerator(character);
 		CharacterHistory ch = chg.generate();
 		character.setEventsMap(ch.getEventsMap());
 		character.setRaecMap(ch.getRaecMap());
 
+
 		CharacterFileHelper.saveCharacter(character);
 		return character;
 	}
+
 }

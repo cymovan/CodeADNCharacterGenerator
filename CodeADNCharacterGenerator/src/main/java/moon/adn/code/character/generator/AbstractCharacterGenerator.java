@@ -1,7 +1,10 @@
 package moon.adn.code.character.generator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -59,6 +62,9 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	protected SkillsSpeciesModifiers skillsModifiers = new SkillsSpeciesModifiers();
 
 	protected CharacterHistoryGenerator chg;
+
+	protected Set<SkillEnum> skillsToLearn = new HashSet<>();
+	protected int skillsPoints = 50;
 
 	/**
 	 * Build and consolidate Datas of the character.
@@ -163,6 +169,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	/**
 	 * Template code for {@link Character}, {@link NPC}...
+	 * 
 	 * @param character
 	 */
 	protected void commonBuild(Clazz character) {
@@ -182,5 +189,56 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		if (null != speciesSpecializations) {
 			character.setSpecializations(speciesSpecializations.getSpecializationsMap());
 		}
+	}
+
+	protected void populateFromSkillToLearn(Clazz character) {
+		for (Iterator<SkillEnum> iterator = skillsToLearn.iterator(); iterator.hasNext();) {
+			SkillEnum skillEnum = iterator.next();
+			SkillValues value = character.getSkillsMap().get(skillEnum);
+			if (null == value) {
+				character.getSkillsMap().put(skillEnum, new SkillValues(0));
+			}
+		}
+	}
+
+	protected void spendSkillsPoints(int sPoints, int maxScore) {
+		if (sPoints != 0) {
+			skillsPoints = sPoints;
+		}
+		List<SkillEnum> skillsLearn = new ArrayList<>();
+		skillsLearn.addAll(skillsMap.keySet());
+		Collections.shuffle(skillsLearn);
+		final int maxLoop = 4;
+		int loop = 0;
+		int countMaxScore = 0;
+		while (loop++ < maxLoop && skillsPoints != 0) {
+			for (SkillEnum skill : skillsLearn) {
+				SkillValues value = getSkillsMap().get(skill);
+				int initValue = value.getInitScore();
+				int currentValue = value.getCurrentScore();
+				int choice = 0;
+				if (currentValue < maxScore) {
+					choice = random.nextInt(currentValue, maxScore);
+				}
+				if (choice == maxScore) {
+					countMaxScore++;
+				}
+				if (countMaxScore == 3 && maxScore > 1) {
+					countMaxScore = 0;
+					maxScore--;
+				}
+				if (choice < skillsPoints) {
+					skillsPoints -= choice;
+				} else {
+					choice = skillsPoints;
+					skillsPoints = 0;
+				}
+				value.setCurrentScore(currentValue + choice);
+			}
+		}
+	}
+
+	private void spendHobbyPoints() {
+
 	}
 }

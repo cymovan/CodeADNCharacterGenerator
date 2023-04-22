@@ -17,17 +17,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import moon.adn.code.character.generator.AbstractCharacterGenerator;
 import moon.adn.code.character.generator.CharacterGeneratorImpl;
-import moon.adn.code.character.generator.HistoryGenerator;
-import moon.adn.code.character.generator.RAECGenerator;
+import moon.adn.code.character.generator.MedTechNPCGeneratorImpl;
+import moon.adn.code.character.generator.NPCGeneratorImpl;
+import moon.adn.code.character.generator.PunchingBallGeneratorImpl;
 import moon.adn.code.model.character.Character;
-import moon.adn.code.model.character.CharacterFileHelper;
+import moon.adn.code.model.character.NPC;
+import moon.adn.code.model.character.PunchingBall;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.history.CharacterHistory;
 import moon.adn.code.model.character.history.CharacterHistoryGenerator;
-import moon.adn.code.model.character.history.raec.RAEC;
-import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
@@ -37,72 +38,44 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  *
  */
 @RestController
-@RequestMapping(CharacterRestController.PATH_REST_CHARACTERS)
-public class CharacterRestController implements CharacterGeneratorController<Character>, RAECGenerator, HistoryGenerator {
+@RequestMapping(NPCRestController.PATH_REST_NPC)
+public class NPCRestController implements NPCGeneratorController<NPC> {
 
-	static final String PATH_REST_CHARACTERS = "/restCharacters";
-	private static final String CHARACTER_PATH = "/character";
-	private static final String HEROIC_CHARACTER_PATH = "/heroicCharacter";
-	private static final String ELF_CHARACTER_PATH = "/elfCharacter";
-	private static final String WEAK_CHARACTER_PATH = "/weakCharacter";
-	private static final String RESTORE_CHARACTER_PATH = "/restoreCharacter";
+	static final String PATH_REST_NPC = "/restNPC";
+	private static final String NPC_PATH = "/NPC";
+	private static final String MEDTECH_PATH = "/medTech";
+	private static final String PUNCHINGBALL_PATH = "/punchingBall";
 
 	@Autowired
 	MessageSource messageSource;
 
 	@Override
-	@GetMapping(CHARACTER_PATH)
-	public Character createCaracter() {
-		return generate();
+	@GetMapping(NPC_PATH)
+	public NPC createCaracter() {
+		return generate(new NPCGeneratorImpl());
 	}
 
 	@Override
-	@GetMapping(RESTORE_CHARACTER_PATH)
-	public Character restoreCaracter() {
-		Character character = CharacterFileHelper.loadCharacter(CharacterFileHelper.DEFAULT_JSON_FILE);
+	@GetMapping(MEDTECH_PATH)
+	public NPC createMedTech() {
+		return generate(new MedTechNPCGeneratorImpl());
+	}
+
+	@Override
+	@GetMapping(PUNCHINGBALL_PATH)
+	public PunchingBall createPunchingBall() {
+		return generatePunchingBall(new PunchingBallGeneratorImpl());
+	}
+
+	private NPC generate(AbstractCharacterGenerator<NPC> generator) {
+		generator.setCaracteristicsMap(randomCaracteristics());
+		NPC character = generator.build();
 		return character;
 	}
 
-	@Override
-	@GetMapping(ELF_CHARACTER_PATH)
-	public Character createElfCaracter() {
-		return generateElfic();
-	}
-
-	@Override
-	@GetMapping(HEROIC_CHARACTER_PATH)
-	public Character createHeroicCaracter() {
-		return generateHeroic();
-	}
-
-	@Override
-	@GetMapping(WEAK_CHARACTER_PATH)
-	public Character createWeakCaracter() {
-		return generateWeakCharacter();
-	}
-
-	@GetMapping("RAEC/species/{species}/age/{age}")
-	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) int age) {
-		return new RAECProcedure(species, age).generate();
-	}
-
-	@GetMapping("RAEC")
-	public RAEC generateRAEC() {
-		return new RAECProcedure().generate();
-	}
-
-	@GetMapping("RAEC/sibling/species/{species}/age/{age}")
-	public Map<Integer, RAEC> generateSibling(@PathVariable(required = true) SpeciesEnum species,
-			@PathVariable(required = true) int age) {
-		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
-		chg.generateSiblings();
-		return chg.getRaecMap();
-	}
-
-	private Character generate() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
-		characterBuilder.setCaracteristicsMap(randomCaracteristics());
-		Character character = characterBuilder.build();
+	private PunchingBall generatePunchingBall(PunchingBallGeneratorImpl generator) {
+		generator.setCaracteristicsMap(randomWeakCaracteristics());
+		PunchingBall character = generator.build();
 		return character;
 	}
 
@@ -160,10 +133,4 @@ public class CharacterRestController implements CharacterGeneratorController<Cha
 		return mapCaracteristics;
 	}
 
-	@Override
-	@GetMapping("characterHistory/{species}")
-	public CharacterHistory generate(@PathVariable SpeciesEnum species, @PathVariable(required = true) int age) {
-		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
-		return chg.generate();
-	}
 }
