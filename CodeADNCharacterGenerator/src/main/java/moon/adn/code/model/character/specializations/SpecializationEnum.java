@@ -1,10 +1,10 @@
 package moon.adn.code.model.character.specializations;
 
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.FIGHTER;
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.GENERAL;
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.MYSTIC;
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.SCIENTIST;
-import static moon.adn.code.model.character.specializations.SpecializationCategoryEnum.SPY;
+import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CarreerEnum.GENERAL;
+import static moon.adn.code.model.character.specializations.CarreerEnum.MYSTIC;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 
 import lombok.Getter;
 
@@ -64,26 +64,26 @@ public enum SpecializationEnum {
 	INGENIOUS_TINKERING(SCIENTIST, new CarerSpecializationValues()),
 	MEDICAL_TECHNICS(SCIENTIST, new CarerSpecializationValues());
 
-	private @Getter SpecializationCategoryEnum specializationCategory;
+	private @Getter CarreerEnum specializationCategory;
 	private @Getter SpecializationValuesAbstract specializationValues = new StandardSpecializationValues();
 	private @Getter Boolean species = false;
 
-	SpecializationEnum(SpecializationCategoryEnum specializationCategory) {
+	SpecializationEnum(CarreerEnum specializationCategory) {
 		this.specializationCategory = specializationCategory;
 	}
 
-	SpecializationEnum(SpecializationCategoryEnum specializationCategory, SpecializationValuesAbstract values) {
+	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values) {
 		this(specializationCategory);
 		this.specializationValues = values;
 	}
 
-	SpecializationEnum(SpecializationCategoryEnum specializationCategory, SpecializationValuesAbstract values,
+	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values,
 			boolean species) {
 		this(specializationCategory, values);
 		this.species = species;
 	}
 
-	SpecializationEnum(SpecializationCategoryEnum specializationCategory, boolean species) {
+	SpecializationEnum(CarreerEnum specializationCategory, boolean species) {
 		this(specializationCategory);
 		this.species = species;
 	}

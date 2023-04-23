@@ -12,14 +12,15 @@ import moon.adn.code.model.character.history.CharacterHistoryGenerator;
  *
  */
 public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character> {
-
+	private int hobbiesPoints = 30;
+	
 	/**
 	 * Build and consolidate Datas of the character.
 	 */
 	public Character build() {
 		Character character = new Character();
 		commonBuild(character);
-		spendSkillsPoints(0, 8);
+		spendSkillsPoints(0, 9);
 
 		// Events
 		chg = new CharacterHistoryGenerator(character);
@@ -27,9 +28,14 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		character.setEventsMap(ch.getEventsMap());
 		character.setRaecMap(ch.getRaecMap());
 
+		spendHobbyPoints(character, hobbiesPoints, 5);
 
 		CharacterFileHelper.saveCharacter(character);
 		return character;
+	}
+	
+	protected void defineCarrerAndHobbiesPoints() {
+		
 	}
 
 }

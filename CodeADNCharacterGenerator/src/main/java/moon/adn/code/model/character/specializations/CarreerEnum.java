@@ -1,5 +1,5 @@
 package moon.adn.code.model.character.specializations;
 
-public enum SpecializationCategoryEnum {
+public enum CarreerEnum {
 	GENERAL, FIGHTER, SPY, SCIENTIST, MYSTIC;
 }

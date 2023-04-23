@@ -11,8 +11,11 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.STR
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.TECH;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WILL;
 
+import java.util.Random;
+
 import lombok.Getter;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
+import moon.adn.code.model.character.identity.SexEnum;
 
 /**
  * All skills
@@ -68,10 +71,15 @@ public enum SkillEnum {
 	SIXTH_SENSE(POW), HYPNOTIZE(POW), MAGICAL_RESISTANCE(POW);
 
 	private @Getter CaracteristicEnum caracteristic;
-
+	private static Random random = new Random();
+	
 	public static final String MESSAGE_PREFIX = "skill.";
 
 	SkillEnum(CaracteristicEnum caracteristic) {
 		this.caracteristic = caracteristic;
+	}
+	
+	public static SkillEnum random() {
+		return values()[random.nextInt(values().length)];
 	}
 }

@@ -216,28 +216,79 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 				SkillValues value = getSkillsMap().get(skill);
 				int currentValue = value.getCurrentScore();
 				int choice = 0;
-				if (currentValue < maxScore) {
-					choice = random.nextInt(currentValue, maxScore);
+				if (skillsPoints == 0) {
+					loop = maxLoop;
+					break;
 				}
-				if (choice == maxScore) {
-					countMaxScore++;
-				}
-				if (countMaxScore == 3 && maxScore > 1) {
-					countMaxScore = 0;
-					maxScore--;
-				}
-				if (choice < skillsPoints) {
-					skillsPoints -= choice;
+				if (currentValue >= maxScore) {
+					addRandomSkill();
 				} else {
-					choice = skillsPoints;
-					skillsPoints = 0;
+					// Avoid skillScore up to maxScore allowed
+					while (choice == 0) {
+						if (currentValue < maxScore) {
+							choice = random.nextInt(maxScore);
+							if (currentValue + choice > maxScore) {
+								choice = 0;
+							}
+						}
+					}
+					if (choice == maxScore) {
+						countMaxScore++;
+					}
+					if (countMaxScore == 3 && maxScore > 3) {
+						countMaxScore = 0;
+						maxScore--;
+						addRandomSkill();
+					}
+					if (choice < skillsPoints) {
+						skillsPoints -= choice;
+					} else {
+						choice = skillsPoints;
+						skillsPoints = 0;
+					}
+					int score = currentValue + choice;
+					System.out.println(skill + " : " + currentValue + " - random : " + choice + " = " + score);
+					value.setCurrentScore(score);
 				}
-				value.setCurrentScore(currentValue + choice);
 			}
 		}
+		System.out.println("Nb Compétences : " + getSkillsMap().size());
 	}
 
-	private void spendHobbyPoints() {
+	private void addRandomSkill() {
+		SkillEnum randomSkill = null;
+		while (randomSkill == null) {
+			randomSkill = SkillEnum.random();
+			if (getSkillsMap().get(randomSkill) == null) {
+				randomSkill = null;
+			}
+		}
+		getSkillsMap().put(randomSkill, new SkillValues());
+	}
 
+	protected void spendHobbyPoints(Clazz character, int sPoints, int maxScore) {
+		initCommonUsefullSkillsToLearn();
+		populateFromSkillToLearn(character);
+		spendSkillsPoints(sPoints, maxScore);
+	}
+
+	protected void initCommonUsefullSkillsToLearn() {
+		skillsToLearn.add(SkillEnum.SEE);
+		skillsToLearn.add(SkillEnum.LISTEN);
+		skillsToLearn.add(SkillEnum.HUMAN_PERCEPTION);
+		skillsToLearn.add(SkillEnum.GUNS);
+		skillsToLearn.add(SkillEnum.HUMAN_PERCEPTION);
+		skillsToLearn.add(SkillEnum.BIBLIO);
+		skillsToLearn.add(SkillEnum.DISGUISE);
+		skillsToLearn.add(SkillEnum.CHAT);
+		skillsToLearn.add(SkillEnum.COMEDY);
+		skillsToLearn.add(SkillEnum.BARGAIN);
+		skillsToLearn.add(SkillEnum.BRAWL);
+		skillsToLearn.add(SkillEnum.DODGE);
+		skillsToLearn.add(SkillEnum.SNEAK);
+		skillsToLearn.add(SkillEnum.ATHLETISM);
+		skillsToLearn.add(SkillEnum.MARTIAL_ART);
+		skillsToLearn.add(SkillEnum.SNEAK);
+		skillsToLearn.add(SkillEnum.TRACKING);
 	}
 }

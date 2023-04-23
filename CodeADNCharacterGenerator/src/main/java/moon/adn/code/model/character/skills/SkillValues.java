@@ -12,6 +12,7 @@ import moon.adn.code.model.character.builder.Modifier;
 @Data
 public class SkillValues {
 	private int initScore, currentScore, speciesModifier;
+	public static final int MAX_SCORE = 10;
 
 	@JsonCreator
 	public SkillValues() {
