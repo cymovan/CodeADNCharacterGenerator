@@ -277,12 +277,12 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 						skillsPoints = 0;
 					}
 					int score = currentValue + choice;
-					logger.trace(identity.getName() + ": " + skill + " : " + currentValue + " - random : " + choice);
+					logger.info(identity.getName() + ": " + skill + " : " + currentValue + " - random : " + choice);
 					value.setCurrentScore(score);
 				}
 			}
 		}
-		logger.trace(identity.getName() + ": Nb Compétences : " + getSkillsMap().size());
+		logger.info(identity.getName() + ": Nb Compétences : " + getSkillsMap().size());
 	}
 
 	private void addRandomSkill() {
