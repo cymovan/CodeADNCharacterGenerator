@@ -98,4 +98,8 @@ public class RandomDiceUtil {
 	public static int random(int maxDiceSide) {
 		return random.nextInt(maxDiceSide) + 1;
 	}
+	
+	public static int random(int min, int maxDiceSide) {
+		return random.nextInt(min, maxDiceSide) + 1;
+	}
 }

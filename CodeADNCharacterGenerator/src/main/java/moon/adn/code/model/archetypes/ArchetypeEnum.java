@@ -1,6 +1,7 @@
 package moon.adn.code.model.archetypes;
 
 import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,10 +11,13 @@ import java.util.Random;
 import lombok.Getter;
 import moon.adn.code.model.archetypes.fighters.RoninArchetype;
 import moon.adn.code.model.archetypes.fighters.SoloArchetype;
+import moon.adn.code.model.archetypes.scientists.MedTechieArchetype;
+import moon.adn.code.model.archetypes.scientists.TechieArchetype;
 import moon.adn.code.model.character.specializations.CarreerEnum;
 
 public enum ArchetypeEnum {
-	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype());
+	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()), 
+	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype());
 
 	private static Random random = new Random();
 

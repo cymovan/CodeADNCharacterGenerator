@@ -23,7 +23,9 @@ public class RoninArchetype extends AbstractFighterArchetype {
 		super(carrerLevel);
 	}
 
+	@Override
 	public void initSkillsToLearn() {
+		super.initSkillsToLearn();
 		skillsToLearn.add(ARMOURER);
 		skillsToLearn.add(BOWS);
 		skillsToLearn.add(STUNT);
@@ -35,6 +37,7 @@ public class RoninArchetype extends AbstractFighterArchetype {
 
 	@Override
 	public void initspecializationsToLearn() {
+		super.initspecializationsToLearn();
 		specializationsToLearn.add(BALANCE);
 		specializationsToLearn.add(BLIND_FIGHT);
 		specializationsToLearn.add(PRECISE_HIT);

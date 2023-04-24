@@ -21,6 +21,7 @@ public class SoloArchetype extends AbstractFighterArchetype {
 		super(carrerLevel);
 	}
 
+	@Override
 	public void initSkillsToLearn() {
 		skillsToLearn.add(EXPLOSIVES);
 		skillsToLearn.add(STUNT);
@@ -29,6 +30,7 @@ public class SoloArchetype extends AbstractFighterArchetype {
 
 	@Override
 	public void initspecializationsToLearn() {
+		super.initspecializationsToLearn();
 		specializationsToLearn.add(BODYBUILDING);
 		specializationsToLearn.add(BLIND_FIGHT);
 		specializationsToLearn.add(BODY_DEV);

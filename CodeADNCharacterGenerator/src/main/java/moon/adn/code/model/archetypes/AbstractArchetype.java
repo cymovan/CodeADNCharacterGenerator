@@ -30,8 +30,6 @@ public abstract class AbstractArchetype implements Archetype {
 
 	private AbstractArchetype(CarreerEnum mainCarreer) {
 		this.mainCarreer = mainCarreer;
-		job = JobEnum.randomJobUsingRules(mainCarreer);
-		initCaracteristics();
 	}
 
 	protected AbstractArchetype(CarreerEnum mainCarreer, int carrerLevel) {
@@ -52,12 +50,28 @@ public abstract class AbstractArchetype implements Archetype {
 	}
 
 	protected int randomCaracteristics() {
-		return random.nextInt(d10());
+		return d10();
 	}
 
 	public abstract void initCaracteristics();
 
+	@Override
+	public void initSkillsToLearn() {
+
+	}
+
+	@Override
+	public void initspecializationsToLearn() {
+
+	}
+
 	public AbstractArchetype getArchetype() {
+		initRandomValues();
 		return this;
+	}
+
+	protected void initRandomValues() {
+		job = JobEnum.randomJobUsingRules(mainCarreer);
+		initCaracteristics();
 	}
 }

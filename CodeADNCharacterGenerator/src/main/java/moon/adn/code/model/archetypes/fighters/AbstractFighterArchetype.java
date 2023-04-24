@@ -59,7 +59,9 @@ abstract class AbstractFighterArchetype extends AbstractArchetype {
 		caracteristicsMap.put(WILL, new CaractValues(randomMainCaracteristics()));
 	}
 
+	@Override
 	public void initSkillsToLearn() {
+		super.initSkillsToLearn();
 		skillsToLearn.add(SEE);
 		// Riffles and crossbows
 		skillsToLearn.add(RIFFLES);
@@ -76,6 +78,7 @@ abstract class AbstractFighterArchetype extends AbstractArchetype {
 
 	@Override
 	public void initspecializationsToLearn() {
+		super.initspecializationsToLearn();
 		specializationsToLearn.add(AMBUSH);
 		specializationsToLearn.add(BODYBUILDING);
 		specializationsToLearn.add(BODY_DEV);
