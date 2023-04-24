@@ -23,4 +23,5 @@ public class Identity {
 	private SpeciesEnum species;
 	private SexEnum sex;
 	private int socialLevel, socialOrigin;
+	private JobEnum job;
 }

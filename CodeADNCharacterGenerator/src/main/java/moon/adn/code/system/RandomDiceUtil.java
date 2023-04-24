@@ -78,12 +78,12 @@ public class RandomDiceUtil {
 	}
 
 	/**
-	 * @return value beetwen 2 and 10.
+	 * @return value beetwen 3 and 10.
 	 */
 	public static int d10Heroic() {
 		int result = random(MAX_D10);
-		if (result <= 1) {
-			result = 2;
+		if (result <= 2) {
+			result = 3;
 		}
 		return result;
 	}

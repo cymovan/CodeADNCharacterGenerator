@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import moon.adn.code.model.character.history.details.enemy.EnemyDetails;
 import moon.adn.code.model.character.history.details.romance.Romance;
+import moon.adn.code.model.character.identity.JobCategoryEnum;
+import moon.adn.code.model.character.identity.JobEnum;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 

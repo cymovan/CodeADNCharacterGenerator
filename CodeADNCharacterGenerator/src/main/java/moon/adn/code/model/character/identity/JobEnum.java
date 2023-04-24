@@ -1,20 +1,25 @@
-package moon.adn.code.model.character.history.raec;
+package moon.adn.code.model.character.identity;
 
 import static moon.adn.code.model.character.history.HistoryHelper.getPositionFromIntervals;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.CORPO;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.ENTERTAINMENT;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.GOVERNMENT;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.ILLEGAL;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.LAW;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.NAOHM;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.STANDARD;
-import static moon.adn.code.model.character.history.raec.JobCategoryEnum.STREET;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.CORPO;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.ENTERTAINMENT;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.GOVERNMENT;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.ILLEGAL;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.LAW;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.NAOHM;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.STANDARD;
+import static moon.adn.code.model.character.identity.JobCategoryEnum.STREET;
+import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CarreerEnum.GENERAL;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 import lombok.Getter;
+import moon.adn.code.model.character.specializations.CarreerEnum;
 import moon.adn.code.system.I18N;
 
 /**
@@ -24,30 +29,35 @@ import moon.adn.code.system.I18N;
 public enum JobEnum implements I18N {
 	// Standards jobs
 	WORKER(STANDARD), SECRETARY(STANDARD), CLERK(STANDARD), ACCOUNTANT(STANDARD), CRAFTSMAN(STANDARD),
-	ENGINEER(STANDARD), COMMERCIAL(STANDARD), MARKETING(STANDARD), SENIOR_MANAGER(STANDARD), FREELANCE(STANDARD),
-	VENDOR(STANDARD), SHOPKEEPER(STANDARD), UBER(STANDARD), DOCTOR(STANDARD), NURSING_STAFF(STANDARD), PILOT(STANDARD),
-	SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD), STUDENT(STANDARD), TEACHER(STANDARD), PROFESSOR(STANDARD),
-	SCIENTIST(STANDARD),
+	ENGINEER(STANDARD, CarreerEnum.SCIENTIST), COMMERCIAL(STANDARD), MARKETING(STANDARD, SPY), SENIOR_MANAGER(STANDARD),
+	FREELANCE(STANDARD), VENDOR(STANDARD), SHOPKEEPER(STANDARD), UBER(STANDARD),
+	DOCTOR(STANDARD, CarreerEnum.SCIENTIST), NURSING_STAFF(STANDARD, CarreerEnum.SCIENTIST), PILOT(STANDARD),
+	SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD), STUDENT(STANDARD, GENERAL),
+	TEACHER(STANDARD, CarreerEnum.SCIENTIST), PROFESSOR(STANDARD, CarreerEnum.SCIENTIST),
+	SCIENTIST(STANDARD, CarreerEnum.SCIENTIST),
 
 	// Street jobs
-	ASSASSIN(STREET), BARTENDER(STREET), STREED_GUARD(STREET), BOUNCER(STREET), TAXI_DRIVER(STREET), CROOK(STREET),
-	INMATE(STREET), FORGER(STREET), DRUG_PRODUCER(STREET), DEALER(STREET), EX_PRISONER(STREET), FIXER(STREET),
-	GANG_MEMBER(STREET), WHORE(STREET), JUNKIE(STREET), MERCENARY(STREET), HACKER(STREET), CALL_GIRL(STREET),
-	WATCHMAN(STREET), STREET_DOC(STREET), RONIN(STREET), SMUGGLER(STREET), STREET_VENDOR(STREET), STREET_TECHIE(STREET),
-	THIEF(STREET), WANDERER(STREET),
+	ASSASSIN(STREET, FIGHTER), BARTENDER(STREET), STREED_GUARD(STREET, FIGHTER), BOUNCER(STREET, FIGHTER),
+	TAXI_DRIVER(STREET), CROOK(STREET), INMATE(STREET), FORGER(STREET, SPY),
+	DRUG_PRODUCER(STREET, CarreerEnum.SCIENTIST), DEALER(STREET, SPY), EX_PRISONER(STREET), FIXER(STREET),
+	GANG_MEMBER(STREET, FIGHTER), WHORE(STREET), JUNKIE(STREET), MERCENARY(STREET, FIGHTER), HACKER(STREET, SPY),
+	CALL_GIRL(STREET), WATCHMAN(STREET), STREET_DOC(STREET), RONIN(STREET), SMUGGLER(STREET), STREET_VENDOR(STREET),
+	STREET_TECHIE(STREET, CarreerEnum.SCIENTIST), THIEF(STREET, SPY), WANDERER(STREET),
 
 	// Law jobs
-	BOUNTY_HUNTER(LAW), COP(LAW), FIREMAN(LAW), LAWYER(LAW), PARAMEDIC(LAW), JAIL_GUARD(LAW), PRIVATE(LAW), VIGIL(LAW),
-	CHIEF_COP(LAW), MILITIAMAN(LAW),
+	BOUNTY_HUNTER(LAW, SPY), COP(LAW, FIGHTER), FIREMAN(LAW), LAWYER(LAW), PARAMEDIC(LAW, CarreerEnum.SCIENTIST),
+	JAIL_GUARD(LAW), PRIVATE(LAW, SPY), VIGIL(LAW, SPY), CHIEF_COP(LAW), MILITIAMAN(LAW, FIGHTER),
 
 	// Illegal jobs
-	HITMAN(ILLEGAL), GANG_BODYGUARD(ILLEGAL), BOOKMAKER(ILLEGAL), COUNTERFEITER(ILLEGAL), SMALL_TIME_THUG(ILLEGAL),
-	HENCHMAN(ILLEGAL), GANG_NETRUNNER(ILLEGAL), PACK_LEADER(ILLEGAL), GANG_BOSS(ILLEGAL), GODFATHER(ILLEGAL),
+	HITMAN(ILLEGAL, FIGHTER), GANG_BODYGUARD(ILLEGAL, FIGHTER), BOOKMAKER(ILLEGAL), COUNTERFEITER(ILLEGAL),
+	SMALL_TIME_THUG(ILLEGAL), HENCHMAN(ILLEGAL, FIGHTER), GANG_NETRUNNER(ILLEGAL, SPY), PACK_LEADER(ILLEGAL, FIGHTER),
+	GANG_BOSS(ILLEGAL, FIGHTER), GODFATHER(ILLEGAL, FIGHTER),
 
 	// Corpo jobs
-	CORPO_MILITIA(CORPO), CORPO_SECURITY(CORPO), CORPO_HEALER(CORPO), CORPO_OFFICE_WORKER(CORPO),
-	CORPO_TECHNICIAN(CORPO), CORPO_MANAGER(CORPO), CORPO_MID_MANAGER(CORPO), CORPO_SENIOR_MANAGER(CORPO),
-	CORPO_EXECUTIVE_COMITEE(CORPO), CORPO_R_AND_D(CORPO), CORPO_AUDITOR(CORPO), CORPO_NETRUNNER(CORPO),
+	CORPO_MILITIA(CORPO, FIGHTER), CORPO_SECURITY(CORPO, FIGHTER), CORPO_HEALER(CORPO, CarreerEnum.SCIENTIST),
+	CORPO_OFFICE_WORKER(CORPO), CORPO_TECHNICIAN(CORPO), CORPO_MANAGER(CORPO), CORPO_MID_MANAGER(CORPO),
+	CORPO_SENIOR_MANAGER(CORPO), CORPO_EXECUTIVE_COMITEE(CORPO), CORPO_R_AND_D(CORPO, CarreerEnum.SCIENTIST),
+	CORPO_AUDITOR(CORPO), CORPO_NETRUNNER(CORPO, SPY),
 
 	// Entertainment jobs
 	ACTOR(ENTERTAINMENT), ARTIST(ENTERTAINMENT), DIGITAL_ARTIST(ENTERTAINMENT), VIDEO_GAME_DEV(ENTERTAINMENT),
@@ -70,6 +80,8 @@ public enum JobEnum implements I18N {
 	NAOHM_GOV(NAOHM), MYSTICAL(NAOHM), FOUNDER_EMPLOYEE(NAOHM);
 
 	private @Getter JobCategoryEnum jobCategory;
+	private @Getter CarreerEnum carreerEnum = CarreerEnum.GENERAL;
+
 	private static Random random = new Random();
 
 	private static final String I18N_ROOT = "jobs.";
@@ -91,6 +103,11 @@ public enum JobEnum implements I18N {
 		this.jobCategory = jobCategory;
 	}
 
+	JobEnum(JobCategoryEnum jobCategory, CarreerEnum carreer) {
+		this(jobCategory);
+		this.carreerEnum = carreer;
+	}
+
 	public static JobEnum randomJob() {
 		return values()[random.nextInt(values().length)];
 	}
@@ -100,9 +117,15 @@ public enum JobEnum implements I18N {
 		return list.get(random.nextInt(list.size() - 1));
 	}
 
-	public static JobEnum randomJobUsingRules() {
-		JobCategoryEnum jobCategory = JobCategoryEnum.random();
-		return randomJobUsingRules(jobCategory);
+	public static JobEnum randomJobUsingRules(CarreerEnum carreer) {
+		List<JobEnum> jobsListFromCarrer = new ArrayList<>();
+		for (JobEnum job : JobEnum.values()) {
+			if (job.carreerEnum == carreer) {
+				jobsListFromCarrer.add(job);
+			}
+		}
+		Collections.shuffle(jobsListFromCarrer);
+		return jobsListFromCarrer.get(random.nextInt(jobsListFromCarrer.size() - 1));
 	}
 
 	public static JobEnum randomJobUsingRules(JobCategoryEnum jobCategory) {

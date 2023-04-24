@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.history.raec;
+package moon.adn.code.model.character.identity;
 
 import static moon.adn.code.model.character.history.HistoryHelper.getPositionFromIntervals;
 

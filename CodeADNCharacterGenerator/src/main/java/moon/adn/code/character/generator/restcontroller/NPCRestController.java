@@ -77,7 +77,7 @@ public class NPCRestController implements NPCGeneratorController<NPC> {
 	}
 
 	private Character generateElfic() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		Set<SpeciesEnum> speciesSet = new HashSet<>();
 		speciesSet.add(SpeciesEnum.S_AQUA);
 		speciesSet.add(SpeciesEnum.S_DARK);
@@ -93,14 +93,14 @@ public class NPCRestController implements NPCGeneratorController<NPC> {
 	}
 
 	private Character generateHeroic() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
 	}
 
 	private Character generateWeakCharacter() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomWeakCaracteristics());
 		Character character = characterBuilder.build();
 		return character;

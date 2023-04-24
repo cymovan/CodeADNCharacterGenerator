@@ -59,9 +59,6 @@ public enum SpeciesEnum {
 	private @Getter SpecializationsAtCreation specializations = new SpecializationsAtCreation();
 	private @Getter NamesGenerator namesGenerator = HumanNamesGeneratorSingleton.getInstance();
 
-//	private int[] destinyInterval = {19, 29, 49, 74, 99, 124, 125, 1000};
-//	private int[] destinyElfDices = {2, 3, 8, 6, 5, 8, 5, 4};
-
 	private static Random random = new Random();
 	public static final String MESSAGE_PREFIX = "species.";
 

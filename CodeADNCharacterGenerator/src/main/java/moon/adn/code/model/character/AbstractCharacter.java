@@ -8,6 +8,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.identity.Identity;
 import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
+import moon.adn.code.model.character.specializations.CarreerEnum;
 import moon.adn.code.model.character.specializations.SpecializationEnum;
 import moon.adn.code.model.character.specializations.SpecializationValuesAbstract;
 
@@ -17,4 +18,5 @@ public class AbstractCharacter {
 	protected Map<CaracteristicEnum, CaractValues> caracteristicsMap;
 	protected Map<SkillEnum, SkillValues> skillsMap;
 	protected Map<SpecializationEnum, SpecializationValuesAbstract> specializations;
+	protected Map<CarreerEnum, Integer> carreersMap;
 }

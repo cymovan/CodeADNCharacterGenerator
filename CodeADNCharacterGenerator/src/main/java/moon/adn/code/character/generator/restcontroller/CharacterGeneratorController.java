@@ -2,6 +2,7 @@ package moon.adn.code.character.generator.restcontroller;
 
 import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.Character;
+import moon.adn.code.model.character.specializations.CarreerEnum;
 
 /**
  * Interface for a CharacterGenerator
@@ -9,12 +10,18 @@ import moon.adn.code.model.character.Character;
  * @author cdelr
  *
  */
-public interface CharacterGeneratorController<Clazz extends AbstractCharacter>{
+public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {
 
 	/**
 	 * @return Standard {@link Character}
 	 */
 	Clazz createCaracter();
+
+	/**
+	 * @param carreer 
+	 * @return Archetype {@link Character} from {@link CarreerEnum}
+	 */
+	Clazz createFromArchetype(CarreerEnum carreer);
 
 	/**
 	 * Only for tests

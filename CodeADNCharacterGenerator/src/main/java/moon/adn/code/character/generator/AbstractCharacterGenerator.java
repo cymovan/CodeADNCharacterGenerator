@@ -12,8 +12,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import lombok.Getter;
 import lombok.Setter;
+import moon.adn.code.model.archetypes.Archetype;
 import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.CharacterFileHelper;
@@ -34,6 +38,7 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
+import moon.adn.code.model.character.specializations.CarreerEnum;
 import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 
 /**
@@ -45,7 +50,10 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 @Getter
 @Setter
 public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter> implements CharacterGenerator<Clazz> {
+	protected final Logger logger = LoggerFactory.getLogger(AbstractCharacterGenerator.class);
+
 	protected static Random random = new Random();
+	protected int hobbiesPoints = 30;
 
 	// Parameterized random generations
 	private Optional<Set<SpeciesEnum>> selectedSpeciesforRandom = Optional.empty();
@@ -56,10 +64,14 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	protected Map<SkillEnum, SkillValues> skillsMap = new TreeMap<>();
 	protected SpecializationsAtCreation speciesSpecializations = new SpecializationsAtCreation();
 	protected Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
+	protected Map<CarreerEnum, Integer> carreersMapChoosed = new HashMap<>();
 	protected SocialOriginEnum socialOriginEnum;
+	protected CarreerEnum carrerChoosed;
 
 	protected CaracteristicSpeciesModifiers caracteristicsModifiers = new CaracteristicSpeciesModifiers();
 	protected SkillsSpeciesModifiers skillsModifiers = new SkillsSpeciesModifiers();
+
+	protected Archetype archetype;
 
 	protected CharacterHistoryGenerator chg;
 
@@ -103,6 +115,10 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	protected Identity generateIdentity() {
 		Identity identity = new Identity();
+
+		if (archetype != null) {
+			identity.setJob(archetype.getArchetype().getJob());
+		}
 
 		// Species
 		SpeciesEnum species;
@@ -167,6 +183,11 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	public abstract Clazz build();
 
+	public Clazz buildFromArchetype(Archetype archetype) {
+		// TODO : A revoir.
+		return null;
+	}
+
 	/**
 	 * Template code for {@link Character}, {@link NPC}...
 	 * 
@@ -189,6 +210,15 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		if (null != speciesSpecializations) {
 			character.setSpecializations(speciesSpecializations.getSpecializationsMap());
 		}
+	}
+
+	protected void commonBuildWithTemplate(Clazz character, Archetype archetype) {
+		caracteristicsMap = archetype.getArchetype().getCaracteristicsMap();
+		for (SkillEnum skill : archetype.getArchetype().getSkillsToLearn()) {
+			skillsMap.put(skill, new SkillValues());
+		}
+		this.archetype = archetype;
+		commonBuild(character);
 	}
 
 	protected void populateFromSkillToLearn(Clazz character) {
@@ -247,18 +277,18 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 						skillsPoints = 0;
 					}
 					int score = currentValue + choice;
-					System.out.println(skill + " : " + currentValue + " - random : " + choice + " = " + score);
+					logger.trace(identity.getName() + ": " + skill + " : " + currentValue + " - random : " + choice);
 					value.setCurrentScore(score);
 				}
 			}
 		}
-		System.out.println("Nb Compétences : " + getSkillsMap().size());
+		logger.trace(identity.getName() + ": Nb Compétences : " + getSkillsMap().size());
 	}
 
 	private void addRandomSkill() {
 		SkillEnum randomSkill = null;
 		while (randomSkill == null) {
-			randomSkill = SkillEnum.random();
+			randomSkill = SkillEnum.randomOnlyPossibleSkills();
 			if (getSkillsMap().get(randomSkill) == null) {
 				randomSkill = null;
 			}
@@ -290,5 +320,17 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		skillsToLearn.add(SkillEnum.MARTIAL_ART);
 		skillsToLearn.add(SkillEnum.SNEAK);
 		skillsToLearn.add(SkillEnum.TRACKING);
+	}
+
+	protected void defineCarrerAndHobbiesPointsWithoutMystic(Character character, CarreerEnum... carreer) {
+		if (null == carreer) {
+			while (CarreerEnum.MYSTIC == this.carrerChoosed) {
+				this.carrerChoosed = CarreerEnum.random();
+			}
+			this.hobbiesPoints = CarreerEnum.getHobbiesPoints(carrerChoosed, character);
+			// Add first CarreerEnum
+			carreersMapChoosed.put(carrerChoosed, 1);
+			character.setCarreersMap(carreersMapChoosed);
+		}
 	}
 }

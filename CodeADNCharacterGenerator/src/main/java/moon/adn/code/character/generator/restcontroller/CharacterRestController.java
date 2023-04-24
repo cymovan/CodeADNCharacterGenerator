@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import moon.adn.code.character.generator.AbstractCharacterGenerator;
 import moon.adn.code.character.generator.CharacterGeneratorImpl;
 import moon.adn.code.character.generator.HistoryGenerator;
 import moon.adn.code.character.generator.RAECGenerator;
+import moon.adn.code.model.archetypes.ArchetypeEnum;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.CharacterFileHelper;
 import moon.adn.code.model.character.caracteristics.CaractValues;
@@ -29,6 +31,7 @@ import moon.adn.code.model.character.history.CharacterHistoryGenerator;
 import moon.adn.code.model.character.history.raec.RAEC;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
+import moon.adn.code.model.character.specializations.CarreerEnum;
 
 /**
  * Controler for Character API.
@@ -38,22 +41,33 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  */
 @RestController
 @RequestMapping(CharacterRestController.PATH_REST_CHARACTERS)
-public class CharacterRestController implements CharacterGeneratorController<Character>, RAECGenerator, HistoryGenerator {
+public class CharacterRestController
+		implements CharacterGeneratorController<Character>, RAECGenerator, HistoryGenerator {
 
 	static final String PATH_REST_CHARACTERS = "/restCharacters";
-	private static final String CHARACTER_PATH = "/character";
+	private static final String RAEC_CHARACTER_PATH = "/RAEC";
 	private static final String HEROIC_CHARACTER_PATH = "/heroicCharacter";
 	private static final String ELF_CHARACTER_PATH = "/elfCharacter";
 	private static final String WEAK_CHARACTER_PATH = "/weakCharacter";
 	private static final String RESTORE_CHARACTER_PATH = "/restoreCharacter";
 
+	private static final String ARCHETYPE_CHARACTER_PATH = "/archetype";
+
+	private static final String CARREER_PARAMETERS_PATH = "/carreer/{carreer}";
+	private static final String SPECIES_PARAMETERS_PATH = "/species/{species}";
+
 	@Autowired
 	MessageSource messageSource;
 
 	@Override
-	@GetMapping(CHARACTER_PATH)
 	public Character createCaracter() {
 		return generate();
+	}
+
+	@Override
+	@GetMapping(ARCHETYPE_CHARACTER_PATH + CARREER_PARAMETERS_PATH)
+	public Character createFromArchetype(@PathVariable(name="carreer", required = false) CarreerEnum carreer) {
+		return generateFromArchetype(carreer);
 	}
 
 	@Override
@@ -81,17 +95,17 @@ public class CharacterRestController implements CharacterGeneratorController<Cha
 		return generateWeakCharacter();
 	}
 
-	@GetMapping("RAEC/species/{species}/age/{age}")
-	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) int age) {
-		return new RAECProcedure(species, age).generate();
-	}
-
-	@GetMapping("RAEC")
+	@GetMapping(RAEC_CHARACTER_PATH)
 	public RAEC generateRAEC() {
 		return new RAECProcedure().generate();
 	}
 
-	@GetMapping("RAEC/sibling/species/{species}/age/{age}")
+	@GetMapping(RAEC_CHARACTER_PATH + SPECIES_PARAMETERS_PATH + "/age/{age}")
+	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) int age) {
+		return new RAECProcedure(species, age).generate();
+	}
+
+	@GetMapping(RAEC_CHARACTER_PATH + "/sibling" + SPECIES_PARAMETERS_PATH + "/age/{age}")
 	public Map<Integer, RAEC> generateSibling(@PathVariable(required = true) SpeciesEnum species,
 			@PathVariable(required = true) int age) {
 		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
@@ -100,14 +114,14 @@ public class CharacterRestController implements CharacterGeneratorController<Cha
 	}
 
 	private Character generate() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
 	}
 
 	private Character generateElfic() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		Set<SpeciesEnum> speciesSet = new HashSet<>();
 		speciesSet.add(SpeciesEnum.S_AQUA);
 		speciesSet.add(SpeciesEnum.S_DARK);
@@ -123,14 +137,24 @@ public class CharacterRestController implements CharacterGeneratorController<Cha
 	}
 
 	private Character generateHeroic() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
 	}
 
+	private Character generateFromArchetype(CarreerEnum carreer) {
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
+		if (null == carreer) {
+			carreer = CarreerEnum.random();
+		}
+		Character character = characterBuilder
+				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(carreer).getArchetype());
+		return character;
+	}
+
 	private Character generateWeakCharacter() {
-		CharacterGeneratorImpl characterBuilder = new CharacterGeneratorImpl();
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomWeakCaracteristics());
 		Character character = characterBuilder.build();
 		return character;
