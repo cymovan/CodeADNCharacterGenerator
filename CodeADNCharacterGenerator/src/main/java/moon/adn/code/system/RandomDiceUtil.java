@@ -13,6 +13,7 @@ public class RandomDiceUtil {
 	private static final int MAX_D3 = 3;
 	private static final int MAX_D4 = 4;
 	private static final int MAX_D6 = 6;
+	private static final int MAX_D8 = 8;
 	private static final int MAX_D10 = 10;
 	private static final int MAX_D100 = 100;
 
@@ -47,6 +48,13 @@ public class RandomDiceUtil {
 		return random(MAX_D6);
 	}
 
+	/**
+	 * @return value beetwen 1 and 8.
+	 */
+	public static int d8() {
+		return random(MAX_D8);
+	}
+	
 	/**
 	 * @return value beetwen 1 and 10.
 	 */
