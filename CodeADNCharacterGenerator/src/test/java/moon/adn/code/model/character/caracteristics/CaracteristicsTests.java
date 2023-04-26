@@ -15,7 +15,6 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WIL
 import static moon.adn.code.system.RandomDiceUtil.d10;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -23,7 +22,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
 import moon.adn.code.model.character.builder.CaracteristicsModifier;
 
 @SpringBootTest
@@ -39,7 +37,6 @@ public class CaracteristicsTests {
 
 	private final Map<Integer, CaracteristicEnum> mapCaracteristics = new TreeMap<>();
 	private final Map<CaracteristicEnum, CaractValues> mapCaracteristicsWithValues = new TreeMap<>();
-	private final Map<CaracteristicEnum, CaracteristicsModifier> modifiersMap = new HashMap<>();
 
 	// Error codes
 	private static final String MAXIMUM_CARACT_VALUES_ERROR = "Maximum caractValues error";
@@ -107,19 +104,6 @@ public class CaracteristicsTests {
 	}
 
 	protected class TestsInitialization {
-		protected static final int MOD_AG = -2;
-		protected static final int MOD_BT = -3;
-		protected static final int MOD_CON = -4;
-		protected static final int MOD_EMP = 1;
-		protected static final int MOD_HEIGHT = 4;
-		protected static final int MOD_INT = 5;
-		protected static final int MOD_LUCK = 1;
-		protected static final int MOD_POW = 0;
-		protected static final int MOD_REF = 3;
-		protected static final int MOD_STR = -1;
-		protected static final int MOD_TECH = -2;
-		protected static final int MOD_WILL = -2;
-
 		private void initCaracts() {
 			mapCaracteristics.put(1, INT);
 			mapCaracteristics.put(2, REF);
@@ -139,23 +123,6 @@ public class CaracteristicsTests {
 			for (CaracteristicEnum caracts : CaracteristicEnum.values()) {
 				mapCaracteristicsWithValues.put(caracts, new CaractValues(d10()));
 			}
-		}
-
-		private CaracteristicSpeciesModifiers initCaracteristicSpeciesModifiers(int value) {
-			CaracteristicSpeciesModifiers csm = new CaracteristicSpeciesModifiers();
-			modifiersMap.put(AG, new CaracteristicsModifier(MOD_AG));
-			modifiersMap.put(BT, new CaracteristicsModifier(MOD_BT));
-			modifiersMap.put(CON, new CaracteristicsModifier(MOD_CON));
-			modifiersMap.put(EMP, new CaracteristicsModifier(MOD_EMP));
-			modifiersMap.put(HEIGHT, new CaracteristicsModifier(MOD_HEIGHT));
-			modifiersMap.put(INT, new CaracteristicsModifier(MOD_INT));
-			modifiersMap.put(LUCK, new CaracteristicsModifier(MOD_LUCK));
-			modifiersMap.put(POW, new CaracteristicsModifier(MOD_POW));
-			modifiersMap.put(REF, new CaracteristicsModifier(MOD_REF));
-			modifiersMap.put(STR, new CaracteristicsModifier(MOD_STR));
-			modifiersMap.put(TECH, new CaracteristicsModifier(MOD_TECH));
-			modifiersMap.put(WILL, new CaracteristicsModifier(MOD_WILL));
-			return csm;
 		}
 	}
 }
