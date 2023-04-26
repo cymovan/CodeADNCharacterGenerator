@@ -124,6 +124,11 @@ public enum JobEnum implements I18N {
 				jobsListFromCarrer.add(job);
 			}
 		}
+		// No Job for MYSTIC
+		// TODO : Evolution when MYSTIC jobs defined.
+		if(jobsListFromCarrer.size()==0) {
+			return null;
+		}
 		Collections.shuffle(jobsListFromCarrer);
 		return jobsListFromCarrer.get(random.nextInt(jobsListFromCarrer.size() - 1));
 	}
