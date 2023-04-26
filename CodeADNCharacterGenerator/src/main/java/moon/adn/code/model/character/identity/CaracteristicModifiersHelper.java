@@ -103,7 +103,7 @@ class CaracteristicModifiersHelper {
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
 		modifiersMap.put(CaracteristicEnum.STR, new CaracteristicsModifier(-1));
 		modifiersMap.put(CaracteristicEnum.REF, new CaracteristicsModifier(1));
-		modifiersMap.put(CaracteristicEnum.HEIGHT, new CaracteristicsModifier(2, 6));
+		modifiersMap.put(CaracteristicEnum.HEIGHT, new CaracteristicsModifier(1, 6));
 		CaracteristicSpeciesModifiers csm = new CaracteristicSpeciesModifiers();
 		csm.setModifiersMap(modifiersMap);
 		return csm;
