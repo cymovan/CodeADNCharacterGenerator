@@ -12,10 +12,10 @@ import moon.adn.code.model.character.builder.Modifier;
  */
 @Data
 public class CaractValues {
-	private static final int DEFAULT_MIN = 1;
-	private static final int DEFAULT_MAX = 10;
-	private int creationValue, currentValue, min, max;
-	private int speciesMin, speciesMax, speciesModificator;
+	public static final int DEFAULT_MIN = 1;
+	public static final int DEFAULT_MAX = 10;
+	private int creationValue, currentValue;
+	private int speciesMin = DEFAULT_MIN, speciesMax = DEFAULT_MAX, speciesModificator;
 
 	@JsonCreator
 	public CaractValues() {
@@ -25,8 +25,6 @@ public class CaractValues {
 	public CaractValues(int value) {
 		this.creationValue = value;
 		this.currentValue = value;
-		this.speciesMax = DEFAULT_MAX;
-		this.speciesMin = DEFAULT_MIN;
 	}
 
 	public void applyCaractModifier(Modifier modifier) {

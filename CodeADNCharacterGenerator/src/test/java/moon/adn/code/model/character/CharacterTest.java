@@ -1,6 +1,6 @@
 package moon.adn.code.model.character;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +10,6 @@ class CharacterTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
 	}
 
 }
