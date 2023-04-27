@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.identity;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,12 +15,6 @@ public class JobTests {
 	private static final String I18N_ROOT_JOBS = "jobs.";
 	private static final String I18N_ROOT_JOBS_CATEGORY = "jobs.category.";
 
-	private static final String I18N_ROOT_JOBS_ERROR = "i18n root jobs error";
-	private static final String I18N_ROOT_JOBS_CATEGORY_ERROR = "i18n root jobs category error";
-	private static final String JOB_ERROR = "Job error";
-	private static final String JOB_CATEGORY_ERROR = "Job category error";
-	private static final String JOB_CARREER_ERROR = "Job carreer error";
-
 	private JobEnum job;
 	private JobCategoryEnum jobCategory;
 
@@ -28,14 +22,14 @@ public class JobTests {
 	public void checkJobI18NRootKeyIsCorrect() {
 		job = JobEnum.ACCOUNTANT;
 		String[] split = job.i18nKey().split(job.toString());
-		assertEquals(I18N_ROOT_JOBS, split[0], I18N_ROOT_JOBS_ERROR);
+		assertThat(split[0]).isEqualTo(I18N_ROOT_JOBS);
 	}
 
 	@Test
 	public void obtainingARandomWorks() {
 		for (int i = 0; i < 50; i++) {
 			job = JobEnum.randomJob();
-			assertNotNull(job, JOB_ERROR);
+			assertThat(job).isNotNull();
 		}
 	}
 
@@ -44,7 +38,7 @@ public class JobTests {
 		for (int i = 0; i < 50; i++) {
 			jobCategory = JobCategoryEnum.random();
 			job = JobEnum.randomJobUsingRules(jobCategory);
-			assertEquals(jobCategory, job.getJobCategory(), JOB_CATEGORY_ERROR);
+			assertThat(job.getJobCategory()).isEqualTo(jobCategory);
 		}
 	}
 
@@ -52,39 +46,39 @@ public class JobTests {
 	public void obtainingARandomJobFromFighterCarreerEnumWorks() {
 		CarreerEnum carreer = CarreerEnum.FIGHTER;
 		job = JobEnum.randomJobUsingRules(carreer);
-		assertEquals(carreer, job.getCarreerEnum(), JOB_CARREER_ERROR);
+		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
 	}
 
 	@Test
 	public void obtainingARandomJobFromGeneralCarreerEnumWorks() {
 		CarreerEnum carreer = CarreerEnum.GENERAL;
 		job = JobEnum.randomJobUsingRules(carreer);
-		assertEquals(carreer, job.getCarreerEnum(), JOB_CARREER_ERROR);
+		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
 	}
 
 	@Test
 	public void obtainingARandomJobFromScientistCarreerEnumWorks() {
 		CarreerEnum carreer = CarreerEnum.SCIENTIST;
 		job = JobEnum.randomJobUsingRules(carreer);
-		assertEquals(carreer, job.getCarreerEnum(), JOB_CARREER_ERROR);
+		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
 	}
 
 	@Test
 	public void obtainingARandomJobFromSpyCarreerEnumWorks() {
 		CarreerEnum carreer = CarreerEnum.SPY;
 		job = JobEnum.randomJobUsingRules(carreer);
-		assertEquals(carreer, job.getCarreerEnum(), JOB_CARREER_ERROR);
+		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
 	}
 
 	@Test
 	public void jobCategoriesAreCorrects() {
-		assertEquals(JOB_CATEGORIES_COUNT, JobCategoryEnum.values().length);
+		assertThat(JobCategoryEnum.values()).hasSize(JOB_CATEGORIES_COUNT);
 	}
 
 	@Test
 	public void checkJobCategoryI18NRootKeyIsCorrect() {
 		jobCategory = JobCategoryEnum.LAW;
 		String[] split = jobCategory.i18nKey().split(jobCategory.toString());
-		assertEquals(I18N_ROOT_JOBS_CATEGORY, split[0], I18N_ROOT_JOBS_CATEGORY_ERROR);
+		assertThat(split[0]).isEqualTo(I18N_ROOT_JOBS_CATEGORY);
 	}
 }
