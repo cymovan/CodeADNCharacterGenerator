@@ -112,11 +112,6 @@ public enum JobEnum implements I18N {
 		return values()[random.nextInt(values().length)];
 	}
 
-	public static JobEnum randomJob(JobCategoryEnum jobCategory) {
-		List<JobEnum> list = listFromCategory(jobCategory);
-		return list.get(random.nextInt(list.size() - 1));
-	}
-
 	public static JobEnum randomJobUsingRules(CarreerEnum carreer) {
 		List<JobEnum> jobsListFromCarrer = new ArrayList<>();
 		for (JobEnum job : JobEnum.values()) {

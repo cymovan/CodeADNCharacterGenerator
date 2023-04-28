@@ -22,9 +22,6 @@ public class SocialOriginTests {
 	private static final int SOCIAL_SCORE_RICH = 13;
 	private static final int SOCIAL_SCORE_NAOHM = 16;
 
-	private static final String SOCIAL_ORIGIN_MAX_DICE_ERROR = "Social origin max dice error";
-	private static final String SOCIAL_ORIGIN_SCORE_ERROR = "Social origin score error";
-
 	private SocialOriginEnum socialOrigin;
 
 	@Test

@@ -1,6 +1,5 @@
 package moon.adn.code.model.character.identity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import moon.adn.code.model.character.identity.apparence.EyesColorEnum;
@@ -14,7 +13,6 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Identity {
 	private String name;
 	private int age;
