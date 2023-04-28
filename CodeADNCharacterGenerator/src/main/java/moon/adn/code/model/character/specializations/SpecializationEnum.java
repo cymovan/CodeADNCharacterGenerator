@@ -58,11 +58,11 @@ public enum SpecializationEnum {
 	REPTILIAN_REGENERATION(GENERAL, true),
 
 	// Work career specializations
-	AUTORITY(FIGHTER, new CarerSpecializationValues()), CHARISMA(GENERAL, new CarerSpecializationValues()),
-	CREDIBILITY(GENERAL, new CarerSpecializationValues()), RAT(SPY, new CarerSpecializationValues()),
-	INTERFACE(SPY, new CarerSpecializationValues()), COMBAT_SENSE(FIGHTER, new CarerSpecializationValues()),
-	INGENIOUS_TINKERING(SCIENTIST, new CarerSpecializationValues()),
-	MEDICAL_TECHNICS(SCIENTIST, new CarerSpecializationValues());
+	AUTORITY(FIGHTER, new CarreerSpecializationValues()), CHARISMA(GENERAL, new CarreerSpecializationValues()),
+	CREDIBILITY(GENERAL, new CarreerSpecializationValues()), RAT(SPY, new CarreerSpecializationValues()),
+	INTERFACE(SPY, new CarreerSpecializationValues()), COMBAT_SENSE(FIGHTER, new CarreerSpecializationValues()),
+	INGENIOUS_TINKERING(SCIENTIST, new CarreerSpecializationValues()),
+	MEDICAL_TECHNICS(SCIENTIST, new CarreerSpecializationValues());
 
 	private @Getter CarreerEnum specializationCategory;
 	private @Getter SpecializationValuesAbstract specializationValues = new StandardSpecializationValues();
