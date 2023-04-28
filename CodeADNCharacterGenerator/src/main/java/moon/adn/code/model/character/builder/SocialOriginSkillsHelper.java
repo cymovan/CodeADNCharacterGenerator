@@ -18,6 +18,8 @@ import moon.adn.code.model.character.skills.SkillValues;
  *
  */
 public class SocialOriginSkillsHelper {
+	private static final int NO_EDUCATION = 0;
+	
 	public @Getter Map<SkillEnum, SkillValues> initSkillMap = new HashMap<>();
 
 	public void initSocialSkills(SocialOriginEnum socialOrigin) {
@@ -40,6 +42,7 @@ public class SocialOriginSkillsHelper {
 		}
 		case RICH: {
 			richClassSkills();
+			break;
 		}
 		case NAOHM: {
 			naohmClassSkills();
@@ -51,7 +54,7 @@ public class SocialOriginSkillsHelper {
 	}
 
 	private void streetClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(0));
+		educationAndMaternalLanguageLevel(NO_EDUCATION, 1);
 		initSkillMap.put(SkillEnum.STREET_KNOWLEDGE, new SkillValues(2));
 		initSkillMap.put(SkillEnum.STEAL, new SkillValues(1));
 		initSkillMap.put(SkillEnum.FORGERY, new SkillValues(1));
@@ -61,7 +64,7 @@ public class SocialOriginSkillsHelper {
 	}
 
 	private void lowClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(1));
+		educationAndMaternalLanguageLevel(1, 3);
 		initSkillMap.put(SkillEnum.STREET_KNOWLEDGE, new SkillValues(1));
 		initSkillMap.put(SkillEnum.CHAT, new SkillValues(1));
 		initSkillMap.put(SkillEnum.DIY, new SkillValues(2));
@@ -71,7 +74,7 @@ public class SocialOriginSkillsHelper {
 	}
 
 	private void middleClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(5));
+		educationAndMaternalLanguageLevel(3, 5);
 		initSkillMap.put(SkillEnum.EVAL, new SkillValues(1));
 		initSkillMap.put(SkillEnum.CHAT, new SkillValues(2));
 		initSkillMap.put(SkillEnum.MANAGEMENT, new SkillValues(1));
@@ -81,9 +84,9 @@ public class SocialOriginSkillsHelper {
 	}
 
 	private void upperClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(6));
-		initSkillMap.put(SkillEnum.EVAL, new SkillValues(1));
-		initSkillMap.put(SkillEnum.CHAT, new SkillValues(2));
+		educationAndMaternalLanguageLevel(4, 6);
+		initSkillMap.put(SkillEnum.LAW, new SkillValues(1));
+		initSkillMap.put(SkillEnum.CHAT, new SkillValues(1));
 		initSkillMap.put(SkillEnum.MANAGEMENT, new SkillValues(2));
 		initSkillMap.put(SkillEnum.DRIVE_CAR, new SkillValues(2));
 		initSkillMap.put(SkillEnum.COMEDY, new SkillValues(1));
@@ -91,19 +94,26 @@ public class SocialOriginSkillsHelper {
 	}
 
 	private void richClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(8));
+		educationAndMaternalLanguageLevel(4, 8);
 		initSkillMap.put(SkillEnum.SOCIAL, new SkillValues(1));
 		initSkillMap.put(SkillEnum.ELOQUENCE, new SkillValues(1));
 		initSkillMap.put(SkillEnum.TECH_GEN, new SkillValues(2));
-		initSkillMap.put(SkillEnum.MORAL_CODE_CORPO, new SkillValues(1));
-		initSkillMap.put(SkillEnum.EVAL, new SkillValues(1));
+		initSkillMap.put(SkillEnum.MORAL_CODE_CORPO, new SkillValues(2));
+		initSkillMap.put(SkillEnum.EVAL, new SkillValues(2));
 	}
 
 	private void naohmClassSkills() {
-		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(9));
+		educationAndMaternalLanguageLevel(5, 9);
 		initSkillMap.put(SkillEnum.SOCIAL, new SkillValues(2));
 		initSkillMap.put(SkillEnum.ELOQUENCE, new SkillValues(2));
 		initSkillMap.put(SkillEnum.LAW, new SkillValues(2));
 		initSkillMap.put(SkillEnum.MORAL_CODE_NAOHM, new SkillValues(2));
 	}
+
+	private void educationAndMaternalLanguageLevel(int education, int maternalLanguage) {
+		initSkillMap.put(SkillEnum.EDUCATION, new SkillValues(education));
+		initSkillMap.put(SkillEnum.READ_SELENITE, new SkillValues(maternalLanguage));
+		initSkillMap.put(SkillEnum.SPEAK_SELENITE, new SkillValues(maternalLanguage));
+	}
+
 }
