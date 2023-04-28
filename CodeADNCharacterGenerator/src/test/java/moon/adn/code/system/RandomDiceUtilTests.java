@@ -12,7 +12,7 @@ import static moon.adn.code.system.RandomDiceUtil.d4Explode;
 import static moon.adn.code.system.RandomDiceUtil.d6;
 import static moon.adn.code.system.RandomDiceUtil.d8;
 import static moon.adn.code.system.RandomDiceUtil.random;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,8 +28,7 @@ public class RandomDiceUtilTests {
 		maxDice = 2;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d2();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -38,8 +37,7 @@ public class RandomDiceUtilTests {
 		maxDice = 3;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d3();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -48,8 +46,7 @@ public class RandomDiceUtilTests {
 		maxDice = 4;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d4();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -58,8 +55,7 @@ public class RandomDiceUtilTests {
 		maxDice = 6;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d6();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -68,8 +64,7 @@ public class RandomDiceUtilTests {
 		maxDice = 8;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d8();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -78,8 +73,7 @@ public class RandomDiceUtilTests {
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -89,8 +83,7 @@ public class RandomDiceUtilTests {
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10Heroic();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -100,8 +93,7 @@ public class RandomDiceUtilTests {
 		maxDice = 7;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10Weak();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -110,8 +102,7 @@ public class RandomDiceUtilTests {
 		maxDice = 100;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d100();
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -121,8 +112,7 @@ public class RandomDiceUtilTests {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			minDice = d100();
 			int diceValue = random(minDice, maxDice);
-			assertTrue(diceValue >= minDice);
-			assertTrue(diceValue <= maxDice);
+			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
 
@@ -131,7 +121,7 @@ public class RandomDiceUtilTests {
 		maxDice = 4;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d4Explode();
-			assertTrue(diceValue >= minDice);
+			assertThat(diceValue).isGreaterThanOrEqualTo(minDice);
 		}
 	}
 
@@ -140,7 +130,7 @@ public class RandomDiceUtilTests {
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10Explode();
-			assertTrue(diceValue >= minDice);
+			assertThat(diceValue).isGreaterThanOrEqualTo(minDice);
 		}
 	}
 }
