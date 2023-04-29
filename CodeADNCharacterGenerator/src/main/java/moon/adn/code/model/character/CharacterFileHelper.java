@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class CharacterFileHelper {

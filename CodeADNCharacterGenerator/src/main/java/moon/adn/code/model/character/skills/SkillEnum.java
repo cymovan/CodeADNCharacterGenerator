@@ -19,7 +19,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 /**
  * All skills
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum SkillEnum {

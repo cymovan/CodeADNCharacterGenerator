@@ -36,7 +36,7 @@ import moon.adn.code.model.character.specializations.CarreerEnum;
 /**
  * Controler for Character API.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @RestController

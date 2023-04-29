@@ -19,7 +19,7 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
 import moon.adn.code.system.RandomDiceUtil;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Getter

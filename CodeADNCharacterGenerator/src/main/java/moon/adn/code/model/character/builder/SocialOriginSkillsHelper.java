@@ -10,11 +10,11 @@ import moon.adn.code.model.character.skills.SkillValues;
 
 /**
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class SocialOriginSkillsHelper {

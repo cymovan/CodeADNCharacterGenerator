@@ -2,7 +2,7 @@ package moon.adn.code.model.character.identity;
 
 /**
  * Interface for {@link NamesGenerator}.
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public interface NamesGenerator {

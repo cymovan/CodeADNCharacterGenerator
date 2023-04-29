@@ -10,7 +10,7 @@ import moon.adn.code.model.character.history.CharacterHistoryGenerator;
 /**
  * Builder of {@link Character}.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character> {

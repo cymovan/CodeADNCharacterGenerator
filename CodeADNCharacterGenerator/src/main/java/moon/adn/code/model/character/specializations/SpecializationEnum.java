@@ -9,7 +9,7 @@ import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 import lombok.Getter;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum SpecializationEnum {

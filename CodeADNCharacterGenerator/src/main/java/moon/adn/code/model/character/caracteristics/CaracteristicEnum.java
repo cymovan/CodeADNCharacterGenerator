@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * Enum for caracteristics in Code🧬.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum CaracteristicEnum {

@@ -4,7 +4,7 @@ package moon.adn.code.model.character.specializations;
  * Implementation of {@link SpecializationValues} of {@link SpecializationEnum}
  * Complex.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class ComplexSpecializationValues extends SpecializationValuesAbstract {

@@ -8,7 +8,7 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 /**
  * Identity of a character
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Data

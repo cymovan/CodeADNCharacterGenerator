@@ -43,7 +43,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 /**
  * All species of Code 🧬.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum SpeciesEnum {

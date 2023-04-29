@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 /**
  * Template for all websites pages.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Controller

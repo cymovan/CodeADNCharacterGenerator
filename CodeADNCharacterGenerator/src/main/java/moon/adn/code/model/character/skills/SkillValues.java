@@ -6,7 +6,7 @@ import lombok.Data;
 import moon.adn.code.model.character.builder.Modifier;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Data

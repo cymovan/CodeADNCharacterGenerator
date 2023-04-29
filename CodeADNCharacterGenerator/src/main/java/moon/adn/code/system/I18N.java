@@ -3,7 +3,7 @@ package moon.adn.code.system;
 /**
  * Interface for internationalized classes or Enum giving properties key.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public interface I18N {

@@ -45,7 +45,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 /**
  * Builder of {@link Character}.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Getter

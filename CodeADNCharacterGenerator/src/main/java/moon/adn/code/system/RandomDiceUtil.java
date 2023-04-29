@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Utility class for random launch dices.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class RandomDiceUtil {

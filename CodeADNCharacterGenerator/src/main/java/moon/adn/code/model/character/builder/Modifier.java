@@ -9,7 +9,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
  * use this modifier for {@link CaractValues} because of the absoluteMin not
  * implemented in this class. Prefer use {@link CaracteristicsModifier}.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Data

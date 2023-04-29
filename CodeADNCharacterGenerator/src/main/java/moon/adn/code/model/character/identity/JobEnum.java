@@ -23,7 +23,7 @@ import moon.adn.code.model.character.specializations.CarreerEnum;
 import moon.adn.code.system.I18N;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum JobEnum implements I18N {

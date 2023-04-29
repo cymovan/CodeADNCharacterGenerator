@@ -6,7 +6,7 @@ import moon.adn.code.model.character.PunchingBall;
 /**
  * Interface for a CharacterGenerator
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public interface NPCGeneratorController<Clazz extends NPC> {

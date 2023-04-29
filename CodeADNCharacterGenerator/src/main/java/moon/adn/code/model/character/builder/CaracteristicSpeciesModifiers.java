@@ -10,7 +10,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 /**
  * Class used to stock species modifiers applied on Character build process.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @Getter

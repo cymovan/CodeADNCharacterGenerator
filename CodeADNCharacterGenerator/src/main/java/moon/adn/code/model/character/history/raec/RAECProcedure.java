@@ -8,7 +8,7 @@ import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public class RAECProcedure {

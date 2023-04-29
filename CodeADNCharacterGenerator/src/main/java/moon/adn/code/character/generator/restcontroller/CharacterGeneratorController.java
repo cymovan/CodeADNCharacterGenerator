@@ -7,7 +7,7 @@ import moon.adn.code.model.character.specializations.CarreerEnum;
 /**
  * Interface for a CharacterGenerator
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {

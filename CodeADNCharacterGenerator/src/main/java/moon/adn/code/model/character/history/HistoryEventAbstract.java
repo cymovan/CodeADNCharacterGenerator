@@ -7,7 +7,7 @@ import java.util.List;
 import moon.adn.code.system.RandomDiceUtil;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public abstract class HistoryEventAbstract {

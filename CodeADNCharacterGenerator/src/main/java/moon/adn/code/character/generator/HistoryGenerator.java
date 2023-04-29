@@ -4,7 +4,7 @@ import moon.adn.code.model.character.history.CharacterHistory;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 /**
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public interface HistoryGenerator {

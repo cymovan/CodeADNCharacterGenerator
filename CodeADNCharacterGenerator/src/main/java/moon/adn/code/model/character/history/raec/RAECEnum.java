@@ -6,7 +6,7 @@ import java.util.Random;
  * EN : Family, Romance, Encouter, Friend, Ennemy, Contact.
  * FR : Famille, Romance, Ami, Ennemi, Contact
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum RAECEnum {

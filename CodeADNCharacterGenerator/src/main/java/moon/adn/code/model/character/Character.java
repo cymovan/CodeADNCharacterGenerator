@@ -11,7 +11,7 @@ import moon.adn.code.model.character.history.raec.RAEC;
 /**
  * Character class for a PC in Code 🧬.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  */
 @Getter
 @Setter

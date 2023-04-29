@@ -8,7 +8,7 @@ import moon.adn.code.model.character.builder.Modifier;
 /**
  * Values for caracteristics
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  */
 @Data
 public class CaractValues {

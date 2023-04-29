@@ -31,7 +31,7 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
 /**
  * Controler for Character API.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 @RestController

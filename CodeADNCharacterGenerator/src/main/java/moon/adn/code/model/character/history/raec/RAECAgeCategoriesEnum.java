@@ -11,7 +11,7 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
 /**
  * Age categories for random RAEC character generation
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum RAECAgeCategoriesEnum {

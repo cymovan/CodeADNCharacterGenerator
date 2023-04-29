@@ -3,7 +3,7 @@ package moon.adn.code.model.character.specializations;
 /**
  * Definition of a {@link SpecializationEnum} Type.
  * 
- * @author cdelr
+ * @author Cédric DELRUE
  *
  */
 public enum SpecializationType {
