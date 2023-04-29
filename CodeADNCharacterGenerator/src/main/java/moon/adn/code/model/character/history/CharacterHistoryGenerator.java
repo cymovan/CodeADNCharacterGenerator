@@ -14,6 +14,7 @@ import moon.adn.code.model.character.history.event.HistoryRomanceEvent;
 import moon.adn.code.model.character.history.raec.RAEC;
 import moon.adn.code.model.character.history.raec.RAECEnum;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
+import moon.adn.code.model.character.identity.AgeCategoryEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 import moon.adn.code.system.RandomDiceUtil;
 
@@ -121,7 +122,11 @@ public class CharacterHistoryGenerator {
 	}
 
 	private int randomNbEvents() {
-		// TODO : implement historyEvent game rules
-		return RandomDiceUtil.d6() * 2;
+		int result = 0;
+		AgeCategoryEnum ageCategoryEnum = AgeCategoryEnum.getAgeCategory(age);
+		for (AgeCategoryEnum age : ageCategoryEnum.getAgeCategoriesList()) {
+			result += species.nbEventsbyAge(age);
+		}
+		return result;
 	}
 }

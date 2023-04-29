@@ -28,6 +28,9 @@ import static moon.adn.code.model.character.specializations.SpecializationsCreat
 import static moon.adn.code.system.RandomDiceUtil.d2;
 import static moon.adn.code.system.RandomDiceUtil.d3;
 import static moon.adn.code.system.RandomDiceUtil.d4;
+import static moon.adn.code.system.RandomDiceUtil.d5;
+import static moon.adn.code.system.RandomDiceUtil.d6;
+import static moon.adn.code.system.RandomDiceUtil.d8;
 
 import java.util.Random;
 
@@ -165,23 +168,60 @@ public enum SpeciesEnum {
 		return HistoryHelper.randomValuesBetween(minDiff, maxDiff);
 	}
 
-	public int nbEventsbyAge(int age) {
-		int nbEvents = 0;
+	public int nbEventsbyAge(AgeCategoryEnum ageCategory) {
 		switch (this) {
 		case HUMAN: {
-			return nbEventsbyAgeForHumans(age);
+			return nbEventsbyAgeForHumans(ageCategory);
 		}
+		case S_AQUA, S_DARK, S_GOLD, S_GREY, S_NIGHT, S_PALE, S_SYLV, S_URB: {
+			return nbEventsbyAgeForElves(ageCategory);
 		}
-		return nbEvents;
+		default:
+			return 0;
+		}
 	}
 
-	private int nbEventsbyAgeForHumans(int age) {
-		int nbEvents = 0;
-		return nbEvents;
+	private int nbEventsbyAgeForHumans(AgeCategoryEnum ageCategory) {
+		switch (ageCategory) {
+		case TEENAGER:
+			return d4();
+		case YOUNG_ADULT:
+			return d5() + 5;
+		case ADULT:
+			return d4() + 4;
+		case EXPERIMENTED_ADULT:
+			return d5();
+		case OLD:
+			return d4();
+		case OLDSTER:
+			return d3();
+		case HUMAN_MAX:
+			return d2();
+		default:
+			return 0;
+		}
 	}
-	
-	private int nbEventsbyAgeForElves(int age) {
-		int nbEvents = 0;
-		return nbEvents;
+
+	private int nbEventsbyAgeForElves(AgeCategoryEnum ageCategory) {
+		switch (ageCategory) {
+		case TEENAGER:
+			return d2();
+		case YOUNG_ADULT:
+			return d3();
+		case ADULT:
+			return d8();
+		case EXPERIMENTED_ADULT:
+			return d6();
+		case OLD:
+			return d5();
+		case OLDSTER:
+			return d8();
+		case HUMAN_MAX:
+			return d5();
+		case BEYOND_HUMAN_MAX:
+			return d4();
+		default:
+			return 0;
+		}
 	}
 }

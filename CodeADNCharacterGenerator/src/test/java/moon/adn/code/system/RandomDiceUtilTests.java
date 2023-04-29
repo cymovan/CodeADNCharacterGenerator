@@ -9,6 +9,7 @@ import static moon.adn.code.system.RandomDiceUtil.d2;
 import static moon.adn.code.system.RandomDiceUtil.d3;
 import static moon.adn.code.system.RandomDiceUtil.d4;
 import static moon.adn.code.system.RandomDiceUtil.d4Explode;
+import static moon.adn.code.system.RandomDiceUtil.d5;
 import static moon.adn.code.system.RandomDiceUtil.d6;
 import static moon.adn.code.system.RandomDiceUtil.d8;
 import static moon.adn.code.system.RandomDiceUtil.random;
@@ -46,6 +47,15 @@ public class RandomDiceUtilTests {
 		maxDice = 4;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d4();
+			assertThat(diceValue).isBetween(minDice, maxDice);
+		}
+	}
+
+	@Test
+	void d5MethodReturnsAlwaysNumberBetween1And5() throws Exception {
+		maxDice = 5;
+		for (int i = 0; i < MAX_ITERATIONS; i++) {
+			int diceValue = d5();
 			assertThat(diceValue).isBetween(minDice, maxDice);
 		}
 	}
