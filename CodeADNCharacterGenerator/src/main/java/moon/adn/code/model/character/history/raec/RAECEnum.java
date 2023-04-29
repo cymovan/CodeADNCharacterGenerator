@@ -3,8 +3,8 @@ package moon.adn.code.model.character.history.raec;
 import java.util.Random;
 
 /**
- * EN : Family, Romance, Encouter, Friend, Ennemy, Contact FR : Famille,
- * Romance, Ami, Ennemi, Contact
+ * EN : Family, Romance, Encouter, Friend, Ennemy, Contact.
+ * FR : Famille, Romance, Ami, Ennemi, Contact
  * 
  * @author cdelr
  *

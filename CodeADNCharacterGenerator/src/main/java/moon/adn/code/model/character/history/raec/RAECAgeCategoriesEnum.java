@@ -14,7 +14,7 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  * @author cdelr
  *
  */
-public enum AgeCategoriesEnum {
+public enum RAECAgeCategoriesEnum {
 	OLDSTER(40, 60), RETIRED(25, 40), OLDER(10, 25), ALMOST_SAME(-5, 10), YOUNGER(-10, -5), TEENAGER(-20, -10),
 	CHILD(-50, -20);
 
@@ -23,16 +23,16 @@ public enum AgeCategoriesEnum {
 
 	private @Getter int min = 0, max = 0;
 
-	private AgeCategoriesEnum(int max) {
+	private RAECAgeCategoriesEnum(int max) {
 		this.max = max;
 	}
 
-	private AgeCategoriesEnum(int min, int max) {
+	private RAECAgeCategoriesEnum(int min, int max) {
 		this(max);
 		this.min = min;
 	}
 
-	public static AgeCategoriesEnum random() {
+	public static RAECAgeCategoriesEnum random() {
 		return values()[getPositionFromIntervals(ageInterval)];
 	}
 

@@ -44,15 +44,18 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
  *
  */
 public enum SpeciesEnum {
-	HUMAN(humanModifiers()),
-	S_URB(urbanElfModifiers(), urbanElfSkills(), urbanElfSpecializations()),
-	S_SYLV(sylvanElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), sylvanElfSkills(), sylvanElfSpecializations()),
-	S_PALE(paleElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), paleElfSkills(), paleElfSpecializations()),
-	S_GREY(greyElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), greyElfSkills(), greyElfSpecializations()),
-	S_GOLD(goldElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), goldElfSkills(), goldElfSpecializations()),
+	HUMAN(humanModifiers()), S_URB(urbanElfModifiers(), urbanElfSkills(), urbanElfSpecializations()),
+	S_SYLV(sylvanElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), sylvanElfSkills(),
+			sylvanElfSpecializations()),
+	S_PALE(paleElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), paleElfSkills(),
+			paleElfSpecializations()),
+	S_GREY(greyElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), greyElfSkills(),
+			greyElfSpecializations()),
+	S_GOLD(goldElfModifiers(), SephonileandisNamesGeneratorSingleton.getInstance(), goldElfSkills(),
+			goldElfSpecializations()),
 	S_NIGHT(nightElfModifiers(), nightElfSkills(), nightElfSpecializations()),
-	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()), 
-	S_DARK(darkElfModifiers(), DarkElvesNamesGeneratorSingleton.getInstance(), darkElfSkills(), darkElfSpecializations());
+	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()), S_DARK(darkElfModifiers(),
+			DarkElvesNamesGeneratorSingleton.getInstance(), darkElfSkills(), darkElfSpecializations());
 
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
 	private @Getter SkillsSpeciesModifiers SkillModifiers;
@@ -160,5 +163,25 @@ public enum SpeciesEnum {
 			return ageDiff;
 		}
 		return HistoryHelper.randomValuesBetween(minDiff, maxDiff);
+	}
+
+	public int nbEventsbyAge(int age) {
+		int nbEvents = 0;
+		switch (this) {
+		case HUMAN: {
+			return nbEventsbyAgeForHumans(age);
+		}
+		}
+		return nbEvents;
+	}
+
+	private int nbEventsbyAgeForHumans(int age) {
+		int nbEvents = 0;
+		return nbEvents;
+	}
+	
+	private int nbEventsbyAgeForElves(int age) {
+		int nbEvents = 0;
+		return nbEvents;
 	}
 }

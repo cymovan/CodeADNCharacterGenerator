@@ -19,7 +19,7 @@ public class RAECProcedure {
 	private static final int NO_AGE = 0;
 	private static final int DEFAULT_AGE = 20;
 
-	private AgeCategoriesEnum ageCategory;
+	private RAECAgeCategoriesEnum ageCategory;
 
 	public RAECProcedure() {
 		this(null, NO_AGE);
@@ -86,7 +86,7 @@ public class RAECProcedure {
 
 	private void generateCommon(SpeciesEnum species) {
 		people.setSex(SexEnum.random());
-		ageCategory = AgeCategoriesEnum.random();
+		ageCategory = RAECAgeCategoriesEnum.random();
 		people.setSpecies(species);
 	}
 

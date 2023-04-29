@@ -1,10 +1,8 @@
 package moon.adn.code.model.character.specializations;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class SpecializationValuesAbstract implements SpecializationValues {
 	protected SpecializationType type;
 	protected int maxContainer = 0, maxSegments = 0, maxBoxes = 0;

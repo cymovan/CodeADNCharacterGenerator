@@ -17,7 +17,9 @@ import moon.adn.code.model.character.specializations.CarreerEnum;
 
 public enum ArchetypeEnum {
 	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()), 
-	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype());
+	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()), 
+	NETRUNNER(CarreerEnum.SPY, null), 
+	;
 
 	private static Random random = new Random();
 

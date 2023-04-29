@@ -25,9 +25,6 @@ public enum CarreerEnum {
 
 	public static int getHobbiesPoints(CarreerEnum carreer, AbstractCharacter character) {
 		int result = 30;
-		if (null == character) {
-			return result;
-		}
 		switch (carreer) {
 		case GENERAL: {
 			result = calculateHobbiesPoints(character, CON, WILL);
@@ -52,7 +49,6 @@ public enum CarreerEnum {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + carreer);
 		}
-
 		return result;
 	}
 
@@ -61,7 +57,7 @@ public enum CarreerEnum {
 		int result = 0;
 		Map<CaracteristicEnum, CaractValues> caracts = character.getCaracteristicsMap();
 		result = caracts.get(first).getCurrentValue() + caracts.get(second).getCurrentValue();
-		return result;
+		return result * 2;
 	}
 
 	public static CarreerEnum random() {
