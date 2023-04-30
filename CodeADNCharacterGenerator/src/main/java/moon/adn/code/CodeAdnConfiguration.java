@@ -9,6 +9,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import jakarta.annotation.PostConstruct;
+import moon.adn.code.model.character.identity.DarkElvesNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.HumanNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.SephonileandisNamesGeneratorSingleton;
+
 @Configuration
 public class CodeAdnConfiguration {
 	@Bean
@@ -26,5 +31,12 @@ public class CodeAdnConfiguration {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(Locale.FRENCH);
 		return resolver;
+	}
+
+	@PostConstruct
+	public void initApplicationSingletons() {
+		HumanNamesGeneratorSingleton.getInstance();
+		DarkElvesNamesGeneratorSingleton.getInstance();
+		SephonileandisNamesGeneratorSingleton.getInstance();
 	}
 }
