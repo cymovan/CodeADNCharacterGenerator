@@ -2,6 +2,8 @@ package moon.adn.code;
 
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -16,6 +18,9 @@ import moon.adn.code.model.character.identity.SephonileandisNamesGeneratorSingle
 
 @Configuration
 public class CodeAdnConfiguration {
+
+	private static final Logger LOG = LoggerFactory.getLogger(CodeAdnConfiguration.class);
+
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -35,8 +40,10 @@ public class CodeAdnConfiguration {
 
 	@PostConstruct
 	public void initApplicationSingletons() {
+		LOG.info("Start loading nameGeneratorsSingleton.");
 		HumanNamesGeneratorSingleton.getInstance();
 		DarkElvesNamesGeneratorSingleton.getInstance();
 		SephonileandisNamesGeneratorSingleton.getInstance();
+		LOG.info("End loading nameGeneratorsSingleton.");
 	}
 }
