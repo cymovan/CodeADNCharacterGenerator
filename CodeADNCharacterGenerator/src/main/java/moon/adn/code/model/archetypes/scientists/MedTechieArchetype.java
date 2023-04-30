@@ -15,8 +15,13 @@ import static moon.adn.code.model.character.specializations.SpecializationEnum.I
 import static moon.adn.code.model.character.specializations.SpecializationEnum.MEDECINE_SPECIALIZATION;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.MEDICAL_TECHNICS;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.MEDICINAL_PLANTS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_BARARS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_DHARAKS;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_HUMAN;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_SELOPHRETALS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_SELOPHYLERS;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_SEPHONILEANDIS;
+import static moon.adn.code.model.character.specializations.SpecializationEnum.PHYSIOLOGY_SEPHONILESILA;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.PSYCHIATRY;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.PSYCHOLOGY;
 
@@ -41,7 +46,6 @@ public class MedTechieArchetype extends AbstractScientistsArchetype {
 		skillsToLearn.add(TECH_GEN);
 		skillsToLearn.add(HUMAN_PERCEPTION);
 		skillsToLearn.add(CHAT);
-
 	}
 
 	@Override
@@ -52,17 +56,16 @@ public class MedTechieArchetype extends AbstractScientistsArchetype {
 		specializationsToLearn.add(MEDECINE_SPECIALIZATION);
 		specializationsToLearn.add(MEDICINAL_PLANTS);
 		specializationsToLearn.add(ANTHROPOLOGY);
-//		specializationsToLearn.add(PHYSIOLOGY_BARARS);
-//		specializationsToLearn.add(PHYSIOLOGY_DHARAKS);
+		specializationsToLearn.add(PHYSIOLOGY_BARARS);
+		specializationsToLearn.add(PHYSIOLOGY_DHARAKS);
 		specializationsToLearn.add(PHYSIOLOGY_HUMAN);
-//		specializationsToLearn.add(PHYSIOLOGY_SELOPHRETALS);
-//		specializationsToLearn.add(PHYSIOLOGY_SELOPHYLERS);
+		specializationsToLearn.add(PHYSIOLOGY_SELOPHRETALS);
+		specializationsToLearn.add(PHYSIOLOGY_SELOPHYLERS);
 		specializationsToLearn.add(PHYSIOLOGY_SEPHONILEANDIS);
-//		specializationsToLearn.add(PHYSIOLOGY_SEPHONILESILA);
+		specializationsToLearn.add(PHYSIOLOGY_SEPHONILESILA);
 		specializationsToLearn.add(PSYCHIATRY);
 		specializationsToLearn.add(PSYCHOLOGY);
 		specializationsToLearn.add(EMOTIONS_CONCEALMENT);
 		specializationsToLearn.add(INVENTION);
-
 	}
 }

@@ -13,12 +13,14 @@ import moon.adn.code.model.archetypes.fighters.RoninArchetype;
 import moon.adn.code.model.archetypes.fighters.SoloArchetype;
 import moon.adn.code.model.archetypes.scientists.MedTechieArchetype;
 import moon.adn.code.model.archetypes.scientists.TechieArchetype;
+import moon.adn.code.model.archetypes.spies.FixerArchetype;
+import moon.adn.code.model.archetypes.spies.NetRunnerArchetype;
 import moon.adn.code.model.character.specializations.CarreerEnum;
 
 public enum ArchetypeEnum {
 	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()), 
 	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()), 
-	NETRUNNER(CarreerEnum.SPY, null), 
+	NETRUNNER(CarreerEnum.SPY, new NetRunnerArchetype()), FIXER(CarreerEnum.SPY, new FixerArchetype())
 	;
 
 	private static Random random = new Random();

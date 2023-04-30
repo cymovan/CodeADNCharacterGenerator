@@ -1,4 +1,4 @@
-package moon.adn.code.model.archetypes.scientists;
+package moon.adn.code.model.archetypes.spies;
 
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.AG;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.BT;
@@ -12,31 +12,26 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.REF
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.STR;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.TECH;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WILL;
-import static moon.adn.code.model.character.skills.SkillEnum.ASTRONOMY;
 import static moon.adn.code.model.character.skills.SkillEnum.BIBLIO;
 import static moon.adn.code.model.character.skills.SkillEnum.DIAG;
 import static moon.adn.code.model.character.skills.SkillEnum.DRIVE_CAR;
-import static moon.adn.code.model.character.skills.SkillEnum.EDUCATION;
-import static moon.adn.code.model.character.skills.SkillEnum.LAW;
 import static moon.adn.code.model.character.skills.SkillEnum.LISTEN;
-import static moon.adn.code.model.character.skills.SkillEnum.MATH;
-import static moon.adn.code.model.character.skills.SkillEnum.PHYSIC;
 import static moon.adn.code.model.character.skills.SkillEnum.SEE;
 import static moon.adn.code.model.character.skills.SkillEnum.SMELLING;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.KNOCK_OUT;
 
 import moon.adn.code.model.archetypes.AbstractArchetype;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 
-abstract class AbstractScientistsArchetype extends AbstractArchetype {
+abstract class AbstractSpiesArchetype extends AbstractArchetype {
 
-	public AbstractScientistsArchetype() {
+	public AbstractSpiesArchetype() {
 		this(1);
 	}
 
-	public AbstractScientistsArchetype(int carrerLevel) {
-		super(SCIENTIST, carrerLevel);
+	public AbstractSpiesArchetype(int carrerLevel) {
+		super(SPY, carrerLevel);
 	}
 
 	public void initCaracteristics() {
@@ -56,13 +51,8 @@ abstract class AbstractScientistsArchetype extends AbstractArchetype {
 
 	public void initSkillsToLearn() {
 		super.initSkillsToLearn();
-		skillsToLearn.add(ASTRONOMY);
 		skillsToLearn.add(BIBLIO);
 		skillsToLearn.add(DIAG);
-		skillsToLearn.add(EDUCATION);
-		skillsToLearn.add(LAW);
-		skillsToLearn.add(MATH);
-		skillsToLearn.add(PHYSIC);
 		skillsToLearn.add(LISTEN);
 		skillsToLearn.add(SEE);
 		skillsToLearn.add(SMELLING);
@@ -71,7 +61,6 @@ abstract class AbstractScientistsArchetype extends AbstractArchetype {
 
 	@Override
 	public void initspecializationsToLearn() {
-		super.initspecializationsToLearn();
 		specializationsToLearn.add(KNOCK_OUT);
 	}
 }

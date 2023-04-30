@@ -50,6 +50,5 @@ public class TechieArchetype extends AbstractScientistsArchetype {
 		specializationsToLearn.add(ARMORY_FIRE_ARMS);
 		specializationsToLearn.add(TIE_KNOTS);
 		specializationsToLearn.add(INVENTION);
-
 	}
 }

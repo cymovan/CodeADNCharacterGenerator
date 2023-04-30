@@ -1,5 +1,6 @@
 package moon.adn.code.model.archetypes;
 
+import static moon.adn.code.model.character.skills.SkillEnum.SEE;
 import static moon.adn.code.system.RandomDiceUtil.d10;
 
 import java.util.HashSet;
@@ -57,7 +58,8 @@ public abstract class AbstractArchetype implements Archetype {
 
 	@Override
 	public void initSkillsToLearn() {
-
+		// Usefull for all archetypes
+		skillsToLearn.add(SEE);
 	}
 
 	@Override

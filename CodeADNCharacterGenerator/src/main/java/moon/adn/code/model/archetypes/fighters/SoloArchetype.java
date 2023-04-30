@@ -23,6 +23,7 @@ public class SoloArchetype extends AbstractFighterArchetype {
 
 	@Override
 	public void initSkillsToLearn() {
+		super.initSkillsToLearn();
 		skillsToLearn.add(EXPLOSIVES);
 		skillsToLearn.add(STUNT);
 		skillsToLearn.add(KNIFE);
