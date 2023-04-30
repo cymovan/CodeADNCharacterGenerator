@@ -39,7 +39,7 @@ public enum RAECAgeCategoriesEnum {
 	public int ageDiff(SpeciesEnum species, int age) {
 		int diff = HistoryHelper.randomValuesBetween(min, max);
 		if (age + diff < MIN_AGE) {
-			diff = -(age - MIN_AGE);
+			diff = age - MIN_AGE;
 		}
 		return diff;
 	}

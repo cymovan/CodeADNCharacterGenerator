@@ -13,11 +13,11 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  */
 public class RAECProcedure {
 	private RAEC people = new RAEC();
-	private SpeciesEnum species;
+	private SpeciesEnum species = SpeciesEnum.HUMAN;
 	private int age;
 
 	private static final int NO_AGE = 0;
-	private static final int DEFAULT_AGE = 20;
+	private static final int DEFAULT_AGE = 25;
 
 	private RAECAgeCategoriesEnum ageCategory;
 
@@ -32,12 +32,10 @@ public class RAECProcedure {
 	 * @param age
 	 */
 	public RAECProcedure(SpeciesEnum species, int age) {
-		if (null == species) {
-			this.species = SpeciesEnum.HUMAN;
-		} else {
+		if (null != species) {
 			this.species = species;
 		}
-		if (NO_AGE == age) {
+		if (NO_AGE >= age) {
 			this.age = DEFAULT_AGE;
 		} else {
 			this.age = age;
@@ -77,7 +75,6 @@ public class RAECProcedure {
 		} else {
 			people.setRAECType(RAECEnum.SISTER);
 		}
-
 	}
 
 	private void generateAgeDiff() {
