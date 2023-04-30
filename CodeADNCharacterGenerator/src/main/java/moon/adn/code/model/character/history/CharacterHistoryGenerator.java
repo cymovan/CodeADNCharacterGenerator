@@ -16,7 +16,6 @@ import moon.adn.code.model.character.history.raec.RAECEnum;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.AgeCategoryEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
-import moon.adn.code.system.RandomDiceUtil;
 
 /**
  * @author Cédric DELRUE
