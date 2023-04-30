@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.core.io.ClassPathResource;
 
@@ -63,8 +64,8 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 		}
 	}
 
-	private List<String> readFile(String classPathFile) {
-		List<String> names = new ArrayList<>();
+	protected Set<String> readFile(String classPathFile) {
+		Set<String> names = new TreeSet<>();
 		if (classPathFile == null) {
 			return names;
 		}
@@ -76,7 +77,6 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 			while (scanner.hasNextLine()) {
 				names.add(scanner.nextLine());
 			}
-//			System.out.println(names.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -132,7 +132,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	}
 
 	public String generateFirstName(SexEnum sex) {
-		List<String> searchFirstNames = firstNamesNeutral;
+		List<String> searchFirstNames = new ArrayList<>(firstNamesNeutral);
 		String first = "";
 		if (SexEnum.F == sex) {
 			searchFirstNames.addAll(firstNamesFemale);
