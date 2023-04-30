@@ -3,6 +3,15 @@ package moon.adn.code.model.character.specializations;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Design pattern template, not used to be implemented but called by its
+ * children class ({@link BooleanSpecializationValues},
+ * {@link ComplexSpecializationValues}, {@link CarreerSpecializationValues} and
+ * {@link StandardSpecializationValues}).
+ * 
+ * @author cdelr
+ *
+ */
 @Data
 @NoArgsConstructor
 public class SpecializationValuesAbstract implements SpecializationValues {

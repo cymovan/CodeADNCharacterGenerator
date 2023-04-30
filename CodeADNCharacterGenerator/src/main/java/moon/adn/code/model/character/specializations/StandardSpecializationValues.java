@@ -1,12 +1,15 @@
 package moon.adn.code.model.character.specializations;
 
-public class StandardSpecializationValues extends SpecializationValuesAbstract {
+import static moon.adn.code.model.character.specializations.SpecializationType.STANDARD;
+
+final public class StandardSpecializationValues extends SpecializationValuesAbstract {
+	private static final int MAX_BOXES = 4;
 
 	public StandardSpecializationValues() {
-		this(4);
+		this(MAX_BOXES);
 	}
 
 	public StandardSpecializationValues(int maxBoxes) {
-		super(maxBoxes, SpecializationType.STANDARD);
+		super(maxBoxes, STANDARD);
 	}
 }

@@ -6,6 +6,15 @@ import static moon.adn.code.system.RandomDiceUtil.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import moon.adn.code.model.character.identity.SpeciesEnum;
+
+/**
+ * Helper creating {@link SpecializationsAtCreation} depending on
+ * {@link SpeciesEnum}.
+ * 
+ * @author Cédric DELRUE
+ *
+ */
 public class SpecializationsCreationHelper {
 
 	public static SpecializationsAtCreation sylvanElfSpecializations() {

@@ -9,6 +9,8 @@ import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 import lombok.Getter;
 
 /**
+ * Enumerations of Specializations.
+ * 
  * @author Cédric DELRUE
  *
  */
@@ -77,8 +79,7 @@ public enum SpecializationEnum {
 		this.specializationValues = values;
 	}
 
-	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values,
-			boolean species) {
+	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values, boolean species) {
 		this(specializationCategory, values);
 		this.species = species;
 	}

@@ -7,9 +7,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class used on process creation that contains {@link SpecializationEnum} and
+ * their {@link SpecializationValues} at creation.
+ * 
+ * @author Cédric DELRUE
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SpecializationsAtCreation {
-	Map<SpecializationEnum, SpecializationValuesAbstract> specializationsMap = new HashMap<>();
+	private Map<SpecializationEnum, SpecializationValuesAbstract> specializationsMap = new HashMap<>();
 }
