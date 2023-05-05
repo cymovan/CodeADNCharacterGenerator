@@ -4,14 +4,15 @@ import static moon.adn.code.model.character.history.details.romance.HistoryRoman
 import static moon.adn.code.model.character.history.details.romance.HistoryRomanceEnum.PROBLEMATIC_STORY;
 import static moon.adn.code.model.character.history.details.romance.HistoryRomanceEnum.TRAGIC_STORY;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
 public class Romance {
 	private HistoryRomanceEnum kindOfRomance;
 	private HowItArrivedEnum howItArrived;
 	private RomanceDurationEnum duration;
-	private int durationInMonths, durationInYears;
+	private @Setter int durationInMonths, durationInYears;
 	private String tragicOrProblematicStory;
 	private MutualFeelingsEnum mutualFeelings;
 
@@ -41,5 +42,4 @@ public class Romance {
 			romance.tragicOrProblematicStory = new TragicLoveStory().randomEvent();
 		}
 	}
-	
 }

@@ -1,17 +1,15 @@
-package moon.adn.code.model.character.history.RAEC.event;
+package moon.adn.code.model.character.history.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import moon.adn.code.model.character.history.event.HistoryEnemyEvent;
-
 @SpringBootTest
 public class EnemyEventTests {
 
 	private static final int maxCountI18N = 6;
-	private static final String I18NRoot = "hist.enemy"; 
+	private static final String I18NRoot = "hist.enemy";
 
 	@Test
 	public void whenInitializingRandomEnemyEventThenItsInRangeDefinedInRulesBook() {

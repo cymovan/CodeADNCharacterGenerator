@@ -17,11 +17,16 @@ import moon.adn.code.model.archetypes.spies.FixerArchetype;
 import moon.adn.code.model.archetypes.spies.NetRunnerArchetype;
 import moon.adn.code.model.character.specializations.CarreerEnum;
 
+/**
+ * Contain the list of all archetypes.
+ * 
+ * @author Cédric DELRUE
+ *
+ */
 public enum ArchetypeEnum {
-	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()), 
-	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()), 
-	NETRUNNER(CarreerEnum.SPY, new NetRunnerArchetype()), FIXER(CarreerEnum.SPY, new FixerArchetype())
-	;
+	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()),
+	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()),
+	NETRUNNER(CarreerEnum.SPY, new NetRunnerArchetype()), FIXER(CarreerEnum.SPY, new FixerArchetype());
 
 	private static Random random = new Random();
 

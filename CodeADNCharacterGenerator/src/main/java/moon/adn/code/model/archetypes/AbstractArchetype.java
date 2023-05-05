@@ -17,6 +17,12 @@ import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.specializations.CarreerEnum;
 import moon.adn.code.model.character.specializations.SpecializationEnum;
 
+/**
+ * Design Pattern Template for all {@link Archetype}.
+ * 
+ * @author Cédric DELRUE
+ *
+ */
 @Data
 public abstract class AbstractArchetype implements Archetype {
 	protected Random random = new Random();

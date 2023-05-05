@@ -1,7 +1,8 @@
 package moon.adn.code.model.character.specializations;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Design pattern template, not used to be implemented but called by its
@@ -12,7 +13,8 @@ import lombok.NoArgsConstructor;
  * @author cdelr
  *
  */
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class SpecializationValuesAbstract implements SpecializationValues {
 	protected SpecializationType type;

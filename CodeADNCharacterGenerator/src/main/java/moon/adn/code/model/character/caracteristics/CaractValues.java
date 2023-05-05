@@ -3,6 +3,7 @@ package moon.adn.code.model.character.caracteristics;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import lombok.Data;
+import lombok.Getter;
 import moon.adn.code.model.character.builder.Modifier;
 
 /**
@@ -10,7 +11,7 @@ import moon.adn.code.model.character.builder.Modifier;
  * 
  * @author Cédric DELRUE
  */
-@Data
+@Getter
 public class CaractValues {
 	public static final int DEFAULT_MIN = 1;
 	public static final int DEFAULT_MAX = 10;

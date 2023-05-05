@@ -3,9 +3,17 @@ package moon.adn.code.model.character.history.details.enemy;
 import static moon.adn.code.model.character.history.details.enemy.CulpritEnum.TIERS_FOOLS_ENNEMY;
 import static moon.adn.code.model.character.history.details.enemy.CulpritEnum.TIERS_FOOLS_YOU;
 
-import lombok.Data;
+import lombok.Getter;
+import moon.adn.code.model.character.history.event.HistoryEnemyEvent;
 
-@Data
+/**
+ * {@link HistoryEnemyEvent} details class contains contextual informations on
+ * how, why and more the generated Character obtained this enemy.
+ * 
+ * @author Cédric DELRUE
+ *
+ */
+@Getter
 public class EnemyDetails {
 	private CulpritEnum whoIsTheCulprit;
 	private DoYouKnowHimEnum doYouknowHim;
