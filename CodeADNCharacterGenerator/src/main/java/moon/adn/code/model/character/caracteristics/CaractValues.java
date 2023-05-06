@@ -2,7 +2,6 @@ package moon.adn.code.model.character.caracteristics;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-import lombok.Data;
 import lombok.Getter;
 import moon.adn.code.model.character.builder.Modifier;
 

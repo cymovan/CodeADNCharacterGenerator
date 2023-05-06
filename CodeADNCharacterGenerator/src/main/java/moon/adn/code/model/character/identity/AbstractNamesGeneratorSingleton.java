@@ -10,9 +10,13 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
+	private static final Logger LOG = LoggerFactory.getLogger(AbstractNamesGeneratorSingleton.class);
+
 	private static final String FILES_ROOT = "names/";
 	private static final String DEFAULT_FEMALE_FILE = "HumanFemaleFirstNames.txt";
 	private static final String DEFAULT_MALE_FILE = "HumanMaleFirstNames.txt";
@@ -78,8 +82,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 				names.add(scanner.nextLine());
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.toString(), e);
 		} finally {
 			if (null != scanner) {
 				scanner.close();

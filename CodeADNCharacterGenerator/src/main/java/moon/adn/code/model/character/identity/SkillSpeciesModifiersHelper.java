@@ -152,4 +152,24 @@ public class SkillSpeciesModifiersHelper {
 		ssm.setModifiersMap(modifiersMap);
 		return ssm;
 	}
+	
+	static SkillsSpeciesModifiers ironBararSkills() {
+		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		modifiersMap.put(SkillEnum.ASTRONOMY, new Modifier(-5));
+		modifiersMap.put(SkillEnum.BIO, new Modifier(-2));
+		modifiersMap.put(SkillEnum.BOTA, new Modifier(-4));
+		modifiersMap.put(SkillEnum.MINERALS, new Modifier(5));
+		modifiersMap.put(SkillEnum.ORIENTATION, new Modifier(2));
+		modifiersMap.put(SkillEnum.SHIELD, new Modifier(1));
+		modifiersMap.put(SkillEnum.RIFFLES, new Modifier(1));
+		modifiersMap.put(SkillEnum.WEAPON, new Modifier(1));
+		modifiersMap.put(SkillEnum.DIY, new Modifier(2));
+		modifiersMap.put(SkillEnum.TECH_GEN, new Modifier(1));
+		modifiersMap.put(SkillEnum.EXPLOSIVES, new Modifier(1));
+		modifiersMap.put(SkillEnum.CLIMB, new Modifier(-1));
+		modifiersMap.put(SkillEnum.COMEDY, new Modifier(-1));
+		SkillsSpeciesModifiers ssm = new SkillsSpeciesModifiers();
+		ssm.setModifiersMap(modifiersMap);
+		return ssm;
+	}
 }

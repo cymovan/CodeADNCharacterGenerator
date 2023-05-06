@@ -18,7 +18,7 @@ public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {
 	Clazz createCaracter();
 
 	/**
-	 * @param carreer 
+	 * @param carreer
 	 * @return Archetype {@link Character} from {@link CarreerEnum}
 	 */
 	Clazz createFromArchetype(CarreerEnum carreer);
@@ -29,6 +29,8 @@ public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {
 	 * @return Elf {@link Character} with good stats.
 	 */
 	Clazz createElfCaracter();
+
+	Character createBararCaracter();
 
 	/**
 	 * @return {@link Character} with good stats.

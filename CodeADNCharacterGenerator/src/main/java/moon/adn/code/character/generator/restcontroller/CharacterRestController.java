@@ -48,6 +48,8 @@ public class CharacterRestController
 	private static final String RAEC_CHARACTER_PATH = "/RAEC";
 	private static final String HEROIC_CHARACTER_PATH = "/heroicCharacter";
 	private static final String ELF_CHARACTER_PATH = "/elfCharacter";
+	private static final String DWARF_CHARACTER_PATH = "/bararCharacter";
+	
 	private static final String WEAK_CHARACTER_PATH = "/weakCharacter";
 	private static final String RESTORE_CHARACTER_PATH = "/restoreCharacter";
 
@@ -83,6 +85,12 @@ public class CharacterRestController
 		return generateElfic();
 	}
 
+	@Override
+	@GetMapping(DWARF_CHARACTER_PATH)
+	public Character createBararCaracter() {
+		return generateBarar();
+	}
+	
 	@Override
 	@GetMapping(HEROIC_CHARACTER_PATH)
 	public Character createHeroicCaracter() {
@@ -130,6 +138,16 @@ public class CharacterRestController
 		speciesSet.add(SpeciesEnum.S_NIGHT);
 		speciesSet.add(SpeciesEnum.S_PALE);
 		speciesSet.add(SpeciesEnum.S_URB);
+		characterBuilder.setSelectedSpeciesforRandom(Optional.of(speciesSet));
+		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
+		Character character = characterBuilder.build();
+		return character;
+	}
+	
+	private Character generateBarar() {
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
+		Set<SpeciesEnum> speciesSet = new HashSet<>();
+		speciesSet.add(SpeciesEnum.B_IRON);
 		characterBuilder.setSelectedSpeciesforRandom(Optional.of(speciesSet));
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
 		Character character = characterBuilder.build();

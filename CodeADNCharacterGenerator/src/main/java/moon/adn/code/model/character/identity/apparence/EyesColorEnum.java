@@ -132,6 +132,16 @@ public enum EyesColorEnum {
 		eyesColors.add(SILVER);
 		return eyesColors;
 	}
+	
+	public static Set<EyesColorEnum> ironBararEyesColors() {
+		Set<EyesColorEnum> eyesColors = new HashSet<>();
+		eyesColors.add(BLACK);
+		eyesColors.add(BROWN);
+		eyesColors.add(HAZELNUT);
+		eyesColors.add(GRAY);
+		eyesColors.add(GREEN);
+		return eyesColors;
+	}
 
 	public static List<EyesColorEnum> getSpeciesEyeColorsList(SpeciesEnum species) {
 		Set<EyesColorEnum> eyesColors;
@@ -157,9 +167,11 @@ public enum EyesColorEnum {
 		case S_PALE:
 			eyesColors = paleElfEyesColors();
 			break;
-		case S_SYLV:
-		case S_URB:
+		case S_SYLV,S_URB:
 			eyesColors = elvesEyesColors();
+			break;
+		case B_IRON:
+			eyesColors = ironBararEyesColors();
 			break;
 		default:
 			eyesColors = humanEyesColors();

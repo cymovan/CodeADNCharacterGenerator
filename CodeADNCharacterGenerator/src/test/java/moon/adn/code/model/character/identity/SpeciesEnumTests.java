@@ -102,6 +102,14 @@ public class SpeciesEnumTests {
 			assert1d2Minus1();
 		}
 	}
+	
+	@Test
+	public void whenGeneratingSiblingsCountForIronBararThenItsInGoodRange() {
+		species = SpeciesEnum.B_IRON;
+		for (int i = 0; i < MAX_ITERATIONS; i++) {
+			assert1d4Minus1();
+		}
+	}
 
 	private void assert1d4Minus1() {
 		assertThat(species.randomSibling()).isBetween(MINIMUM_SIBLING_COUNT, D4_MINUS_1_MAX);

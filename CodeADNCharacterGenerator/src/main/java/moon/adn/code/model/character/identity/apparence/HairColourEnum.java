@@ -122,6 +122,14 @@ public enum HairColourEnum {
 		return hairColors;
 	}
 
+	public static Set<HairColourEnum> ironBararHairColors() {
+		Set<HairColourEnum> hairColors = new HashSet<>();
+		hairColors.add(BLACK);
+		hairColors.add(DARK_BLOND);
+		hairColors.add(REDHEAD);
+		return hairColors;
+	}
+
 	public static List<HairColourEnum> getSpeciesHairColorsList(SpeciesEnum species) {
 		Set<HairColourEnum> hairColors;
 		switch (species) {
@@ -161,6 +169,9 @@ public enum HairColourEnum {
 			hairColors = urbanElfHairColors();
 			break;
 		}
+		case B_IRON:
+			hairColors = ironBararHairColors();
+			break;
 		default:
 			hairColors = humanHairColors();
 			break;

@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.identity;
 
-import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.aquaticElfModifiers;
+import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.*;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.darkElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.goldElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.greyElfModifiers;
@@ -11,7 +11,7 @@ import static moon.adn.code.model.character.identity.CaracteristicModifiersHelpe
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.urbanElfModifiers;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.aquaticElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.darkElfSkills;
-import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.goldElfSkills;
+import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.*;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.greyElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.nightElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.paleElfSkills;
@@ -58,7 +58,8 @@ public enum SpeciesEnum {
 			goldElfSpecializations()),
 	S_NIGHT(nightElfModifiers(), nightElfSkills(), nightElfSpecializations()),
 	S_AQUA(aquaticElfModifiers(), aquaticElfSkills(), aquaticElfSpecializations()), S_DARK(darkElfModifiers(),
-			DarkElvesNamesGeneratorSingleton.getInstance(), darkElfSkills(), darkElfSpecializations());
+			DarkElvesNamesGeneratorSingleton.getInstance(), darkElfSkills(), darkElfSpecializations()),
+	B_IRON(ironBararModifiers(), ironBararSkills());
 
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
 	private @Getter SkillsSpeciesModifiers SkillModifiers;
@@ -112,7 +113,7 @@ public enum SpeciesEnum {
 	public int randomSibling() {
 		int siblingCount = 0;
 		switch (this) {
-		case HUMAN, S_SYLV, S_DARK: {
+		case HUMAN, S_SYLV, S_DARK, B_IRON: {
 			siblingCount = d4() - 1;
 			break;
 		}
@@ -170,12 +171,12 @@ public enum SpeciesEnum {
 
 	public int nbEventsbyAge(AgeCategoryEnum ageCategory) {
 		switch (this) {
-		case HUMAN: {
+		case HUMAN:
 			return nbEventsbyAgeForHumans(ageCategory);
-		}
-		case S_AQUA, S_DARK, S_GOLD, S_GREY, S_NIGHT, S_PALE, S_SYLV, S_URB: {
+		case S_AQUA, S_DARK, S_GOLD, S_GREY, S_NIGHT, S_PALE, S_SYLV, S_URB:
 			return nbEventsbyAgeForElves(ageCategory);
-		}
+		case B_IRON:
+			return nbEventsbyAgeForDwarves(ageCategory);
 		default:
 			return 0;
 		}
@@ -218,6 +219,29 @@ public enum SpeciesEnum {
 			return d8();
 		case HUMAN_MAX:
 			return d5();
+		case BEYOND_HUMAN_MAX:
+			return d4();
+		default:
+			return 0;
+		}
+	}
+
+	private int nbEventsbyAgeForDwarves(AgeCategoryEnum ageCategory) {
+		switch (ageCategory) {
+		case TEENAGER:
+			return d2();
+		case YOUNG_ADULT:
+			return d3();
+		case ADULT:
+			return d6();
+		case EXPERIMENTED_ADULT:
+			return d8();
+		case OLD:
+			return d5();
+		case OLDSTER:
+			return d6();
+		case HUMAN_MAX:
+			return d8();
 		case BEYOND_HUMAN_MAX:
 			return d4();
 		default:

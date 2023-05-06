@@ -54,8 +54,6 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	protected final Logger logger = LoggerFactory.getLogger(AbstractCharacterGenerator.class);
 
 	protected static Random random = new Random();
-	protected int hobbiesPoints = 30;
-
 	// Parameterized random generations
 	private Optional<Set<SpeciesEnum>> selectedSpeciesforRandom = Optional.empty();
 	private Optional<SexEnum> selectedSex = Optional.empty();
@@ -78,6 +76,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	protected Set<SkillEnum> skillsToLearn = new HashSet<>();
 	protected int skillsPoints = 50;
+	protected int hobbiesPoints = 30;
 
 	/**
 	 * Build and consolidate Datas of the character.

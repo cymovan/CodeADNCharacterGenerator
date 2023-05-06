@@ -121,4 +121,21 @@ class CaracteristicModifiersHelper {
 		csm.setModifiersMap(modifiersMap);
 		return csm;
 	}
+	
+	public static CaracteristicSpeciesModifiers ironBararModifiers() {
+		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(-1));
+		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(-2));
+		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(2));
+		modifiersMap.put(CaracteristicEnum.EMP, new CaracteristicsModifier(-1));
+		modifiersMap.put(CaracteristicEnum.STR, new CaracteristicsModifier(2));
+		modifiersMap.put(CaracteristicEnum.POW, new CaracteristicsModifier(-2));
+		modifiersMap.put(CaracteristicEnum.REF, new CaracteristicsModifier(-1));
+		modifiersMap.put(CaracteristicEnum.HEIGHT, new CaracteristicsModifier(-3, 1, 5));
+		modifiersMap.put(CaracteristicEnum.TECH, new CaracteristicsModifier(2));
+		modifiersMap.put(CaracteristicEnum.WILL, new CaracteristicsModifier(2));
+		CaracteristicSpeciesModifiers csm = new CaracteristicSpeciesModifiers();
+		csm.setModifiersMap(modifiersMap);
+		return csm;
+	}
 }

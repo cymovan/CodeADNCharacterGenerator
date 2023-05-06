@@ -22,7 +22,7 @@ public class CodeAdnConfiguration {
 	private static final Logger LOG = LoggerFactory.getLogger(CodeAdnConfiguration.class);
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer() {
+	WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
@@ -32,7 +32,7 @@ public class CodeAdnConfiguration {
 	}
 
 	@Bean
-	public LocaleResolver localeResolver() {
+	LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(Locale.FRENCH);
 		return resolver;
