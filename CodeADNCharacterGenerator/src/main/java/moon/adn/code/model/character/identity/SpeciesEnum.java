@@ -37,6 +37,10 @@ import java.util.Random;
 import lombok.Getter;
 import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
 import moon.adn.code.model.character.history.HistoryHelper;
+import moon.adn.code.model.character.identity.names.DarkElvesNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.NamesGenerator;
+import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
 import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 

@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.identity;
+package moon.adn.code.model.character.identity.names;
 
 public class SephonileandisNamesGeneratorSingleton extends AbstractNamesGeneratorSingleton {
 	private static final String FEMALE_FILES = "SephonileandisFemaleFirstNames.txt";

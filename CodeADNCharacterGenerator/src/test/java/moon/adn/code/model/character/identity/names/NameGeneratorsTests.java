@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.identity;
+package moon.adn.code.model.character.identity.names;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,6 +8,13 @@ import java.util.TreeSet;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import moon.adn.code.model.character.identity.SexEnum;
+import moon.adn.code.model.character.identity.names.AbstractNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.DarkElvesNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.NamesGenerator;
+import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 
 @SpringBootTest
 public class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {

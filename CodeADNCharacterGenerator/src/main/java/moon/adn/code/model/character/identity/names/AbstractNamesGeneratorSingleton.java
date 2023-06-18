@@ -1,4 +1,4 @@
-package moon.adn.code.model.character.identity;
+package moon.adn.code.model.character.identity.names;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +13,8 @@ import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
+
+import moon.adn.code.model.character.identity.SexEnum;
 
 abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractNamesGeneratorSingleton.class);

@@ -1,4 +1,6 @@
-package moon.adn.code.model.character.identity;
+package moon.adn.code.model.character.identity.names;
+
+import moon.adn.code.model.character.identity.SexEnum;
 
 /**
  * Interface for {@link NamesGenerator}.
