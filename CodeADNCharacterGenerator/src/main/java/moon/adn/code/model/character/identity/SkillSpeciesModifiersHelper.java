@@ -20,6 +20,7 @@ public class SkillSpeciesModifiersHelper {
 		modifiersMap.put(SkillEnum.RIFFLES, new Modifier(-1));
 		modifiersMap.put(SkillEnum.GUNS, new Modifier(1));
 		modifiersMap.put(SkillEnum.DANCE, new Modifier(1));
+		modifiersMap.put(SkillEnum.STUNT, new Modifier(1));
 		modifiersMap.put(SkillEnum.SOCIAL, new Modifier(2));
 		modifiersMap.put(SkillEnum.STREET_KNOWLEDGE, new Modifier(1));
 		SkillsSpeciesModifiers ssm = new SkillsSpeciesModifiers();
