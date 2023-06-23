@@ -47,6 +47,7 @@ public class CharacterRestController
 	static final String PATH_REST_CHARACTERS = "/restCharacters";
 	private static final String RAEC_CHARACTER_PATH = "/RAEC";
 	private static final String HEROIC_CHARACTER_PATH = "/heroicCharacter";
+	private static final String HUMAN_CHARACTER_PATH = "/humanCharacter";
 	private static final String ELF_CHARACTER_PATH = "/elfCharacter";
 	private static final String DWARF_CHARACTER_PATH = "/bararCharacter";
 	
@@ -83,6 +84,13 @@ public class CharacterRestController
 	@GetMapping(ELF_CHARACTER_PATH)
 	public Character createElfCaracter() {
 		return generateElfic();
+	}
+	
+
+	@Override
+	@GetMapping(HUMAN_CHARACTER_PATH)
+	public Character createHumanCaracter() {
+		return generateHuman();
 	}
 
 	@Override
@@ -128,6 +136,16 @@ public class CharacterRestController
 		return character;
 	}
 
+	private Character generateHuman() {
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
+		Set<SpeciesEnum> speciesSet = new HashSet<>();
+		speciesSet.add(SpeciesEnum.HUMAN);
+		characterBuilder.setSelectedSpeciesforRandom(Optional.of(speciesSet));
+		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
+		Character character = characterBuilder.build();
+		return character;
+	}
+	
 	private Character generateElfic() {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		Set<SpeciesEnum> speciesSet = new HashSet<>();
@@ -208,4 +226,5 @@ public class CharacterRestController
 		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
 		return chg.generate();
 	}
+
 }

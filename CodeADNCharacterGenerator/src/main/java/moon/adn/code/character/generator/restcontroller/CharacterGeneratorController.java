@@ -26,11 +26,18 @@ public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {
 	/**
 	 * Only for tests
 	 * 
+	 * @return Human {@link Character} with good stats.
+	 */
+	Clazz createHumanCaracter();
+	
+	/**
+	 * Only for tests
+	 * 
 	 * @return Elf {@link Character} with good stats.
 	 */
 	Clazz createElfCaracter();
 
-	Character createBararCaracter();
+	Clazz createBararCaracter();
 
 	/**
 	 * @return {@link Character} with good stats.
