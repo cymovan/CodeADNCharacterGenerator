@@ -12,9 +12,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import jakarta.annotation.PostConstruct;
-import moon.adn.code.model.character.identity.DarkElvesNamesGeneratorSingleton;
-import moon.adn.code.model.character.identity.HumanNamesGeneratorSingleton;
-import moon.adn.code.model.character.identity.SephonileandisNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.DarkElvesNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton;
+import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 
 @Configuration
 public class CodeAdnConfiguration {

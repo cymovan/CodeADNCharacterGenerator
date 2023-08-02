@@ -23,7 +23,8 @@ public class SpecializationsCreationHelper {
 		specializationsMap.put(PRECISION, getValues(PRECISION, 2));
 		specializationsMap.put(MEDICINAL_PLANTS, getValues(MEDICINAL_PLANTS, 2));
 		specializationsMap.put(ANIMAL_EMPATHY, getValues(ANIMAL_EMPATHY, 2));
-		if (d100() <= 50) {
+		specializationsMap.put(LIGHT_AMPLI_VISION, getValues(LIGHT_AMPLI_VISION, 1));
+		if (d100() <= 25) {
 			specializationsMap.put(ANIMAL_COMMUNICATION, getValues(ANIMAL_COMMUNICATION, 2));
 		}
 		return new SpecializationsAtCreation(specializationsMap);
