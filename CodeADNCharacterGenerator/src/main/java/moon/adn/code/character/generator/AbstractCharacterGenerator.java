@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +56,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	protected static Random random = new Random();
 	// Parameterized random generations
-	private Optional<Set<SpeciesEnum>> selectedSpeciesforRandom = Optional.empty();
+	private Set<SpeciesEnum> selectedSpeciesforRandom = new HashSet<SpeciesEnum>();
 	private Optional<SexEnum> selectedSex = Optional.empty();
 
 	protected Identity identity;
@@ -124,8 +125,8 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 		// Species
 		SpeciesEnum species;
-		if (selectedSpeciesforRandom.isPresent()) {
-			Set<SpeciesEnum> speciesSet = selectedSpeciesforRandom.get();
+		if (!selectedSpeciesforRandom.isEmpty()) {
+			Set<SpeciesEnum> speciesSet = selectedSpeciesforRandom;
 			SpeciesEnum[] tabSpecies = speciesSet.stream().toArray(SpeciesEnum[]::new);
 			species = tabSpecies[random.nextInt(tabSpecies.length)];
 		} else {
@@ -343,5 +344,10 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		// Add first CarreerEnum
 		carreersMapChoosed.put(carrerChoosed, 1);
 		character.setCarreersMap(carreersMapChoosed);
+	}
+
+	@Override
+	public Clazz buildFromParameters(CharacterParameters params) {
+		throw new NotImplementedException("Not implemented yet !");
 	}
 }

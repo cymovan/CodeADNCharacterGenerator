@@ -6,7 +6,6 @@ import static moon.adn.code.system.RandomDiceUtil.d10Weak;
 
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -86,7 +85,7 @@ public class NPCRestController implements NPCGeneratorController<NPC> {
 		speciesSet.add(SpeciesEnum.S_NIGHT);
 		speciesSet.add(SpeciesEnum.S_PALE);
 		speciesSet.add(SpeciesEnum.S_URB);
-		characterBuilder.setSelectedSpeciesforRandom(Optional.of(speciesSet));
+		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
 		Character character = characterBuilder.build();
 		return character;

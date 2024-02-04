@@ -35,7 +35,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		endProcedure(character);
 		return character;
 	}
-	
+
 	private void endProcedure(Character character) {
 		spendSkillsPoints(0, 9);
 		lifeEventsGenerator(character);
@@ -48,5 +48,11 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		CharacterHistory ch = chg.generate();
 		character.setEventsMap(ch.getEventsMap());
 		character.setRaecMap(ch.getRaecMap());
+	}
+
+	@Override
+	public Character buildFromParameters(CharacterParameters params) {
+		setSelectedSpeciesforRandom(params.getSpeciesSet());
+		return build();
 	}
 }

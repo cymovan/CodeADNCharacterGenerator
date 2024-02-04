@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import moon.adn.code.character.generator.AbstractCharacterGenerator;
-import moon.adn.code.model.character.Character;
+import moon.adn.code.character.generator.CharacterParameters;
+import moon.adn.code.character.generator.restcontroller.CharacterRestController;
+import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.identity.SpeciesEnum;
+import moon.adn.code.view.model.CharacterFormVO;
 
 @Controller
 public class WebSiteCharacterController extends AbstractWebSiteController {
-
 	public static final String MODEL_HOME = "home";
 
 	@GetMapping(URL_HOME)
@@ -29,8 +30,19 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 
 	}
 
-	@PostMapping
-	public String createCharacter(@ModelAttribute AbstractCharacterGenerator<Character> character) {
+	@PostMapping("/generate")
+	public String createCharacter(@ModelAttribute CharacterFormVO characterFormVo) {
+		logger.debug(characterFormVo.toString());
+
+		CharacterRestController characterRestController = new CharacterRestController();
+		
+		CharacterParameters cp = new CharacterParameters();
+		cp.setSpeciesSet(characterFormVo.getSpecies());
+		
+		AbstractCharacter character = characterRestController.createParametrizedCharacter(cp);
+		//AbstractCharacter character = characterRestController.createCharacter();
+		logger.debug(character.toString());
+		
 		// Code pour créer le personnage
 		return "redirect:/characters/new";
 	}

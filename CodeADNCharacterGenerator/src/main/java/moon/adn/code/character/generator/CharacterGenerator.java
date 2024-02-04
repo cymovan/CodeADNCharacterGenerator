@@ -7,4 +7,6 @@ public interface CharacterGenerator<Clazz extends AbstractCharacter> {
 	Clazz build();
 
 	Clazz buildFromArchetype(Archetype archetype);
+	
+	Clazz buildFromParameters(CharacterParameters params);
 }

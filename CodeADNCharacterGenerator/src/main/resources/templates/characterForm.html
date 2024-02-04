@@ -7,7 +7,7 @@
 	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css} " />
 </head>
 <body>
-	<nav ~{fragments/nav :: nav}></nav>
+	<nav ~{fragments/nav ::nav}></nav>
 	<span th:text="#{species.HUMAN}"></span>
 	<div th:if="${message}">
 		<p th:text="${message}"></p>
