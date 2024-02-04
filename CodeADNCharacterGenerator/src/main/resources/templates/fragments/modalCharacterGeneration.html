@@ -18,41 +18,44 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<form action="#" method="post" th:action="@{/generate}">
+					<form th:action="@{/generate}" th:object="${characterFormVO}"
+						method="post">
 						<!-- 						th:object="${characterForm}"> -->
 						<div class="modal-body">
 							<div class="form-group">
-<!-- 								<label for="species" th:text="#{modal.formgroup.species}"></label> -->
-<!-- 								<select -->
-<!-- 									class="form-control" id="species" name="species" -->
-<!-- 									th:field="*{speciesEnum}"> -->
+								<!-- 								<label for="species" th:text="#{modal.formgroup.species}"></label> -->
+								<!-- 								<select -->
+								<!-- 									class="form-control" id="species" name="species" -->
+								<!-- 									th:field="*{speciesEnum}"> -->
 								<fieldset>
-								<legend th:text="#{modal.legend.species}"></legend>
+									<legend th:text="#{modal.legend.species}"></legend>
 									<div class="container">
 										<div class="row">
-										<th:block th:each="spec, index : ${species}">
-											<div class="col-sm">
-												<input type="checkbox" name="species" th:id="${spec.name}" th:value="${spec.name}" >
-												<label th:for="${spec.name}" th:text="#{'species.' + ${spec.name}}"></label>
-											</div>
-										</th:block>
+											<th:block th:each="spec, index : ${species}">
+												<div class="col-sm">
+													<input type="checkbox" name="species" th:id="${spec.name}"
+														th:value="${spec.name}"> <label
+														th:for="${spec.name}"
+														th:text="#{'species.' + ${spec.name}}"></label>
+												</div>
+											</th:block>
 										</div>
 									</div>
 								</fieldset>
 							</div>
-<!-- 							<div class="form-group"> -->
-<!-- 								<label for="sex">Sex</label> <select class="form-control" -->
-<!-- 									id="sex" name="sex" th:field="*{sex}"> -->
-<!-- 									<option value="MALE">Male</option> -->
-<!-- 									<option value="FEMALE">Female</option> -->
-<!-- 								</select> -->
-<!-- 							</div> -->
+							<!-- 							<div class="form-group"> -->
+							<!-- 								<label for="sex">Sex</label> <select class="form-control" -->
+							<!-- 									id="sex" name="sex" th:field="*{sex}"> -->
+							<!-- 									<option value="MALE">Male</option> -->
+							<!-- 									<option value="FEMALE">Female</option> -->
+							<!-- 								</select> -->
+							<!-- 							</div> -->
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" th:text="#{modal.button.close}"></button>
-							<button type="button" class="btn btn-primary"
-								th:text="#{modal.generate.save}"></button>
+							<input type="submit" class="btn btn-primary"
+								th:value="#{modal.generate.save}" />
 						</div>
 					</form>
 				</div>

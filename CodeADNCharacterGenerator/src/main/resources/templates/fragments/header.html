@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title th:text="#{website.code.adn} + ' : ' + #{website.title}"></title>
-	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css} ">
-	<link th:href="@{/css/main.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title th:text="#{website.code.adn} + ' : ' + #{website.title}"></title>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css} ">
+<link th:href="@{/css/main.css}" rel="stylesheet">
 
 <!-- Favicons -->
 <th:block th:with="iconUrl='/images/CodeADN_ADNonly.ico'">
@@ -14,7 +15,8 @@
 	<link rel="icon" th:href="${iconUrl}" sizes="16x16" type="image/png">
 	<!--*/ <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json"> /*-->
 	<!--*/ <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9"> /*-->
-	<link rel="icon" th:href="${iconUrl}"></th:block>
+	<link rel="icon" th:href="${iconUrl}">
+</th:block>
 </head>
 <body>
 </body>
