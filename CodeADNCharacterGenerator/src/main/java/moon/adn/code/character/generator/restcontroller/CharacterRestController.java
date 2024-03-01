@@ -58,7 +58,7 @@ public class CharacterRestController
 
 	private static final String ARCHETYPE_CHARACTER_PATH = "/archetype";
 
-	private static final String CARREER_PARAMETERS_PATH = "/carreer/{carreer}";
+	private static final String CAREER_PARAMETERS_PATH = "/career/{career}";
 	private static final String SPECIES_PARAMETERS_PATH = "/species/{species}";
 
 	@Autowired
@@ -70,9 +70,16 @@ public class CharacterRestController
 	}
 
 	@Override
-	@GetMapping(ARCHETYPE_CHARACTER_PATH + CARREER_PARAMETERS_PATH)
-	public Character createFromArchetype(@PathVariable(name = "carreer", required = false) CarreerEnum carreer) {
+	@GetMapping(ARCHETYPE_CHARACTER_PATH + CAREER_PARAMETERS_PATH)
+	public Character createFromArchetype(@PathVariable(name = "career", required = false) CarreerEnum carreer) {
 		return generateFromArchetype(carreer);
+	}
+
+	@Override
+	@GetMapping(ARCHETYPE_CHARACTER_PATH + SPECIES_PARAMETERS_PATH + CAREER_PARAMETERS_PATH)
+	public Character createFromSpeciesAndArchetype(@PathVariable(name = "species", required = true) SpeciesEnum species,
+			@PathVariable(name = "career", required = false) CarreerEnum career) {
+		return generateFromSpeciesAndArchetype(species, career);
 	}
 
 	@Override
@@ -180,13 +187,26 @@ public class CharacterRestController
 		return character;
 	}
 
-	private Character generateFromArchetype(CarreerEnum carreer) {
+	private Character generateFromSpeciesAndArchetype(SpeciesEnum species, CarreerEnum career) {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
-		if (null == carreer) {
-			carreer = CarreerEnum.random();
+		Set<SpeciesEnum> speciesSet = new HashSet<>();
+		speciesSet.add(species);
+		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
+		if (null == career) {
+			career = CarreerEnum.random();
 		}
 		Character character = characterBuilder
-				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(carreer).getArchetype());
+				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(career).getArchetype());
+		return character;
+	}
+
+	private Character generateFromArchetype(CarreerEnum career) {
+		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
+		if (null == career) {
+			career = CarreerEnum.random();
+		}
+		Character character = characterBuilder
+				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(career).getArchetype());
 		return character;
 	}
 
@@ -229,11 +249,10 @@ public class CharacterRestController
 	}
 
 	@Override
-	@PostMapping("parametrized")
+	@PostMapping("parameterized")
 	public Character createParametrizedCharacter(@RequestBody CharacterParameters params) {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomCaracteristics());
 		return characterBuilder.buildFromParameters(params);
 	}
-
 }
