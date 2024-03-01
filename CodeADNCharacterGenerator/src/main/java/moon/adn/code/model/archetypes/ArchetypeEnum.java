@@ -1,8 +1,8 @@
 package moon.adn.code.model.archetypes;
 
-import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
+import static moon.adn.code.model.character.specializations.CareerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CareerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import moon.adn.code.model.archetypes.scientists.MedTechieArchetype;
 import moon.adn.code.model.archetypes.scientists.TechieArchetype;
 import moon.adn.code.model.archetypes.spies.FixerArchetype;
 import moon.adn.code.model.archetypes.spies.NetRunnerArchetype;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 /**
  * Contain the list of all archetypes.
@@ -31,15 +31,15 @@ public enum ArchetypeEnum {
 
 	private static Random random = new Random();
 
-	private @Getter CarreerEnum carreer;
+	private @Getter CareerEnum career;
 	private @Getter AbstractArchetype archetype;
 
-	ArchetypeEnum(CarreerEnum carreer) {
-		this.carreer = carreer;
+	ArchetypeEnum(CareerEnum career) {
+		this.career = career;
 	}
 
-	ArchetypeEnum(CarreerEnum carreer, AbstractArchetype archetype) {
-		this(carreer);
+	ArchetypeEnum(CareerEnum career, AbstractArchetype archetype) {
+		this(career);
 		this.archetype = archetype;
 	}
 
@@ -47,10 +47,10 @@ public enum ArchetypeEnum {
 		return values()[random.nextInt(values().length)];
 	}
 
-	public static ArchetypeEnum randomFromCarreer(CarreerEnum carreer) {
+	public static ArchetypeEnum randomFromcareer(CareerEnum career) {
 		List<ArchetypeEnum> list = new ArrayList<>();
 		for (ArchetypeEnum archetype : ArchetypeEnum.values()) {
-			if (carreer == archetype.carreer) {
+			if (career == archetype.career) {
 				list.add(archetype);
 			}
 		}

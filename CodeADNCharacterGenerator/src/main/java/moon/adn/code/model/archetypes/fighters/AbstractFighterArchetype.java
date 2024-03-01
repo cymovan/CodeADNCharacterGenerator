@@ -36,12 +36,12 @@ import static moon.adn.code.system.RandomDiceUtil.d10Heroic;
 
 import moon.adn.code.model.archetypes.AbstractArchetype;
 import moon.adn.code.model.character.caracteristics.CaractValues;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 abstract class AbstractFighterArchetype extends AbstractArchetype {
 
 	public AbstractFighterArchetype(int carrerLevel) {
-		super(CarreerEnum.FIGHTER, carrerLevel);
+		super(CareerEnum.FIGHTER, carrerLevel);
 	}
 
 	public void initCaracteristics() {

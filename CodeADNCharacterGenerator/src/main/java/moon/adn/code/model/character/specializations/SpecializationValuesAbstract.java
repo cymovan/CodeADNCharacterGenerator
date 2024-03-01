@@ -7,7 +7,7 @@ import lombok.Setter;
 /**
  * Design pattern template, not used to be implemented but called by its
  * children class ({@link BooleanSpecializationValues},
- * {@link ComplexSpecializationValues}, {@link CarreerSpecializationValues} and
+ * {@link ComplexSpecializationValues}, {@link careerSpecializationValues} and
  * {@link StandardSpecializationValues}).
  * 
  * @author cdelr
@@ -37,7 +37,7 @@ public class SpecializationValuesAbstract implements SpecializationValues {
 	}
 
 	/**
-	 * Default comportment when spending a carreer point.
+	 * Default comportment when spending a career point.
 	 */
 	@Override
 	public void levelUp() throws MaxBoxesReachedException {

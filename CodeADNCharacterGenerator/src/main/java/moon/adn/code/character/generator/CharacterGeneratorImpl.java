@@ -21,7 +21,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 	 */
 	public Character build() {
 		Character character = new Character();
-		defineCarrerAndHobbiesPointsWithoutMystic(character);
+		defineCareerAndHobbiesPointsWithoutMystic(character);
 		commonBuild(character);
 		endProcedure(character);
 		return character;
@@ -30,7 +30,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 	public Character buildFromArchetype(Archetype archetype) {
 		Character character = new Character();
 		AbstractArchetype template = archetype.getArchetype();
-		defineCarrerAndHobbiesPointsWithoutMystic(character, archetype);
+		defineCareerAndHobbiesPointsWithoutMystic(character, archetype);
 		commonBuildWithTemplate(character, template);
 		endProcedure(character);
 		return character;

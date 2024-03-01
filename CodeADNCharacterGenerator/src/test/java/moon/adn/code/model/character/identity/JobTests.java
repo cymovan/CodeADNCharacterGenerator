@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 @SpringBootTest
 public class JobTests {
@@ -43,31 +43,31 @@ public class JobTests {
 	}
 
 	@Test
-	public void obtainingARandomJobFromFighterCarreerEnumWorks() {
-		CarreerEnum carreer = CarreerEnum.FIGHTER;
-		job = JobEnum.randomJobUsingRules(carreer);
-		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
+	public void obtainingARandomJobFromFightercareerEnumWorks() {
+		CareerEnum career = CareerEnum.FIGHTER;
+		job = JobEnum.randomJobUsingRules(career);
+		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromGeneralCarreerEnumWorks() {
-		CarreerEnum carreer = CarreerEnum.GENERAL;
-		job = JobEnum.randomJobUsingRules(carreer);
-		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
+	public void obtainingARandomJobFromGeneralcareerEnumWorks() {
+		CareerEnum career = CareerEnum.GENERAL;
+		job = JobEnum.randomJobUsingRules(career);
+		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromScientistCarreerEnumWorks() {
-		CarreerEnum carreer = CarreerEnum.SCIENTIST;
-		job = JobEnum.randomJobUsingRules(carreer);
-		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
+	public void obtainingARandomJobFromScientistcareerEnumWorks() {
+		CareerEnum career = CareerEnum.SCIENTIST;
+		job = JobEnum.randomJobUsingRules(career);
+		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromSpyCarreerEnumWorks() {
-		CarreerEnum carreer = CarreerEnum.SPY;
-		job = JobEnum.randomJobUsingRules(carreer);
-		assertThat(job.getCarreerEnum()).isEqualTo(carreer);
+	public void obtainingARandomJobFromSpycareerEnumWorks() {
+		CareerEnum career = CareerEnum.SPY;
+		job = JobEnum.randomJobUsingRules(career);
+		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test

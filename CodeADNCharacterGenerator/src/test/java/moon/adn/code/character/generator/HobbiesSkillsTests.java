@@ -1,7 +1,7 @@
 package moon.adn.code.character.generator;
 
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.*;
-import static moon.adn.code.model.character.specializations.CarreerEnum.*;
+import static moon.adn.code.model.character.specializations.CareerEnum.*;
 import static moon.adn.code.system.RandomDiceUtil.d10;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,12 +16,12 @@ import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.Character;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 @SpringBootTest
 public class HobbiesSkillsTests {
 
-	private CarreerEnum carreer;
+	private CareerEnum career;
 	private AbstractCharacter character;
 	private final Map<CaracteristicEnum, CaractValues> mapCaracteristicsWithValues = new TreeMap<>();
 
@@ -33,37 +33,37 @@ public class HobbiesSkillsTests {
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromGeneralCarreerThenItsCorrect() {
-		carreer = GENERAL;
+	public void whenCalculaterHobbiesPointsFromGeneralcareerThenItsCorrect() {
+		career = GENERAL;
 		assertByComparingHobbiesPointToExpectedValues(CON, WILL);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromFighterCarreerThenItsCorrect() {
-		carreer = FIGHTER;
+	public void whenCalculaterHobbiesPointsFromFightercareerThenItsCorrect() {
+		career = FIGHTER;
 		assertByComparingHobbiesPointToExpectedValues(STR, REF);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromScientitsCarreerThenItsCorrect() {
-		carreer = SCIENTIST;
+	public void whenCalculaterHobbiesPointsFromScientitscareerThenItsCorrect() {
+		career = SCIENTIST;
 		assertByComparingHobbiesPointToExpectedValues(INT, EMP);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromSpyCarreerThenItsCorrect() {
-		carreer = SPY;
+	public void whenCalculaterHobbiesPointsFromSpycareerThenItsCorrect() {
+		career = SPY;
 		assertByComparingHobbiesPointToExpectedValues(TECH, AG);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromMysticCarreerThenItsCorrect() {
-		carreer = MYSTIC;
+	public void whenCalculaterHobbiesPointsFromMysticcareerThenItsCorrect() {
+		career = MYSTIC;
 		assertByComparingHobbiesPointToExpectedValues(POW, LUCK);
 	}
 
 	private void assertByComparingHobbiesPointToExpectedValues(CaracteristicEnum car1, CaracteristicEnum car2) {
-		int score = CarreerEnum.getHobbiesPoints(carreer, character);
+		int score = CareerEnum.getHobbiesPoints(career, character);
 		int car1Score = mapCaracteristicsWithValues.get(car1).getCurrentValue();
 		int car2Score = mapCaracteristicsWithValues.get(car2).getCurrentValue();
 		int scoreToCompare = (car1Score + car2Score) * 2;

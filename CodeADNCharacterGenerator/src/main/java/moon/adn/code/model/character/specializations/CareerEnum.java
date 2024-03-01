@@ -18,14 +18,14 @@ import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
-public enum CarreerEnum {
+public enum CareerEnum {
 	GENERAL, FIGHTER, SPY, SCIENTIST, MYSTIC;
 
 	private static Random random = new Random();
 
-	public static int getHobbiesPoints(CarreerEnum carreer, AbstractCharacter character) {
+	public static int getHobbiesPoints(CareerEnum career, AbstractCharacter character) {
 		int result = 30;
-		switch (carreer) {
+		switch (career) {
 		case GENERAL: {
 			result = calculateHobbiesPoints(character, CON, WILL);
 			break;
@@ -47,7 +47,7 @@ public enum CarreerEnum {
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + carreer);
+			throw new IllegalArgumentException("Unexpected value: " + career);
 		}
 		return result;
 	}
@@ -60,7 +60,7 @@ public enum CarreerEnum {
 		return result * 2;
 	}
 
-	public static CarreerEnum random() {
+	public static CareerEnum random() {
 		return values()[random.nextInt(values().length)];
 	}
 }

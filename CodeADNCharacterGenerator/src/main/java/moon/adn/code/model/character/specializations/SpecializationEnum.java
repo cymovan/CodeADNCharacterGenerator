@@ -1,10 +1,10 @@
 package moon.adn.code.model.character.specializations;
 
-import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
-import static moon.adn.code.model.character.specializations.CarreerEnum.GENERAL;
-import static moon.adn.code.model.character.specializations.CarreerEnum.MYSTIC;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
+import static moon.adn.code.model.character.specializations.CareerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CareerEnum.GENERAL;
+import static moon.adn.code.model.character.specializations.CareerEnum.MYSTIC;
+import static moon.adn.code.model.character.specializations.CareerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 
 import lombok.Getter;
 
@@ -60,31 +60,31 @@ public enum SpecializationEnum {
 	REPTILIAN_REGENERATION(GENERAL, true),
 
 	// Work career specializations
-	AUTORITY(FIGHTER, new CarreerSpecializationValues()), CHARISMA(GENERAL, new CarreerSpecializationValues()),
-	CREDIBILITY(GENERAL, new CarreerSpecializationValues()), RAT(SPY, new CarreerSpecializationValues()),
-	INTERFACE(SPY, new CarreerSpecializationValues()), COMBAT_SENSE(FIGHTER, new CarreerSpecializationValues()),
-	INGENIOUS_TINKERING(SCIENTIST, new CarreerSpecializationValues()),
-	MEDICAL_TECHNICS(SCIENTIST, new CarreerSpecializationValues());
+	AUTORITY(FIGHTER, new CareerSpecializationValues()), CHARISMA(GENERAL, new CareerSpecializationValues()),
+	CREDIBILITY(GENERAL, new CareerSpecializationValues()), RAT(SPY, new CareerSpecializationValues()),
+	INTERFACE(SPY, new CareerSpecializationValues()), COMBAT_SENSE(FIGHTER, new CareerSpecializationValues()),
+	INGENIOUS_TINKERING(SCIENTIST, new CareerSpecializationValues()),
+	MEDICAL_TECHNICS(SCIENTIST, new CareerSpecializationValues());
 
-	private @Getter CarreerEnum specializationCategory;
+	private @Getter CareerEnum specializationCategory;
 	private @Getter SpecializationValuesAbstract specializationValues = new StandardSpecializationValues();
 	private @Getter Boolean species = false;
 
-	SpecializationEnum(CarreerEnum specializationCategory) {
+	SpecializationEnum(CareerEnum specializationCategory) {
 		this.specializationCategory = specializationCategory;
 	}
 
-	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values) {
+	SpecializationEnum(CareerEnum specializationCategory, SpecializationValuesAbstract values) {
 		this(specializationCategory);
 		this.specializationValues = values;
 	}
 
-	SpecializationEnum(CarreerEnum specializationCategory, SpecializationValuesAbstract values, boolean species) {
+	SpecializationEnum(CareerEnum specializationCategory, SpecializationValuesAbstract values, boolean species) {
 		this(specializationCategory, values);
 		this.species = species;
 	}
 
-	SpecializationEnum(CarreerEnum specializationCategory, boolean species) {
+	SpecializationEnum(CareerEnum specializationCategory, boolean species) {
 		this(specializationCategory);
 		this.species = species;
 	}

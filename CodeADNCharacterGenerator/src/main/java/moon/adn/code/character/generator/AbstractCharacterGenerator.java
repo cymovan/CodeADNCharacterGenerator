@@ -40,7 +40,7 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 
 /**
@@ -64,9 +64,9 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	protected Map<SkillEnum, SkillValues> skillsMap = new TreeMap<>();
 	protected SpecializationsAtCreation speciesSpecializations = new SpecializationsAtCreation();
 	protected Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
-	protected Map<CarreerEnum, Integer> carreersMapChoosed = new HashMap<>();
+	protected Map<CareerEnum, Integer> careersMapChoosed = new HashMap<>();
 	protected SocialOriginEnum socialOriginEnum;
-	protected CarreerEnum carrerChoosed;
+	protected CareerEnum carrerChoosed;
 
 	protected CaracteristicSpeciesModifiers caracteristicsModifiers = new CaracteristicSpeciesModifiers();
 	protected SkillsSpeciesModifiers skillsModifiers = new SkillsSpeciesModifiers();
@@ -325,25 +325,25 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		skillsToLearn.add(SkillEnum.TRACKING);
 	}
 
-	protected void defineCarrerAndHobbiesPointsWithoutMystic(Character character) {
+	protected void defineCareerAndHobbiesPointsWithoutMystic(Character character) {
 		character.setCaracteristicsMap(this.caracteristicsMap);
-		this.carrerChoosed = CarreerEnum.random();
-		while (CarreerEnum.MYSTIC == this.carrerChoosed) {
-			this.carrerChoosed = CarreerEnum.random();
+		this.carrerChoosed = CareerEnum.random();
+		while (CareerEnum.MYSTIC == this.carrerChoosed) {
+			this.carrerChoosed = CareerEnum.random();
 		}
-		this.hobbiesPoints = CarreerEnum.getHobbiesPoints(carrerChoosed, character);
-		// Add first CarreerEnum
-		carreersMapChoosed.put(carrerChoosed, 1);
-		character.setCarreersMap(carreersMapChoosed);
+		this.hobbiesPoints = CareerEnum.getHobbiesPoints(carrerChoosed, character);
+		// Add first careerEnum
+		careersMapChoosed.put(carrerChoosed, 1);
+		character.setCareersMap(careersMapChoosed);
 	}
 
-	protected void defineCarrerAndHobbiesPointsWithoutMystic(Character character, Archetype archetype) {
+	protected void defineCareerAndHobbiesPointsWithoutMystic(Character character, Archetype archetype) {
 		character.setCaracteristicsMap(archetype.getArchetype().getCaracteristicsMap());
-		this.carrerChoosed = archetype.getArchetype().getMainCarreer();
-		this.hobbiesPoints = CarreerEnum.getHobbiesPoints(carrerChoosed, character);
-		// Add first CarreerEnum
-		carreersMapChoosed.put(carrerChoosed, 1);
-		character.setCarreersMap(carreersMapChoosed);
+		this.carrerChoosed = archetype.getArchetype().getMaincareer();
+		this.hobbiesPoints = CareerEnum.getHobbiesPoints(carrerChoosed, character);
+		// Add first careerEnum
+		careersMapChoosed.put(carrerChoosed, 1);
+		character.setCareersMap(careersMapChoosed);
 	}
 
 	@Override

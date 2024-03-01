@@ -27,12 +27,12 @@ import static moon.adn.code.model.character.specializations.SpecializationEnum.S
 
 import moon.adn.code.model.archetypes.AbstractArchetype;
 import moon.adn.code.model.character.caracteristics.CaractValues;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 abstract class AbstractGeneralArchetype extends AbstractArchetype {
 
 	public AbstractGeneralArchetype(int carrerLevel) {
-		super(CarreerEnum.GENERAL, carrerLevel);
+		super(CareerEnum.GENERAL, carrerLevel);
 	}
 
 	public void initCaracteristics() {

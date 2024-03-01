@@ -14,7 +14,7 @@ import moon.adn.code.model.character.caracteristics.CaractValues;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.identity.JobEnum;
 import moon.adn.code.model.character.skills.SkillEnum;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 import moon.adn.code.model.character.specializations.SpecializationEnum;
 
 /**
@@ -27,20 +27,20 @@ import moon.adn.code.model.character.specializations.SpecializationEnum;
 public abstract class AbstractArchetype implements Archetype {
 	protected Random random = new Random();
 	protected int carrerLevel = 1;
-	protected CarreerEnum mainCarreer;
+	protected CareerEnum maincareer;
 	protected JobEnum job;
 
-	protected Map<CarreerEnum, Integer> carreersMap = new TreeMap<>();
+	protected Map<CareerEnum, Integer> careersMap = new TreeMap<>();
 	protected Map<CaracteristicEnum, CaractValues> caracteristicsMap = new TreeMap<>();
 	protected Set<SkillEnum> skillsToLearn = new HashSet<>();
 	protected Set<SpecializationEnum> specializationsToLearn = new HashSet<>();
 
-	private AbstractArchetype(CarreerEnum mainCarreer) {
-		this.mainCarreer = mainCarreer;
+	private AbstractArchetype(CareerEnum maincareer) {
+		this.maincareer = maincareer;
 	}
 
-	protected AbstractArchetype(CarreerEnum mainCarreer, int carrerLevel) {
-		this(mainCarreer);
+	protected AbstractArchetype(CareerEnum maincareer, int carrerLevel) {
+		this(maincareer);
 		this.carrerLevel = carrerLevel;
 	}
 
@@ -79,7 +79,7 @@ public abstract class AbstractArchetype implements Archetype {
 	}
 
 	protected void initRandomValues() {
-		job = JobEnum.randomJobUsingRules(mainCarreer);
+		job = JobEnum.randomJobUsingRules(maincareer);
 		initCaracteristics();
 	}
 }

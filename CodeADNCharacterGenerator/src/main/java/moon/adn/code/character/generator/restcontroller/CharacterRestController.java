@@ -33,7 +33,7 @@ import moon.adn.code.model.character.history.CharacterHistoryGenerator;
 import moon.adn.code.model.character.history.raec.RAEC;
 import moon.adn.code.model.character.history.raec.RAECProcedure;
 import moon.adn.code.model.character.identity.SpeciesEnum;
-import moon.adn.code.model.character.specializations.CarreerEnum;
+import moon.adn.code.model.character.specializations.CareerEnum;
 
 /**
  * Controler for Character API.
@@ -71,14 +71,14 @@ public class CharacterRestController
 
 	@Override
 	@GetMapping(ARCHETYPE_CHARACTER_PATH + CAREER_PARAMETERS_PATH)
-	public Character createFromArchetype(@PathVariable(name = "career", required = false) CarreerEnum carreer) {
-		return generateFromArchetype(carreer);
+	public Character createFromArchetype(@PathVariable(name = "career", required = false) CareerEnum career) {
+		return generateFromArchetype(career);
 	}
 
 	@Override
 	@GetMapping(ARCHETYPE_CHARACTER_PATH + SPECIES_PARAMETERS_PATH + CAREER_PARAMETERS_PATH)
 	public Character createFromSpeciesAndArchetype(@PathVariable(name = "species", required = true) SpeciesEnum species,
-			@PathVariable(name = "career", required = false) CarreerEnum career) {
+			@PathVariable(name = "career", required = false) CareerEnum career) {
 		return generateFromSpeciesAndArchetype(species, career);
 	}
 
@@ -187,26 +187,26 @@ public class CharacterRestController
 		return character;
 	}
 
-	private Character generateFromSpeciesAndArchetype(SpeciesEnum species, CarreerEnum career) {
+	private Character generateFromSpeciesAndArchetype(SpeciesEnum species, CareerEnum career) {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		Set<SpeciesEnum> speciesSet = new HashSet<>();
 		speciesSet.add(species);
 		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
 		if (null == career) {
-			career = CarreerEnum.random();
+			career = CareerEnum.random();
 		}
 		Character character = characterBuilder
-				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(career).getArchetype());
+				.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
 		return character;
 	}
 
-	private Character generateFromArchetype(CarreerEnum career) {
+	private Character generateFromArchetype(CareerEnum career) {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		if (null == career) {
-			career = CarreerEnum.random();
+			career = CareerEnum.random();
 		}
 		Character character = characterBuilder
-				.buildFromArchetype(ArchetypeEnum.randomFromCarreer(career).getArchetype());
+				.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
 		return character;
 	}
 

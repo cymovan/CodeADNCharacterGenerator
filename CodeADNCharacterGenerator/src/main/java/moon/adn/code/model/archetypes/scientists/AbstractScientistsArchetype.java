@@ -23,7 +23,7 @@ import static moon.adn.code.model.character.skills.SkillEnum.MATH;
 import static moon.adn.code.model.character.skills.SkillEnum.PHYSIC;
 import static moon.adn.code.model.character.skills.SkillEnum.SEE;
 import static moon.adn.code.model.character.skills.SkillEnum.SMELLING;
-import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CareerEnum.SCIENTIST;
 import static moon.adn.code.model.character.specializations.SpecializationEnum.KNOCK_OUT;
 
 import moon.adn.code.model.archetypes.AbstractArchetype;
