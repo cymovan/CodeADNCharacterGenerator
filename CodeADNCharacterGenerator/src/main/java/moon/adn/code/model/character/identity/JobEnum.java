@@ -15,7 +15,9 @@ import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import lombok.Getter;
@@ -63,9 +65,9 @@ public enum JobEnum implements I18N {
 	ACTOR(ENTERTAINMENT), ARTIST(ENTERTAINMENT), DIGITAL_ARTIST(ENTERTAINMENT), VIDEO_GAME_DEV(ENTERTAINMENT),
 	ENTERTAINMENT_TECH(ENTERTAINMENT), ENTERTAINMENT_EMPLOYEE(ENTERTAINMENT), SOUND_ENGINEER(ENTERTAINMENT),
 	SINGER(ENTERTAINMENT), DANCER(ENTERTAINMENT), MUSICIAN(ENTERTAINMENT), WRITER(ENTERTAINMENT),
-	REALITY_TV_CELEBRITY(ENTERTAINMENT), INFLUENCER(ENTERTAINMENT), e(ENTERTAINMENT),
-	JOURNALIST(ENTERTAINMENT), TV_REPORTER(ENTERTAINMENT), TV_PRESENTER(ENTERTAINMENT),
-	TV_SPORTS_REPORTER(ENTERTAINMENT), ON_SITE_CORRESPONDANT(ENTERTAINMENT), MODEL(ENTERTAINMENT), STAR(ENTERTAINMENT),
+	REALITY_TV_CELEBRITY(ENTERTAINMENT), INFLUENCER(ENTERTAINMENT), e(ENTERTAINMENT), JOURNALIST(ENTERTAINMENT),
+	TV_REPORTER(ENTERTAINMENT), TV_PRESENTER(ENTERTAINMENT), TV_SPORTS_REPORTER(ENTERTAINMENT),
+	ON_SITE_CORRESPONDANT(ENTERTAINMENT), MODEL(ENTERTAINMENT), STAR(ENTERTAINMENT),
 
 	// Government jobs
 	PUCHASING(GOVERNMENT), LEGAL_AFFAIRS(GOVERNMENT), URBAN_PLANNING(GOVERNMENT), REAL_ESTATES(GOVERNMENT),
@@ -81,6 +83,8 @@ public enum JobEnum implements I18N {
 
 	private @Getter JobCategoryEnum jobCategory;
 	private @Getter CarreerEnum carreerEnum = CarreerEnum.GENERAL;
+	private static Map<CarreerEnum, List<JobEnum>> mapOfJobFromCarrer = new HashMap<>();
+	private static Map<JobCategoryEnum, List<JobEnum>> mapOfJobFromJobCategory = new HashMap<>();
 
 	private static Random random = new Random();
 
@@ -108,20 +112,41 @@ public enum JobEnum implements I18N {
 		this.carreerEnum = carreer;
 	}
 
+	// Optimization : Initialize the map of CarreerEnum / List<JobEnum>
+	static {
+		for (JobEnum job : JobEnum.values()) {
+			CarreerEnum carrerEnum = job.getCarreerEnum();
+			List<JobEnum> jobList = mapOfJobFromCarrer.get(carrerEnum);
+			if (null == jobList) {
+				jobList = new ArrayList<>();
+			}
+			jobList.add(job);
+			mapOfJobFromCarrer.put(carrerEnum, jobList);
+		}
+	}
+
+	// Optimization : Initialize the map of JobCategory / List<JobEnum>
+	static {
+		for (JobEnum job : JobEnum.values()) {
+			JobCategoryEnum jobCategoryEnum = job.getJobCategory();
+			List<JobEnum> jobList = mapOfJobFromJobCategory.get(jobCategoryEnum);
+			if (null == jobList) {
+				jobList = new ArrayList<>();
+			}
+			jobList.add(job);
+			mapOfJobFromJobCategory.put(jobCategoryEnum, jobList);
+		}
+	}
+
 	public static JobEnum randomJob() {
 		return values()[random.nextInt(values().length)];
 	}
 
 	public static JobEnum randomJobUsingRules(CarreerEnum carreer) {
-		List<JobEnum> jobsListFromCarrer = new ArrayList<>();
-		for (JobEnum job : JobEnum.values()) {
-			if (job.carreerEnum == carreer) {
-				jobsListFromCarrer.add(job);
-			}
-		}
+		List<JobEnum> jobsListFromCarrer = mapOfJobFromCarrer.get(carreer);
 		// No Job for MYSTIC
 		// TODO : Evolution when MYSTIC jobs defined.
-		if(jobsListFromCarrer.size()==0) {
+		if (null == jobsListFromCarrer || jobsListFromCarrer.size() == 0) {
 			return null;
 		}
 		Collections.shuffle(jobsListFromCarrer);
@@ -176,13 +201,7 @@ public enum JobEnum implements I18N {
 	}
 
 	private static List<JobEnum> listFromCategory(JobCategoryEnum jobCategory) {
-		List<JobEnum> list = new ArrayList<>();
-		for (JobEnum job : values()) {
-			if (job.jobCategory == jobCategory) {
-				list.add(job);
-			}
-		}
-		return list;
+		return mapOfJobFromJobCategory.get(jobCategory);
 	}
 
 	@Override
