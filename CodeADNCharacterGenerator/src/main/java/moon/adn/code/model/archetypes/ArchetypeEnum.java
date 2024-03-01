@@ -2,6 +2,7 @@ package moon.adn.code.model.archetypes;
 
 import static moon.adn.code.model.character.specializations.CarreerEnum.FIGHTER;
 import static moon.adn.code.model.character.specializations.CarreerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CarreerEnum.SPY;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +27,7 @@ import moon.adn.code.model.character.specializations.CarreerEnum;
 public enum ArchetypeEnum {
 	SOLO(FIGHTER, new SoloArchetype()), RONIN(FIGHTER, new RoninArchetype()),
 	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()),
-	NETRUNNER(CarreerEnum.SPY, new NetRunnerArchetype()), FIXER(CarreerEnum.SPY, new FixerArchetype());
+	NETRUNNER(SPY, new NetRunnerArchetype()), FIXER(SPY, new FixerArchetype());
 
 	private static Random random = new Random();
 
