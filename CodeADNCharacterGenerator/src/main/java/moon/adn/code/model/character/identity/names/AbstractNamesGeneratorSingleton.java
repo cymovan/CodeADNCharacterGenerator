@@ -1,7 +1,7 @@
 package moon.adn.code.model.character.identity.names;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,7 +12,6 @@ import java.util.TreeSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
 
 import moon.adn.code.model.character.identity.SexEnum;
 
@@ -75,21 +74,19 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 		if (classPathFile == null) {
 			return names;
 		}
-		File file = null;
-		Scanner scanner = null;
-		try {
-			file = new ClassPathResource(classPathFile).getFile();
-			scanner = new Scanner(file);
+
+		// Utilisation de ClassLoader pour charger le fichier depuis le classpath
+		try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(classPathFile);
+				Scanner scanner = new Scanner(inputStream)) {
+
 			while (scanner.hasNextLine()) {
 				names.add(scanner.nextLine());
 			}
 		} catch (IOException e) {
-			LOG.error(e.toString(), e);
-		} finally {
-			if (null != scanner) {
-				scanner.close();
-			}
+			// Gérer l'exception ici
+			e.printStackTrace();
 		}
+
 		return names;
 	}
 
