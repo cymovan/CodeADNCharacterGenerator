@@ -7,5 +7,5 @@
 	<h1 class="text-light" th:if="${errorParam} != null" th:text="#{''+${errorParam}}"></h1>
 	<h1 class="text-light" th:if="${errorParam} == null" th:text="#{error.other}"></h1>
 	<div th:replace="~{fragments/footer :: footer}"></div>
-</body>1
+</body>
 </html>
