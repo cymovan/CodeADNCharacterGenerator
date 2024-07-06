@@ -14,6 +14,7 @@ Launch your browser and look at the swagger API in https://localhost:8080/swagge
 ```shell
   git clone https://github.com/cymovan/CodeADNCharacterGenerator.git
   cd CodeADNCharacterGenerator/CodeADNCharacterGenerator
+  mvn install
   java -jar target/CharacterGenerator-0.0.1-SNAPSHOT.jar &
   firefox http://localhost:8080/swagger-ui.html &
 ```
