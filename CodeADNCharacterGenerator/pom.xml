@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>moon.adn.code</groupId>
 	<artifactId>CharacterGenerator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>CodeADNCharacterGenerator</name>
 	<description>Character Generator Services for Code ADN</description>
 	<properties>

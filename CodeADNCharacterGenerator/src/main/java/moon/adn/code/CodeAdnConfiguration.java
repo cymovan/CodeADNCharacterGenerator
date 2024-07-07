@@ -1,5 +1,7 @@
 package moon.adn.code;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import jakarta.annotation.PostConstruct;
+import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.identity.names.DarkElvesNamesGeneratorSingleton;
 import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton;
 import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
@@ -36,6 +39,11 @@ public class CodeAdnConfiguration {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(Locale.FRENCH);
 		return resolver;
+	}
+
+	@Bean
+	List<CaracteristicEnum> caracteristicsEnumsList() {
+		return Arrays.asList(CaracteristicEnum.values());
 	}
 
 	@PostConstruct

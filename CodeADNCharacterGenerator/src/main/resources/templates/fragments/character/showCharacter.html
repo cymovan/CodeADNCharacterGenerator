@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block th:fragment="character_sheet">
+		<div id="character" th:if="${session_character}"
+			th:with="char = ${session_character}"
+			th:value="${char.identity.name}"
+			class="container text-light">
+			<h1 class="text-primary" th:text="#{web.charactersheet.title}"></h1>
+			<div id="identity" class="container highlight">
+				<div class="row">
+					<div class="col">
+						<div th:text="#{character.name}"></div>
+						<div th:text="#{character.age}"></div>
+						<div th:text="#{character.gender}"></div>
+						<div th:text="#{character.species}"></div>
+						<div th:text="#{character.hair}"></div>
+						<div th:text="#{character.eyes}"></div>
+						<div th:text="#{character.job}"></div>
+					</div>
+					<div class="col">
+						<div th:text="${char.identity.name}"></div>
+						<div th:text="${char.identity.age}"></div>
+						<div th:text="#{'sex.' + ${char.identity.sex}}"></div>
+						<div th:text="#{'species.' + ${char.identity.species}}"></div>
+						<div th:text="#{'hair.' + ${char.identity.hairColor}}"></div>
+						<div th:text="#{'eyes.' + ${session_character.identity.eyeColor}}"></div>
+						<div th:text="#{'job.' + ${char.identity.job}}"></div>
+					</div>
+				</div>
+			</div>
+			<div id="caracteristics" class="container">
+				<div class="row">
+					<!-- Iterate over each characteristicsEnum -->
+					<div class="col-sm-3"
+						th:each="caracEnum, iterStat : ${caracteristicsEnum}">
+						<!-- Create a new row after every 4 characteristics -->
+						<div class="row" th:if="${iterStat.index % 4 == 0}">
+							<!--/* This row creates a new line after every 4 characteristics */-->
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<span th:id="'label_' + ${caracEnum}" th:text="#{caract.__${caracEnum}__}"></span>
+								<span th:text="${char.caracteristicsMap['__${caracEnum}__'].currentValue}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+</body>
+</html>

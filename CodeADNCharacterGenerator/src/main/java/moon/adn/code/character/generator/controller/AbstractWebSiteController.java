@@ -1,7 +1,10 @@
 package moon.adn.code.character.generator.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.Getter;
+import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
 /**
  * Template for all websites pages.
@@ -29,6 +34,12 @@ public abstract class AbstractWebSiteController {
 
 	protected static final String URL_HOME = "/";
 	public static final String URL_CHARACTERS = "/characters";
+
+	public static final String APPLICATION_CARACTERISTICS_ENUMS = "caracteristicsEnum";
+
+	@Autowired
+	@Getter
+	private List<CaracteristicEnum> characteristicsEnums;
 
 	/**
 	 * Default controller.
