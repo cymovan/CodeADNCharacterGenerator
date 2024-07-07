@@ -20,18 +20,30 @@
 					</div>
 					<form th:action="@{/generate}" th:object="${characterFormVO}"
 						method="post">
-						<!-- 						th:object="${characterForm}"> -->
 						<div class="modal-body">
 							<div class="form-group">
-								<!-- 								<label for="species" th:text="#{modal.formgroup.species}"></label> -->
-								<!-- 								<select -->
-								<!-- 									class="form-control" id="species" name="species" -->
-								<!-- 									th:field="*{speciesEnum}"> -->
+								<fieldset>
+									<legend th:text="#{modal.legend.archetypes}"></legend>
+									<div class="container">
+										<div class="row">
+											<th:block th:each="archetype, index : ${archetypesList}">
+												<div class="col-sm">
+													<input type="checkbox" name="archetypes" th:id="${archetype.name}"
+														th:value="${archetype.name}"> <label
+														th:for="${archetype.name}"
+														th:text="#{'archetypes.' + ${archetype.name}}"></label>
+												</div>
+											</th:block>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="form-group">
 								<fieldset>
 									<legend th:text="#{modal.legend.species}"></legend>
 									<div class="container">
 										<div class="row">
-											<th:block th:each="spec, index : ${species}">
+											<th:block th:each="spec, index : ${speciesList}">
 												<div class="col-sm">
 													<input type="checkbox" name="species" th:id="${spec.name}"
 														th:value="${spec.name}"> <label
@@ -43,13 +55,21 @@
 									</div>
 								</fieldset>
 							</div>
-							<!-- 							<div class="form-group"> -->
-							<!-- 								<label for="sex">Sex</label> <select class="form-control" -->
-							<!-- 									id="sex" name="sex" th:field="*{sex}"> -->
-							<!-- 									<option value="MALE">Male</option> -->
-							<!-- 									<option value="FEMALE">Female</option> -->
-							<!-- 								</select> -->
-							<!-- 							</div> -->
+							<div class="form-group">
+								<fieldset>
+									<legend th:text=#{modal.legend.sex}></legend>
+									<div class="container">
+										<div class="row">
+											<div class="col-sm">
+												<select id="sex" name="sex" class="form-control">
+													<option th:value="null" th:text="none"></option>
+													<option th:each="gender : ${gendersList}" th:value="${gender}"
+														th:text="#{${gender.i18nKey()}}"></option>
+												</select>
+											</div>
+										</div>
+								</fieldset>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
