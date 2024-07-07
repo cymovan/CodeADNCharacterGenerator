@@ -18,5 +18,5 @@ Launch your browser and look at :
   cd CodeADNCharacterGenerator/CodeADNCharacterGenerator
   mvn clean install
   java -jar target/CharacterGenerator-0.0.2-SNAPSHOT.jar &
-  firefox http://localhost:8080/swagger-ui.html &
+  firefox http://localhost:8080 &
 ```
