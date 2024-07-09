@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.identity;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
@@ -10,7 +10,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
 class CaracteristicModifiersHelper {
 	public static CaracteristicSpeciesModifiers humanModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.LUCK, new CaracteristicsModifier(2));
 		CaracteristicSpeciesModifiers csm = new CaracteristicSpeciesModifiers();
 		csm.setModifiersMap(modifiersMap);
@@ -18,7 +18,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers urbanElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
@@ -29,7 +29,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers sylvanElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(2));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
@@ -44,7 +44,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers paleElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
@@ -59,7 +59,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers greyElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.LUCK, new CaracteristicsModifier(1));
@@ -72,7 +72,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers goldElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(2));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
@@ -86,7 +86,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers nightElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(2));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
@@ -98,7 +98,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers aquaticElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
 		modifiersMap.put(CaracteristicEnum.STR, new CaracteristicsModifier(-1));
@@ -110,7 +110,7 @@ class CaracteristicModifiersHelper {
 	}
 
 	public static CaracteristicSpeciesModifiers darkElfModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(1));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(-1));
 		modifiersMap.put(CaracteristicEnum.EMP, new CaracteristicsModifier(-1));
@@ -121,9 +121,9 @@ class CaracteristicModifiersHelper {
 		csm.setModifiersMap(modifiersMap);
 		return csm;
 	}
-	
+
 	public static CaracteristicSpeciesModifiers ironBararModifiers() {
-		Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.AG, new CaracteristicsModifier(-1));
 		modifiersMap.put(CaracteristicEnum.BT, new CaracteristicsModifier(-2));
 		modifiersMap.put(CaracteristicEnum.CON, new CaracteristicsModifier(2));

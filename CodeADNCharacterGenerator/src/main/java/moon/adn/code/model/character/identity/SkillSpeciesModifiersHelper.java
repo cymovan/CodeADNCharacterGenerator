@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.identity;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import moon.adn.code.model.character.builder.Modifier;
@@ -9,7 +9,7 @@ import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
 
 public class SkillSpeciesModifiersHelper {
 	static SkillsSpeciesModifiers urbanElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.BIO, new Modifier(-1));
 		modifiersMap.put(SkillEnum.INVEST, new Modifier(1));
 		modifiersMap.put(SkillEnum.READ_SELENITE, new Modifier(2));
@@ -29,7 +29,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers sylvanElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.BOTA, new Modifier(2));
 		modifiersMap.put(SkillEnum.MINERALS, new Modifier(-2));
 		modifiersMap.put(SkillEnum.RIFFLES, new Modifier(-1));
@@ -46,7 +46,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers paleElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.BOTA, new Modifier(3));
 		modifiersMap.put(SkillEnum.MINERALS, new Modifier(-3));
 		modifiersMap.put(SkillEnum.CODING, new Modifier(-2));
@@ -67,7 +67,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers greyElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.ASTRONOMY, new Modifier(-2));
 		modifiersMap.put(SkillEnum.BOTA, new Modifier(2));
 		modifiersMap.put(SkillEnum.MINERALS, new Modifier(-2));
@@ -91,7 +91,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers goldElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.BOTA, new Modifier(3));
 		modifiersMap.put(SkillEnum.BOWS, new Modifier(2));
 		modifiersMap.put(SkillEnum.CYBER_TECH, new Modifier(-5));
@@ -106,7 +106,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers nightElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.ASTRONOMY, new Modifier(2));
 		modifiersMap.put(SkillEnum.ORIENTATION, new Modifier(1));
 		modifiersMap.put(SkillEnum.STAMINA, new Modifier(3));
@@ -122,7 +122,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers aquaticElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.ASTRONOMY, new Modifier(-3));
 		modifiersMap.put(SkillEnum.LISTEN, new Modifier(2));
 		modifiersMap.put(SkillEnum.SMELLING, new Modifier(-1));
@@ -137,7 +137,7 @@ public class SkillSpeciesModifiersHelper {
 	}
 
 	static SkillsSpeciesModifiers darkElfSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.EDUCATION, new Modifier(-2));
 		modifiersMap.put(SkillEnum.LISTEN, new Modifier(1));
 		modifiersMap.put(SkillEnum.ORIENTATION, new Modifier(1));
@@ -153,9 +153,9 @@ public class SkillSpeciesModifiersHelper {
 		ssm.setModifiersMap(modifiersMap);
 		return ssm;
 	}
-	
+
 	static SkillsSpeciesModifiers ironBararSkills() {
-		Map<SkillEnum, Modifier> modifiersMap = new HashMap<>();
+		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.ASTRONOMY, new Modifier(-5));
 		modifiersMap.put(SkillEnum.BIO, new Modifier(-2));
 		modifiersMap.put(SkillEnum.BOTA, new Modifier(-4));

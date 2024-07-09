@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.builder;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import lombok.Getter;
@@ -19,8 +19,8 @@ import moon.adn.code.model.character.skills.SkillValues;
  */
 public class SocialOriginSkillsHelper {
 	private static final int NO_EDUCATION = 0;
-	
-	public @Getter Map<SkillEnum, SkillValues> initSkillMap = new HashMap<>();
+
+	public @Getter Map<SkillEnum, SkillValues> initSkillMap = new EnumMap<>(SkillEnum.class);
 
 	public void initSocialSkills(SocialOriginEnum socialOrigin) {
 		switch (socialOrigin) {

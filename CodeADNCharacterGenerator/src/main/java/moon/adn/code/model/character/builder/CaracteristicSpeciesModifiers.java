@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.builder;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import lombok.Getter;
@@ -16,5 +16,5 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 @Getter
 @Setter
 public class CaracteristicSpeciesModifiers {
-	private Map<CaracteristicEnum, Modifier> modifiersMap = new HashMap<>();
+	private Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 }
