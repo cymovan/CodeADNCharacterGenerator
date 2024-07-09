@@ -84,7 +84,6 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 
 		cp.setSex(characterFormVo.getSex());
 		AbstractCharacter character = characterRestController.createParametrizedCharacter(cp);
-		logger.debug(character.toString());
 
 		// Redirection
 		model.addAttribute(SESSION_CHARACTER_ATTRIBUTE, character);

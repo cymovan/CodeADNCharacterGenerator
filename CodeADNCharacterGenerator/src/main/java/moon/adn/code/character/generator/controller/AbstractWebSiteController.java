@@ -70,12 +70,11 @@ public abstract class AbstractWebSiteController {
 		if (status != null) {
 			Integer statusCode = Integer.valueOf(status.toString());
 			if (statusCode == HttpStatus.NOT_FOUND.value() || statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-				logger.error(errorI18n);
 				errorI18n = I18N_ERROR_ROOT + statusCode;
 			} else {
-				System.out.println("Test autre" + statusCode);
 				errorI18n = I18N_ERROR_ROOT + I18N_ERROR_OTHER;
 			}
+			logger.error(errorI18n);
 		}
 		modelMap.addAttribute(ERROR_CODE_VAR, errorI18n);
 		return new ModelAndView(ERROR_VIEW, modelMap);

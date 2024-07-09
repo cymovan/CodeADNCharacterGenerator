@@ -20,7 +20,7 @@ public class CommonLoggerAspect {
 
 		long executionTime = System.currentTimeMillis() - start;
 
-		logger.debug(joinPoint.getSignature() + " executed in " + executionTime + "ms");
+		logger.debug("{} executed in {} ms", joinPoint.getSignature(), executionTime);
 		return proceed;
 	}
 }

@@ -52,7 +52,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
  */
 @Getter
 @Setter
-public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter> implements CharacterGenerator<Clazz> {
+public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> implements CharacterGenerator<T> {
 	protected final Logger logger = LoggerFactory.getLogger(AbstractCharacterGenerator.class);
 
 	protected static Random random = new SecureRandom();
@@ -91,7 +91,8 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	protected void applySpeciesModifiers() {
 		Map<CaracteristicEnum, Modifier> map = caracteristicsModifiers.getModifiersMap();
-		for (CaracteristicEnum caract : map.keySet()) {
+		for (Map.Entry<CaracteristicEnum, Modifier> entry : map.entrySet()) {
+			CaracteristicEnum caract = entry.getKey();
 			CaractValues value = caracteristicsMap.get(caract);
 			value.applyCaractModifier(map.get(caract));
 		}
@@ -99,7 +100,8 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		if (null != skillsModifiers) {
 			int initValue = 0;
 			Map<SkillEnum, Modifier> mapSkill = skillsModifiers.getModifiersMap();
-			for (SkillEnum skill : mapSkill.keySet()) {
+			for (Map.Entry<SkillEnum, Modifier> entry : mapSkill.entrySet()) {
+				SkillEnum skill = entry.getKey();
 				Modifier modifier = mapSkill.get(skill);
 				SkillValues values = skillsMap.get(skill);
 				if (null != values) {
@@ -116,12 +118,12 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	}
 
 	protected Identity generateIdentity() {
-		Identity identity = new Identity();
+		Identity tempIdentity = new Identity();
 
 		if (archetype != null) {
-			identity.setJob(archetype.getArchetype().getJob());
+			tempIdentity.setJob(archetype.getArchetype().getJob());
 		} else if (null != carrerChoosed) {
-			identity.setJob(JobEnum.randomJobUsingRules(carrerChoosed));
+			tempIdentity.setJob(JobEnum.randomJobUsingRules(carrerChoosed));
 		}
 
 		// Species
@@ -135,37 +137,37 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		}
 
 		// Sex
-		identity.setSpecies(species);
+		tempIdentity.setSpecies(species);
 		if (selectedSex.isPresent()) {
-			identity.setSex(selectedSex.get());
+			tempIdentity.setSex(selectedSex.get());
 		} else {
-			identity.setSex(SexEnum.random());
+			tempIdentity.setSex(SexEnum.random());
 		}
 
 		// Random Age.
 		if (SpeciesEnum.HUMAN == species) {
-			identity.setAge(random.nextInt(25, 52));
+			tempIdentity.setAge(random.nextInt(25, 52));
 		} else {
-			identity.setAge(random.nextInt(35, 100));
+			tempIdentity.setAge(random.nextInt(35, 100));
 		}
 
 		// Random Name
-		identity.setName(species.getNamesGenerator().generateCompleteName(identity.getSex()));
+		tempIdentity.setName(species.getNamesGenerator().generateCompleteName(tempIdentity.getSex()));
 
 		// Eyes Color
 		List<EyesColorEnum> eyesColorsList = EyesColorEnum.getSpeciesEyeColorsList(species);
 		Collections.shuffle(eyesColorsList);
-		identity.setEyeColor(eyesColorsList.stream().findFirst().orElse(null));
+		tempIdentity.setEyeColor(eyesColorsList.stream().findFirst().orElse(null));
 
 		// Hairs Color
 		List<HairColourEnum> hairColorlist = HairColourEnum.getSpeciesHairColorsList(species);
 		Collections.shuffle(hairColorlist);
-		identity.setHairColor(hairColorlist.stream().findFirst().orElse(null));
+		tempIdentity.setHairColor(hairColorlist.stream().findFirst().orElse(null));
 
 		// Social Origin
 		socialOriginEnum = SocialOriginEnum.randomSocialOrigin();
-		identity.setSocialOrigin(socialOriginEnum.getSocialOriginValue());
-		return identity;
+		tempIdentity.setSocialOrigin(socialOriginEnum.getSocialOriginValue());
+		return tempIdentity;
 	}
 
 	protected void caracteristicSpeciesModifiers() {
@@ -185,9 +187,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		skillsMap = socOriginHelp.getInitSkillMap();
 	}
 
-	public abstract Clazz build();
-
-	public Clazz buildFromArchetype(Archetype archetype) {
+	public T buildFromArchetype(Archetype archetype) {
 		// TODO : A revoir.
 		return null;
 	}
@@ -197,7 +197,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	 * 
 	 * @param character
 	 */
-	protected void commonBuild(Clazz character) {
+	protected void commonBuild(T character) {
 		// Build character using creation rules.
 		this.setIdentity(generateIdentity());
 		caracteristicSpeciesModifiers();
@@ -216,7 +216,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		}
 	}
 
-	protected void commonBuildWithTemplate(Clazz character, Archetype archetype) {
+	protected void commonBuildWithTemplate(T character, Archetype archetype) {
 		caracteristicsMap = archetype.getArchetype().getCaracteristicsMap();
 		for (SkillEnum skill : archetype.getArchetype().getSkillsToLearn()) {
 			skillsMap.put(skill, new SkillValues());
@@ -225,7 +225,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		commonBuild(character);
 	}
 
-	protected void populateFromSkillToLearn(Clazz character) {
+	protected void populateFromSkillToLearn(T character) {
 		for (Iterator<SkillEnum> iterator = skillsToLearn.iterator(); iterator.hasNext();) {
 			SkillEnum skillEnum = iterator.next();
 			SkillValues value = character.getSkillsMap().get(skillEnum);
@@ -281,12 +281,12 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 						skillsPoints = 0;
 					}
 					int score = currentValue + choice;
-					logger.debug(identity.getName() + ": " + skill + " : " + currentValue + " - random : " + choice);
+					logger.trace("{}: {} : {} - random : {}", identity.getName(), skill, currentValue, choice);
 					value.setCurrentScore(score);
 				}
 			}
 		}
-		logger.debug(identity.getName() + ": Nb Compétences : " + getSkillsMap().size());
+		logger.trace("{}: Nb Compétences : {}", identity.getName(), getSkillsMap().size());
 	}
 
 	private void addRandomSkill() {
@@ -300,7 +300,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		getSkillsMap().put(randomSkill, new SkillValues());
 	}
 
-	protected void spendHobbyPoints(Clazz character, int sPoints, int maxScore) {
+	protected void spendHobbyPoints(T character, int sPoints, int maxScore) {
 		initCommonUsefullSkillsToLearn();
 		populateFromSkillToLearn(character);
 		spendSkillsPoints(sPoints, maxScore);
@@ -348,7 +348,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	}
 
 	@Override
-	public Clazz buildFromParameters(CharacterParameters params) {
+	public T buildFromParameters(CharacterParameters params) {
 		throw new NotImplementedException("Not implemented yet !");
 	}
 }

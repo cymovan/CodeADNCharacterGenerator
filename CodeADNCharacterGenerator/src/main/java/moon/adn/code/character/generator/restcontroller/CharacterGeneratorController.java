@@ -12,58 +12,58 @@ import moon.adn.code.model.character.specializations.CareerEnum;
  * @author Cédric DELRUE
  *
  */
-public interface CharacterGeneratorController<Clazz extends AbstractCharacter> {
+public interface CharacterGeneratorController<T extends AbstractCharacter> {
 
 	/**
 	 * @return Standard {@link Character}
 	 */
-	Clazz createCharacter();
+	T createCharacter();
 
 	/**
 	 * @param career
 	 * @return Archetype {@link Character} from {@link CareerEnum}
 	 */
-	Clazz createFromArchetype(CareerEnum career);
+	T createFromArchetype(CareerEnum career);
 
 	/**
 	 * @param career
 	 * @return Archetype {@link Character} from {@link CareerEnum}
 	 */
-	Clazz createFromSpeciesAndArchetype(SpeciesEnum species, CareerEnum career);	
+	T createFromSpeciesAndArchetype(SpeciesEnum species, CareerEnum career);	
 	
 	/**
 	 * Only for tests
 	 * 
 	 * @return Human {@link Character} with good stats.
 	 */
-	Clazz createHumanCharacter();
+	T createHumanCharacter();
 	
 	/**
 	 * Only for tests
 	 * 
 	 * @return Elf {@link Character} with good stats.
 	 */
-	Clazz createElfCharacter();
+	T createElfCharacter();
 
-	Clazz createBararCharacter();
+	T createBararCharacter();
 
 	/**
 	 * @return {@link Character} with good stats.
 	 */
-	Clazz createHeroicCharacter();
+	T createHeroicCharacter();
 
 	/**
 	 * @return {@link Character} with weak attributes.
 	 */
-	Clazz createWeakCharacter();
+	T createWeakCharacter();
 
 	/**
 	 * @return {@link CharacterParameters} from selected parameters.
 	 */
-	Clazz createParametrizedCharacter(CharacterParameters params);
+	T createParametrizedCharacter(CharacterParameters params);
 	
 	/**
 	 * @return
 	 */
-	Clazz restoreCharacter();
+	T restoreCharacter();
 }

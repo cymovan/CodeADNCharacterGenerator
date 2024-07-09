@@ -16,6 +16,8 @@ import moon.adn.code.model.character.history.raec.RAEC;
 @Getter
 @Setter
 public class Character extends AbstractCharacter {
+	private static final long serialVersionUID = 4748345776060499846L;
+
 	private Map<Integer, HistoryEventValue> eventsMap = new TreeMap<>();
 	private Map<Integer, RAEC> raecMap = new TreeMap<>();
 }

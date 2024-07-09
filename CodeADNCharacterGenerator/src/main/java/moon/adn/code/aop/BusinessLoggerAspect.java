@@ -17,13 +17,13 @@ public class BusinessLoggerAspect {
 	public Object logAroundBusinessMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
-		logger.info("Start executing : " + className + "." + methodName);
+		logger.info("Start executing : {}.{}", className, methodName);
 
 		long start = System.currentTimeMillis();
 		Object proceed = joinPoint.proceed();
 		long executionTime = System.currentTimeMillis() - start;
 
-		logger.info("End   executing : " + className + "." + methodName + " in " + executionTime + "ms");
+		logger.info("End   executing : {}.{} in {} ms", className, methodName, executionTime);
 		return proceed;
 	}
 }
