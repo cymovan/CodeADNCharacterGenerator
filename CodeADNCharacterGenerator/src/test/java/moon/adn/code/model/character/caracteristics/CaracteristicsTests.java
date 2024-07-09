@@ -25,7 +25,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import moon.adn.code.model.character.builder.CaracteristicsModifier;
 
 @SpringBootTest
-public class CaracteristicsTests {
+class CaracteristicsTests {
 
 	private static final String MODIFIED_SCORE_ERRORS = "Modified Score errors";
 	private static final int INIT_SCORE = 0;
@@ -45,13 +45,13 @@ public class CaracteristicsTests {
 	private static final String MINIMUM_CARACT_VALUES_ERROR = "Minimum caractValues error";
 
 	@BeforeEach
-	public void initTests() {
+	void initTests() {
 		init.initCaracts();
 		init.initCaracteristicsMapValues();
 	}
 
 	@Test
-	public void thereAre12CaracteristicsAndPositionsAreCorrects() {
+	void thereAre12CaracteristicsAndPositionsAreCorrects() {
 		assertEquals(CaracteristicEnum.values().length, CARACTERISTICS_COUNT, "Bad caractEnum count");
 		for (CaracteristicEnum caract : CaracteristicEnum.values()) {
 			assertEquals(caract, mapCaracteristics.get(caract.getPosition()), "Bad CaracteristicEnum position");
@@ -59,7 +59,7 @@ public class CaracteristicsTests {
 	}
 
 	@Test
-	public void whenCreatingCaractValuesThenScoresAreCorrects() {
+	void whenCreatingCaractValuesThenScoresAreCorrects() {
 		CaractValues caractValues = new CaractValues();
 		assertEquals(INIT_SCORE, caractValues.getCreationValue(), CREATION_SCORE_CARACT_VALUES_ERROR);
 		assertEquals(INIT_SCORE, caractValues.getCurrentValue(), CURRENT_SCORE_CARACT_VALUES_ERROR);
@@ -68,7 +68,7 @@ public class CaracteristicsTests {
 	}
 
 	@Test
-	public void whenCreatingCaractValuesWithInitialScoreThenScoresAreCorrects() {
+	void whenCreatingCaractValuesWithInitialScoreThenScoresAreCorrects() {
 		int initScore = d10();
 		CaractValues caractValues = new CaractValues(initScore);
 		assertEquals(initScore, caractValues.getCreationValue(), CREATION_SCORE_CARACT_VALUES_ERROR);
@@ -78,7 +78,7 @@ public class CaracteristicsTests {
 	}
 
 	@Test
-	public void whenApplyingCaracteristicSpeciesModifiersThenScoresAreCorrects() {
+	void whenApplyingCaracteristicSpeciesModifiersThenScoresAreCorrects() {
 		int caractValue = 5;
 		int modifierValue = -1;
 		CaractValues caractValues = new CaractValues(caractValue);
@@ -91,7 +91,7 @@ public class CaracteristicsTests {
 	}
 
 	@Test
-	public void whenApplyingCaracteristicSpeciesModifiersBeyondMinDontGoUnderMinAndThenScoresAreCorrects() {
+	void whenApplyingCaracteristicSpeciesModifiersBeyondMinDontGoUnderMinAndThenScoresAreCorrects() {
 		int caractValue = 1;
 		int modifierValue = -3;
 		CaractValues caractValues = new CaractValues(caractValue);

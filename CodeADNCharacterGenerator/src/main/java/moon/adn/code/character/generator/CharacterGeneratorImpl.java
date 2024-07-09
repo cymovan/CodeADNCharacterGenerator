@@ -36,6 +36,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		return character;
 	}
 
+	@Override
 	public Character buildFromArchetype(Archetype archetype) {
 		Character character = new Character();
 		AbstractArchetype template = archetype.getArchetype();
@@ -65,7 +66,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		if (speciesSet != null) {
 			setSelectedSpeciesforRandom(speciesSet);
 		}
-		
+
 		SexEnum sex = params.getSex();
 		if (sex != null) {
 			setSelectedSex(Optional.of(params.getSex()));

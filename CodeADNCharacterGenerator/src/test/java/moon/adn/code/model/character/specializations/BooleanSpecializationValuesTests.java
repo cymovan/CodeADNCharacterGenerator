@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class BooleanSpecializationValuesTests {
+class BooleanSpecializationValuesTests {
 
 	private static final int CONTAINER_DEFAULT = 0;
 	private static final int SEGMENTS_DEFAULT = 0;
@@ -19,12 +19,12 @@ public class BooleanSpecializationValuesTests {
 	private BooleanSpecializationValues booleanSpecialization;
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		booleanSpecialization = new BooleanSpecializationValues();
 	}
 
 	@Test
-	public void whenBooleanSpecializationValuesAreCreatedValuesThenHAveOnly1BoxAndNotChecked() {
+	void whenBooleanSpecializationValuesAreCreatedValuesThenHAveOnly1BoxAndNotChecked() {
 		assertThat(booleanSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(booleanSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(booleanSpecialization.getMaxSegments()).isEqualTo(SEGMENTS_DEFAULT);
@@ -34,13 +34,13 @@ public class BooleanSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpBooleanSpecializationValuesThenItWorks() throws Exception {
+	void whenLevelUpBooleanSpecializationValuesThenItWorks() throws Exception {
 		booleanSpecialization.levelUp();
 		assertSpecializationValues(MAX_BOXES_DEFAULT);
 	}
 
 	@Test
-	public void whenLevelUpBooleanSpecializationValuesAreCreatedValuesThenItThrowsGoodException() throws Exception {
+	void whenLevelUpBooleanSpecializationValuesAreCreatedValuesThenItThrowsGoodException() throws Exception {
 		booleanSpecialization.levelUp();
 		Assertions.assertThrows(MaxBoxesReachedException.class, () -> booleanSpecialization.levelUp());
 	}

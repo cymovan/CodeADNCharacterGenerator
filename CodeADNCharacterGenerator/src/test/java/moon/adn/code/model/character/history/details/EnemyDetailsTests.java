@@ -13,12 +13,14 @@ import moon.adn.code.model.character.history.details.enemy.CulpritEnum;
 import moon.adn.code.model.character.history.details.enemy.EnemyDetails;
 
 @SpringBootTest
-public class EnemyDetailsTests {
-	private static final Pattern ROOT_I18N_THIRD_PARTY_PATTERN = Pattern.compile("^hist\\.enemy\\.thirdParty.*[0-1][0-9]$");
-	private static final Pattern ROOT_I18N_WHAT_HAPPENED_PATTERN = Pattern.compile("hist\\.enemy\\.whatHappened.*([0-1][0-9]|2[0-4])$");
+class EnemyDetailsTests {
+	private static final Pattern ROOT_I18N_THIRD_PARTY_PATTERN = Pattern
+			.compile("^hist\\.enemy\\.thirdParty.*[0-1][0-9]$");
+	private static final Pattern ROOT_I18N_WHAT_HAPPENED_PATTERN = Pattern
+			.compile("hist\\.enemy\\.whatHappened.*([0-1][0-9]|2[0-4])$");
 
 	@Test
-	public void whenInstanctiatingAnEnemyDetailsThenRulesAreRespected() {
+	void whenInstanctiatingAnEnemyDetailsThenRulesAreRespected() {
 		for (int i = 0; i < 15000; i++) {
 			EnemyDetails enemyDetails = EnemyDetails.random();
 			assertThat(enemyDetails.getDoYouknowHim()).isNotNull();

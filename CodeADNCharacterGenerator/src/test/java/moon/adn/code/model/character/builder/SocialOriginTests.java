@@ -16,7 +16,7 @@ import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillValues;
 
 @SpringBootTest
-public class SocialOriginTests {
+class SocialOriginTests {
 
 	private SocialOriginSkillsHelper socOrigHelper;
 	private SocialOriginEnum socialOrigin;
@@ -24,14 +24,14 @@ public class SocialOriginTests {
 	private Map<SkillEnum, SkillValues> socialOriginSkillsMapToCompare;
 
 	@BeforeEach
-	public void initTests() {
+	void initTests() {
 		socOrigHelper = new SocialOriginSkillsHelper();
 		socialOriginSkillsMap = new HashMap<>();
 		socialOriginSkillsMapToCompare = new HashMap<>();
 	}
 
 	@Test
-	public void whenAskingStreetOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingStreetOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = STREET;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -48,9 +48,9 @@ public class SocialOriginTests {
 		// addEntryToCompareMap(EXPERT_DRUGS, 2);
 		assertAllIsCorrect();
 	}
-	
+
 	@Test
-	public void whenAskingLowClassOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingLowClassOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = LOW_CLASS;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -67,7 +67,7 @@ public class SocialOriginTests {
 	}
 
 	@Test
-	public void whenAskingMiddleClassOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingMiddleClassOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = MIDDLE_CLASS;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -82,9 +82,9 @@ public class SocialOriginTests {
 		addEntryToCompareMap(MATH, 1);
 		assertAllIsCorrect();
 	}
-	
+
 	@Test
-	public void whenAskingUpperClassOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingUpperClassOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = UPPER_CLASS;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -101,7 +101,7 @@ public class SocialOriginTests {
 	}
 
 	@Test
-	public void whenAskingRichOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingRichOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = RICH;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -115,9 +115,9 @@ public class SocialOriginTests {
 		addEntryToCompareMap(EVAL, 2);
 		assertAllIsCorrect();
 	}
-	
+
 	@Test
-	public void whenAskingNaohmOriginSkillsThenTheyAreAsExpectedByRules() {
+	void whenAskingNaohmOriginSkillsThenTheyAreAsExpectedByRules() {
 		socialOrigin = NAOHM;
 		socOrigHelper.initSocialSkills(socialOrigin);
 		socialOriginSkillsMap = socOrigHelper.getInitSkillMap();
@@ -130,7 +130,7 @@ public class SocialOriginTests {
 		addEntryToCompareMap(MORAL_CODE_NAOHM, 2);
 		assertAllIsCorrect();
 	}
-	
+
 	private void addEntryToCompareMap(SkillEnum skill, int value) {
 		socialOriginSkillsMapToCompare.put(skill, new SkillValues(value));
 	}

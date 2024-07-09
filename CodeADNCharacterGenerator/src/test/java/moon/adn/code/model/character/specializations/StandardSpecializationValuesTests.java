@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class StandardSpecializationValuesTests {
+class StandardSpecializationValuesTests {
 
 	private static final int CONTAINER_DEFAULT = 0;
 	private static final int SEGMENTS_DEFAULT = 0;
@@ -19,12 +19,12 @@ public class StandardSpecializationValuesTests {
 	private StandardSpecializationValues standardSpecialization;
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		standardSpecialization = new StandardSpecializationValues();
 	}
 	
 	@Test
-	public void whenStandardSpecializationValuesAreCreatedValuesThenHAveOnly4BocesAndNotChecked() {
+	void whenStandardSpecializationValuesAreCreatedValuesThenHAveOnly4BocesAndNotChecked() {
 		assertThat(standardSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(standardSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(standardSpecialization.getMaxSegments()).isEqualTo(SEGMENTS_DEFAULT);
@@ -34,7 +34,7 @@ public class StandardSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpStandardSpecializationValuesThenItWorks() throws Exception {
+	void whenLevelUpStandardSpecializationValuesThenItWorks() throws Exception {
 		for (int i = 1; i <= 4; i++) {
 			standardSpecialization.levelUp();
 		}
@@ -42,7 +42,7 @@ public class StandardSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelStandardUpSpecializationValuesAreCreatedValuesThenItThrowsGoodException() throws Exception {
+	void whenLevelStandardUpSpecializationValuesAreCreatedValuesThenItThrowsGoodException() throws Exception {
 		for (int i = 1; i <= 4; i++) {
 			standardSpecialization.levelUp();
 		}

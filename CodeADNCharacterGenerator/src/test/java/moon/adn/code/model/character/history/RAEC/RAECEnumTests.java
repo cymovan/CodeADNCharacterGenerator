@@ -11,15 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import moon.adn.code.model.character.history.raec.RAECEnum;
 
 @SpringBootTest
-public class RAECEnumTests {
+class RAECEnumTests {
 
 	@Test
-	public void whenAskingForRandomRAECSiblingThenItsWithoutSibling() {
+	void whenAskingForRandomRAECSiblingThenItsWithoutSibling() {
 		RAECEnum test = RAECEnum.random();
 		Set<RAECEnum> setNotInResult = EnumSet.of(RAECEnum.BROTHER, RAECEnum.SISTER);
-		for(int i =0; i < 500; i++) {
+		for (int i = 0; i < 500; i++) {
 			assertThat(test).isNotIn(setNotInResult);
 		}
-		
+
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import moon.adn.code.model.character.specializations.CareerEnum;
 
 @SpringBootTest
-public class JobTests {
+class JobTests {
 
 	private static final int JOB_CATEGORIES_COUNT = 8;
 
@@ -19,14 +19,14 @@ public class JobTests {
 	private JobCategoryEnum jobCategory;
 
 	@Test
-	public void checkJobI18NRootKeyIsCorrect() {
+	void checkJobI18NRootKeyIsCorrect() {
 		job = JobEnum.ACCOUNTANT;
 		String[] split = job.i18nKey().split(job.toString());
 		assertThat(split[0]).isEqualTo(I18N_ROOT_JOBS);
 	}
 
 	@Test
-	public void obtainingARandomWorks() {
+	void obtainingARandomWorks() {
 		for (int i = 0; i < 50; i++) {
 			job = JobEnum.randomJob();
 			assertThat(job).isNotNull();
@@ -34,7 +34,7 @@ public class JobTests {
 	}
 
 	@Test
-	public void obtainingARandomJobFromJobCategoryWorks() {
+	void obtainingARandomJobFromJobCategoryWorks() {
 		for (int i = 0; i < 50; i++) {
 			jobCategory = JobCategoryEnum.random();
 			job = JobEnum.randomJobUsingRules(jobCategory);
@@ -43,28 +43,28 @@ public class JobTests {
 	}
 
 	@Test
-	public void obtainingARandomJobFromFightercareerEnumWorks() {
+	void obtainingARandomJobFromFightercareerEnumWorks() {
 		CareerEnum career = CareerEnum.FIGHTER;
 		job = JobEnum.randomJobUsingRules(career);
 		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromGeneralcareerEnumWorks() {
+	void obtainingARandomJobFromGeneralcareerEnumWorks() {
 		CareerEnum career = CareerEnum.GENERAL;
 		job = JobEnum.randomJobUsingRules(career);
 		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromScientistcareerEnumWorks() {
+	void obtainingARandomJobFromScientistcareerEnumWorks() {
 		CareerEnum career = CareerEnum.SCIENTIST;
 		job = JobEnum.randomJobUsingRules(career);
 		assertThat(job.getCareerEnum()).isEqualTo(career);
 	}
 
 	@Test
-	public void obtainingARandomJobFromSpycareerEnumWorks() {
+	void obtainingARandomJobFromSpycareerEnumWorks() {
 		CareerEnum career = CareerEnum.SPY;
 		job = JobEnum.randomJobUsingRules(career);
 		assertThat(job.getCareerEnum()).isEqualTo(career);
@@ -76,7 +76,7 @@ public class JobTests {
 	}
 
 	@Test
-	public void checkJobCategoryI18NRootKeyIsCorrect() {
+	void checkJobCategoryI18NRootKeyIsCorrect() {
 		jobCategory = JobCategoryEnum.LAW;
 		String[] split = jobCategory.i18nKey().split(jobCategory.toString());
 		assertThat(split[0]).isEqualTo(I18N_ROOT_JOBS_CATEGORY);

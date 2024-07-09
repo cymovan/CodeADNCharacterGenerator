@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SocialOriginTests {
+class SocialOriginTests {
 
 	private static final int MAX_D10_STREET = 2;
 	private static final int MAX_D10_LOW_CLASS = 5;
@@ -25,49 +25,49 @@ public class SocialOriginTests {
 	private SocialOriginEnum socialOrigin;
 
 	@Test
-	public void socialOriginStreetRulesChecked() {
+	void socialOriginStreetRulesChecked() {
 		socialOrigin = SocialOriginEnum.STREET;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_STREET);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_STREET);
 	}
 
 	@Test
-	public void socialOriginLowClassRulesChecked() {
+	void socialOriginLowClassRulesChecked() {
 		socialOrigin = SocialOriginEnum.LOW_CLASS;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_LOW_CLASS);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_LOW_CLASS);
 	}
 
 	@Test
-	public void socialOriginMiddleClassRulesChecked() {
+	void socialOriginMiddleClassRulesChecked() {
 		socialOrigin = SocialOriginEnum.MIDDLE_CLASS;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_MIDDLE_CLASS);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_MIDDLE_CLASS);
 	}
 
 	@Test
-	public void socialOriginUpperClassRulesChecked() {
+	void socialOriginUpperClassRulesChecked() {
 		socialOrigin = SocialOriginEnum.UPPER_CLASS;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_UPPER_CLASS);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_UPPER_CLASS);
 	}
 
 	@Test
-	public void socialOriginRichRulesChecked() {
+	void socialOriginRichRulesChecked() {
 		socialOrigin = SocialOriginEnum.RICH;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_RICH);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_RICH);
 	}
 
 	@Test
-	public void socialOriginNaohmRulesChecked() {
+	void socialOriginNaohmRulesChecked() {
 		socialOrigin = SocialOriginEnum.NAOHM;
 		assertThat(socialOrigin.getMaxD10Value()).isEqualTo(MAX_D10_NAOHM);
 		assertThat(socialOrigin.getSocialOriginValue()).isEqualTo(SOCIAL_SCORE_NAOHM);
 	}
 
 	@Test
-	public void whenRandmoSocialOriginCalledThenItsNeverNull() {
+	void whenRandmoSocialOriginCalledThenItsNeverNull() {
 		for (int i = 0; i < 50; i++) {
 			assertThat(SocialOriginEnum.randomSocialOrigin()).isNotNull();
 		}

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ModifierTests {
+class ModifierTests {
 
 	private static final String MODIFIER_VALUE_ERROR = "Modifier value error";
 	private static final String MODIFIER_MAX_VALUE_ERROR = "Modifier maxValue error";
@@ -22,11 +22,11 @@ public class ModifierTests {
 	private Modifier modifier;
 
 	@BeforeEach
-	public void initTests() {
+	void initTests() {
 	}
 
 	@Test
-	public void whenCreatingModifierWithConstructorAndZeroValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithConstructorAndZeroValueThenDatasAreCorrects() {
 		modifier = new Modifier(modifierValue);
 		assertEquals(modifierValue, modifier.getValue(), MODIFIER_VALUE_ERROR);
 		assertEquals(MIN_SCORE, modifier.getMin(), MODIFIER_MIN_VALUE_ERROR);
@@ -34,7 +34,7 @@ public class ModifierTests {
 	}
 
 	@Test
-	public void whenCreatingModifierWithConstructorAndPositiveValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithConstructorAndPositiveValueThenDatasAreCorrects() {
 		modifierValue = 5;
 		modifier = new Modifier(modifierValue);
 		assertEquals(modifierValue, modifier.getValue(), MODIFIER_VALUE_ERROR);
@@ -43,7 +43,7 @@ public class ModifierTests {
 	}
 
 	@Test
-	public void whenCreatingModifierWithConstructorAndNegativeValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithConstructorAndNegativeValueThenDatasAreCorrects() {
 		modifierValue = -5;
 		modifier = new Modifier(modifierValue);
 		assertEquals(modifierValue, modifier.getValue(), MODIFIER_VALUE_ERROR);
@@ -52,7 +52,7 @@ public class ModifierTests {
 	}
 
 	@Test
-	public void whenCreatingModifierWithPositiveValueAndMinValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithPositiveValueAndMinValueThenDatasAreCorrects() {
 		modifierValue = 4;
 		minValue = 2;
 		modifier = new Modifier(modifierValue, minValue);
@@ -62,7 +62,7 @@ public class ModifierTests {
 	}
 
 	@Test
-	public void whenCreatingModifierWithNegativeValueAndMinValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithNegativeValueAndMinValueThenDatasAreCorrects() {
 		modifierValue = -3;
 		minValue = 1;
 		modifier = new Modifier(modifierValue, minValue);
@@ -72,7 +72,7 @@ public class ModifierTests {
 	}
 
 	@Test
-	public void whenCreatingModifierWithPositiveValueAndPercentValueThenDatasAreCorrects() {
+	void whenCreatingModifierWithPositiveValueAndPercentValueThenDatasAreCorrects() {
 		modifierValue = 4;
 		percentValue = 20.5d;
 		modifier = new Modifier(modifierValue, percentValue);

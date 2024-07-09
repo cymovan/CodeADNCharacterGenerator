@@ -17,7 +17,7 @@ import moon.adn.code.model.character.identity.names.NamesGenerator;
 import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 
 @SpringBootTest
-public class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
+class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
 	private static final String FILES_ROOT = "names/";
 	private static final String HUMAN_FEMALE_FILE = "HumanFemaleFirstNames.txt";
 	private static final String HUMAN_MALE_FILE = "HumanMaleFirstNames.txt";
@@ -44,28 +44,28 @@ public class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
 	private static NamesGenerator darkElvesNamesGenerator;
 
 	@BeforeAll
-	public static void initSingletons() {
+	static void initSingletons() {
 		humanNamesGenerator = HumanNamesGeneratorSingleton.getInstance();
 		sephonileandisNamesGenerator = SephonileandisNamesGeneratorSingleton.getInstance();
 		darkElvesNamesGenerator = DarkElvesNamesGeneratorSingleton.getInstance();
 	}
 
 	@Test
-	public void whenAskingHumanFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
+	void whenAskingHumanFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(humanNamesGenerator, SexEnum.F, femaleHumanNamesSet, neutralHumanNamesSet);
 		}
 	}
 
 	@Test
-	public void whenAskingHumanMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
+	void whenAskingHumanMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(humanNamesGenerator, SexEnum.M, maleHumanNamesSet, neutralHumanNamesSet);
 		}
 	}
 
 	@Test
-	public void whenAskingSephonileandisFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
+	void whenAskingSephonileandisFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(sephonileandisNamesGenerator, SexEnum.F, femaleHumanNamesSet, neutralHumanNamesSet,
 					femaleSephonileandisNamesSet, neutralSephonileandisNamesSet);
@@ -73,7 +73,7 @@ public class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
 	}
 
 	@Test
-	public void whenAskingSephonileandisMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
+	void whenAskingSephonileandisMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(sephonileandisNamesGenerator, SexEnum.M, maleHumanNamesSet, neutralHumanNamesSet,
 					maleSephonileandisNamesSet, neutralSephonileandisNamesSet);
@@ -81,14 +81,14 @@ public class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
 	}
 
 	@Test
-	public void whenAskingDarkElfFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
+	void whenAskingDarkElfFemaleNamesThenItHasOnlyHumanFemaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(darkElvesNamesGenerator, SexEnum.F, femaleDarkElvesNamesSet);
 		}
 	}
 
 	@Test
-	public void whenAskingDarkElfMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
+	void whenAskingDarkElfMaleNamesThenItHasOnlyHumanMaleOrNeutralNames() {
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assertNameIsInSets(darkElvesNamesGenerator, SexEnum.M, maleDarkElvesNamesSet);
 		}

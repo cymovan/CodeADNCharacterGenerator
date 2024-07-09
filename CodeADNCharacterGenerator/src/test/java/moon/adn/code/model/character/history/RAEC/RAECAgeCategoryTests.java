@@ -9,13 +9,13 @@ import moon.adn.code.model.character.history.raec.RAECAgeCategoriesEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 
 @SpringBootTest
-public class RAECAgeCategoryTests {
+class RAECAgeCategoryTests {
 
 	private static final int MIN_AGE = 13;
 	private SpeciesEnum species;
 
 	@Test
-	public void whenAgeDiffAskedThenItsNeverUnderMinAge() {
+	void whenAgeDiffAskedThenItsNeverUnderMinAge() {
 		int result = 0;
 		int age = 15;
 		species = SpeciesEnum.HUMAN;

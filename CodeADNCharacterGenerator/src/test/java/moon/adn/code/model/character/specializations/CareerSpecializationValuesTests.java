@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class CareerSpecializationValuesTests {
+class CareerSpecializationValuesTests {
 
 	private static final int CONTAINER_DEFAULT = 0;
 	private static final int MAX_SEGMENTS_DEFAULT = 20;
@@ -19,12 +19,12 @@ public class CareerSpecializationValuesTests {
 	private CareerSpecializationValues careerSpecializationValues;
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		careerSpecializationValues = new CareerSpecializationValues();
 	}
 
 	@Test
-	public void whencareerSpecializationValuesAreCreatedValuesThenHAveOnly1BoxAndNotChecked() {
+	void whencareerSpecializationValuesAreCreatedValuesThenHAveOnly1BoxAndNotChecked() {
 		assertThat(careerSpecializationValues.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(careerSpecializationValues.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(careerSpecializationValues.getMaxSegments()).isEqualTo(MAX_SEGMENTS_DEFAULT);
@@ -34,7 +34,7 @@ public class CareerSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpcareerSpecializationValuesThenItWorks() throws Exception {
+	void whenLevelUpcareerSpecializationValuesThenItWorks() throws Exception {
 		for (int i = 1; i <= MAX_SEGMENTS_DEFAULT; i++) {
 			careerSpecializationValues.levelUp();
 			assertSpecializationValues(i, (int) Math.ceil(i / 2));
@@ -42,7 +42,7 @@ public class CareerSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpcareerSpecializationValuesThenItThrowsGoodException() throws Exception {
+	void whenLevelUpcareerSpecializationValuesThenItThrowsGoodException() throws Exception {
 		for (int i = 1; i <= MAX_SEGMENTS_DEFAULT; i++) {
 			careerSpecializationValues.levelUp();
 		}

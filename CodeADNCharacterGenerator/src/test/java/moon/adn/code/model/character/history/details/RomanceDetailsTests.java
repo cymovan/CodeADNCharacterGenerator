@@ -12,14 +12,14 @@ import moon.adn.code.model.character.history.details.romance.HistoryRomanceEnum;
 import moon.adn.code.model.character.history.details.romance.Romance;
 import moon.adn.code.model.character.history.details.romance.RomanceDurationEnum;
 
-public class RomanceDetailsTests {
+class RomanceDetailsTests {
 	private static final Pattern ROOT_I18N_TRAGIC_OR_PROBLEMATIC_PATTERN = Pattern
 			.compile("^hist\\.(tragic|problematic)LoveStory(0[0-9]|1[0-4])$");
 
 	private Romance romance;
 
 	@Test
-	public void whenInstanctiatingARomanceDetailsThenRulesAreRespected() {
+	void whenInstanctiatingARomanceDetailsThenRulesAreRespected() {
 		for (int i = 0; i < 15000; i++) {
 			romance = Romance.randomRomance();
 			HistoryRomanceEnum kindOfRomance = romance.getKindOfRomance();

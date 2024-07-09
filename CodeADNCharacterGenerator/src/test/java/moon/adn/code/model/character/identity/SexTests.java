@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SexTests {
+class SexTests {
 
 	private static final int MAX_ITERATIONS_COUNT = 25;
 	private static final int MAX_SEX_COUNT = 2;
@@ -24,7 +24,7 @@ public class SexTests {
 	private Set<SexEnum> sexEnumSet, verificationSet;
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		sexEnumSet = EnumSet.noneOf(SexEnum.class);
 		verificationSet = EnumSet.noneOf(SexEnum.class);
 		verificationSet.add(F);
@@ -32,12 +32,12 @@ public class SexTests {
 	}
 
 	@Test
-	public void checkSexEnumCountIsCorrect() {
+	void checkSexEnumCountIsCorrect() {
 		assertThat(values()).hasSize(MAX_SEX_COUNT);
 	}
 
 	@Test
-	public void whenAskedRandomSexItsOnlyMaleOrFemale() {
+	void whenAskedRandomSexItsOnlyMaleOrFemale() {
 		for (int i = 0; i < MAX_ITERATIONS_COUNT; i++) {
 			sex = SexEnum.random();
 			sexEnumSet.add(sex);
@@ -46,7 +46,7 @@ public class SexTests {
 	}
 
 	@Test
-	public void verifyI18NPrefix() {
+	void verifyI18NPrefix() {
 		sex = SexEnum.random();
 		String[] split = sex.i18nKey().split(sex.toString());
 		assertThat(split[0]).isEqualTo(I18N_ROOT_SEX);

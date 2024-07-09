@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ComplexSpecializationValuesTests {
+class ComplexSpecializationValuesTests {
 
 	private static final int CONTAINER_DEFAULT = 1;
 	private static final int SEGMENTS_DEFAULT = 0;
@@ -19,12 +19,12 @@ public class ComplexSpecializationValuesTests {
 	private ComplexSpecializationValues complexSpecialization;
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		complexSpecialization = new ComplexSpecializationValues();
 	}
 
 	@Test
-	public void whenComplexSpecializationValuesAreCreatedValuesThenHaveOnly4BoxesAndNotChecked() {
+	void whenComplexSpecializationValuesAreCreatedValuesThenHaveOnly4BoxesAndNotChecked() {
 		assertThat(complexSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(complexSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(complexSpecialization.getMaxSegments()).isEqualTo(SEGMENTS_DEFAULT);
@@ -34,7 +34,7 @@ public class ComplexSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenComplexSpecializationValuesOf2ContainersAreCreatedValuesThenHave8BoxesAndNotChecked() {
+	void whenComplexSpecializationValuesOf2ContainersAreCreatedValuesThenHave8BoxesAndNotChecked() {
 		complexSpecialization = new ComplexSpecializationValues(2);
 		assertThat(complexSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT * 2);
 		assertThat(complexSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT * 2);
@@ -45,7 +45,7 @@ public class ComplexSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpStandardSpecializationValuesThenItWorks() throws Exception {
+	void whenLevelUpStandardSpecializationValuesThenItWorks() throws Exception {
 		for (int i = 1; i <= 4; i++) {
 			complexSpecialization.levelUp();
 		}
@@ -53,7 +53,7 @@ public class ComplexSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpComplexSpecializationValuesTooMuchValuesThenItThrowsGoodException() throws Exception {
+	void whenLevelUpComplexSpecializationValuesTooMuchValuesThenItThrowsGoodException() throws Exception {
 		for (int i = 1; i <= 4; i++) {
 			complexSpecialization.levelUp();
 		}
@@ -61,7 +61,7 @@ public class ComplexSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpMultipleComplexeSpecializationValuesThenItWorks() throws Exception {
+	void whenLevelUpMultipleComplexeSpecializationValuesThenItWorks() throws Exception {
 		int multipleContainer = 4;
 		complexSpecialization = new ComplexSpecializationValues(multipleContainer);
 		for (int i = 1; i <= MAX_BOXES_DEFAULT; i++) {
@@ -71,7 +71,7 @@ public class ComplexSpecializationValuesTests {
 	}
 
 	@Test
-	public void whenLevelUpMultipleComplexeSpecializationValuesTooMuchThenItThrowsGoodException() throws Exception {
+	void whenLevelUpMultipleComplexeSpecializationValuesTooMuchThenItThrowsGoodException() throws Exception {
 		int multipleContainer = 3;
 		complexSpecialization = new ComplexSpecializationValues(multipleContainer);
 		for (int i = 1; i <= multipleContainer * MAX_BOXES_DEFAULT; i++) {

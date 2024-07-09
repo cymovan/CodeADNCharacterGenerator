@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SpeciesEnumTests {
+class SpeciesEnumTests {
 
 	private static final int MAX_RANDOM_ITERATIONS = 1000;
 	private static final int MAX_ITERATIONS = 25;
@@ -22,7 +22,7 @@ public class SpeciesEnumTests {
 	private SpeciesEnum species;
 
 	@Test
-	public void whenGeneratingRandomSpeciesThenAllSpeciesCanBeReturned() {
+	void whenGeneratingRandomSpeciesThenAllSpeciesCanBeReturned() {
 		Set<SpeciesEnum> speciesSet = EnumSet.allOf(SpeciesEnum.class);
 		Set<SpeciesEnum> returnedSpeciesSet = EnumSet.noneOf(SpeciesEnum.class);
 		for (int i = 0; i < MAX_RANDOM_ITERATIONS; i++) {
@@ -32,7 +32,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForHumanThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForHumanThenItsInGoodRange() {
 		species = SpeciesEnum.HUMAN;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d4Minus1();
@@ -40,7 +40,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForSylvanElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForSylvanElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_SYLV;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d4Minus1();
@@ -48,7 +48,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForDarkElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForDarkElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_DARK;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d4Minus1();
@@ -56,7 +56,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForUrbanElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForUrbanElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_URB;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d3Minus1();
@@ -64,7 +64,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForPaleElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForPaleElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_PALE;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d3Minus1();
@@ -72,7 +72,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForGreyElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForGreyElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_GREY;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d3Minus1();
@@ -80,7 +80,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForNightElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForNightElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_NIGHT;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d3Minus1();
@@ -88,7 +88,7 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForAquaticElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForAquaticElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_AQUA;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d3Minus1();
@@ -96,15 +96,15 @@ public class SpeciesEnumTests {
 	}
 
 	@Test
-	public void whenGeneratingSiblingsCountForGoldElfThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForGoldElfThenItsInGoodRange() {
 		species = SpeciesEnum.S_GOLD;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d2Minus1();
 		}
 	}
-	
+
 	@Test
-	public void whenGeneratingSiblingsCountForIronBararThenItsInGoodRange() {
+	void whenGeneratingSiblingsCountForIronBararThenItsInGoodRange() {
 		species = SpeciesEnum.B_IRON;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			assert1d4Minus1();

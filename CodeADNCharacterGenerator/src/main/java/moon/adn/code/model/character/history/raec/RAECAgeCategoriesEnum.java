@@ -2,6 +2,7 @@ package moon.adn.code.model.character.history.raec;
 
 import static moon.adn.code.model.character.history.HistoryHelper.getPositionFromIntervals;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import lombok.Getter;
@@ -20,6 +21,7 @@ public enum RAECAgeCategoriesEnum {
 
 	private static int[] ageInterval = { 5, 15, 40, 60, 80, 95, 100 };
 	private static int MIN_AGE = 13;
+	private Random random = new SecureRandom();
 
 	private @Getter int min = 0, max = 0;
 
@@ -45,7 +47,6 @@ public enum RAECAgeCategoriesEnum {
 	}
 
 	public int ageDiffSibling(SpeciesEnum species, int age) {
-		Random random = new Random();
 		int diff = species.ageDiffSibling();
 		boolean invert = false;
 		if (age - diff >= 0) {
