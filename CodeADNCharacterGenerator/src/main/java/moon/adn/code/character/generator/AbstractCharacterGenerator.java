@@ -3,6 +3,7 @@ package moon.adn.code.character.generator;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -57,7 +58,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 
 	protected static Random random = new SecureRandom();
 	// Parameterized random generations
-	private Set<SpeciesEnum> selectedSpeciesforRandom = new HashSet<SpeciesEnum>();
+	private Set<SpeciesEnum> selectedSpeciesforRandom = new HashSet<>();
 	private Optional<SexEnum> selectedSex = Optional.empty();
 
 	protected Identity identity;
@@ -65,7 +66,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 	protected Map<SkillEnum, SkillValues> skillsMap = new TreeMap<>();
 	protected SpecializationsAtCreation speciesSpecializationsAtCreation = new SpecializationsAtCreation();
 	protected Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
-	protected Map<CareerEnum, Integer> careersMapChoosed = new HashMap<>();
+	protected Map<CareerEnum, Integer> careersMapChoosed = new EnumMap<>(CareerEnum.class);
 	protected SocialOriginEnum socialOriginEnum;
 	protected CareerEnum carrerChoosed;
 
@@ -237,7 +238,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 
 	protected void spendSkillsPoints(int sPoints, int maxScore) {
 		skillsPoints = sPoints;
-		int countMaxScore = 0;
+		Integer countMaxScore = 0;
 
 		if (skillsPoints == 0) {
 			return;
@@ -246,7 +247,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 		List<SkillEnum> skillsLearn = new ArrayList<>(skillsMap.keySet());
 		Collections.shuffle(skillsLearn);
 
-		int maxLoop = 4;
+		final int maxLoop = 4;
 		int loop = 0;
 
 		while (loop < maxLoop && skillsPoints > 0) {
@@ -255,13 +256,14 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 				int currentValue = value.getCurrentScore();
 
 				if (currentValue < maxScore) {
-					int choice = calculateChoice(currentValue, maxScore);
+					Integer choice = calculateChoice(currentValue, maxScore);
 					updateSkillsPoints(choice, skillsPoints);
-					int score = currentValue + choice;
+					Integer score = currentValue + choice;
 					logger.trace("{}: {} : {} - random : {}", identity.getName(), skill, currentValue, choice);
 					value.setCurrentScore(score);
 
 					if (checkMaxScoreCondition(maxScore, countMaxScore)) {
+						countMaxScore = 0;
 						maxScore--;
 						addRandomSkill();
 					}
@@ -282,17 +284,14 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 		return choice;
 	}
 
-	private void updateSkillsPoints(int choice, int skillsPoints) {
+	private void updateSkillsPoints(int choice, Integer skillsPoints) {
 		if (choice < skillsPoints) {
 			skillsPoints -= choice;
-		} else {
-			skillsPoints = 0;
 		}
 	}
 
 	private boolean checkMaxScoreCondition(int maxScore, int countMaxScore) {
 		if (maxScore > 3 && countMaxScore == 3) {
-			countMaxScore = 0;
 			return true;
 		}
 		return false;

@@ -127,7 +127,10 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 			AbstractCharacter character = CharacterFileHelper.loadCharacterFromMultipartFile(file);
 
 			// Store character in session
+			AbstractCharacter oldChar = (AbstractCharacter) httpSession.getAttribute(SESSION_CHARACTER_ATTRIBUTE);
 			httpSession.setAttribute(SESSION_CHARACTER_ATTRIBUTE, character);
+			AbstractCharacter newChar = (AbstractCharacter) httpSession.getAttribute(SESSION_CHARACTER_ATTRIBUTE);
+			logger.debug("Old char in session {}, new character in session{}", oldChar, newChar);
 
 			// Add success message
 			redirectAttributes.addFlashAttribute(MESSAGE,
