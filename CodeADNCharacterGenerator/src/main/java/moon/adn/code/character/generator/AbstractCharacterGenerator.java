@@ -236,57 +236,66 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 	}
 
 	protected void spendSkillsPoints(int sPoints, int maxScore) {
-		if (sPoints != 0) {
-			skillsPoints = sPoints;
-		}
-		List<SkillEnum> skillsLearn = new ArrayList<>();
-		skillsLearn.addAll(skillsMap.keySet());
-		Collections.shuffle(skillsLearn);
-		final int maxLoop = 4;
-		int loop = 0;
+		skillsPoints = sPoints;
 		int countMaxScore = 0;
-		while (loop++ < maxLoop && skillsPoints != 0) {
+
+		if (skillsPoints == 0) {
+			return;
+		}
+
+		List<SkillEnum> skillsLearn = new ArrayList<>(skillsMap.keySet());
+		Collections.shuffle(skillsLearn);
+
+		int maxLoop = 4;
+		int loop = 0;
+
+		while (loop < maxLoop && skillsPoints > 0) {
 			for (SkillEnum skill : skillsLearn) {
-				SkillValues value = getSkillsMap().get(skill);
+				SkillValues value = skillsMap.get(skill);
 				int currentValue = value.getCurrentScore();
-				int choice = 0;
-				if (skillsPoints == 0) {
-					loop = maxLoop;
-					break;
-				}
-				if (currentValue >= maxScore) {
-					addRandomSkill();
-				} else {
-					// Avoid skillScore up to maxScore allowed
-					while (choice == 0) {
-						if (currentValue < maxScore) {
-							choice = random.nextInt(maxScore);
-							if (currentValue + choice > maxScore) {
-								choice = 0;
-							}
-						}
-					}
-					if (choice == maxScore) {
-						countMaxScore++;
-					}
-					if (countMaxScore == 3 && maxScore > 3) {
-						countMaxScore = 0;
-						maxScore--;
-						addRandomSkill();
-					}
-					if (choice < skillsPoints) {
-						skillsPoints -= choice;
-					} else {
-						choice = skillsPoints;
-						skillsPoints = 0;
-					}
+
+				if (currentValue < maxScore) {
+					int choice = calculateChoice(currentValue, maxScore);
+					updateSkillsPoints(choice, skillsPoints);
 					int score = currentValue + choice;
 					logger.trace("{}: {} : {} - random : {}", identity.getName(), skill, currentValue, choice);
 					value.setCurrentScore(score);
+
+					if (checkMaxScoreCondition(maxScore, countMaxScore)) {
+						maxScore--;
+						addRandomSkill();
+					}
+				} else {
+					addRandomSkill();
 				}
 			}
+			loop++;
 		}
-		logger.trace("{}: Nb Compétences : {}", identity.getName(), getSkillsMap().size());
+		logger.trace("{}: Skills count : {}", identity.getName(), skillsMap.size());
+	}
+
+	private int calculateChoice(int currentValue, int maxScore) {
+		int choice = 0;
+		while (choice == 0 || currentValue + choice > maxScore) {
+			choice = random.nextInt(maxScore);
+		}
+		return choice;
+	}
+
+	private void updateSkillsPoints(int choice, int skillsPoints) {
+		if (choice < skillsPoints) {
+			skillsPoints -= choice;
+		} else {
+			skillsPoints = 0;
+		}
+	}
+
+	private boolean checkMaxScoreCondition(int maxScore, int countMaxScore) {
+		if (maxScore > 3 && countMaxScore == 3) {
+			countMaxScore = 0;
+			return true;
+		}
+		return false;
 	}
 
 	private void addRandomSkill() {
