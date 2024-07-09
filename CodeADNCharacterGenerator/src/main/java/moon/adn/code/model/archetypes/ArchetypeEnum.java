@@ -4,6 +4,7 @@ import static moon.adn.code.model.character.specializations.CareerEnum.FIGHTER;
 import static moon.adn.code.model.character.specializations.CareerEnum.SCIENTIST;
 import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public enum ArchetypeEnum {
 	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()),
 	NETRUNNER(SPY, new NetRunnerArchetype()), FIXER(SPY, new FixerArchetype());
 
-	private static Random random = new Random();
+	private static Random random = new SecureRandom();
 
 	private @Getter CareerEnum career;
 	private @Getter AbstractArchetype archetype;

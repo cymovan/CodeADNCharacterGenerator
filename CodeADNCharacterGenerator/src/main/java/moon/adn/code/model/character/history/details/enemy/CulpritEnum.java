@@ -1,5 +1,6 @@
 package moon.adn.code.model.character.history.details.enemy;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -11,9 +12,9 @@ import java.util.Random;
 public enum CulpritEnum {
 	YOU, HIM_HER, TIERS_FOOLS_YOU, TIERS_FOOLS_ENNEMY;
 
-	private static Random random = new Random();
+	private static Random random = new SecureRandom();
 
-	public static CulpritEnum random() {
+	public static CulpritEnum SecureRandom() {
 		return values()[random.nextInt(values().length)];
 	}
 }

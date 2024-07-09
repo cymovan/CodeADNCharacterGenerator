@@ -1,5 +1,6 @@
 package moon.adn.code.system;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -19,7 +20,7 @@ public class RandomDiceUtil {
 	private static final int MAX_D100 = 100;
 
 	private static final int MAX_WEAK = 7;
-	private static Random random = new Random();
+	private static Random random = new SecureRandom();
 
 	/**
 	 * @return value beetwen 1 and 2.

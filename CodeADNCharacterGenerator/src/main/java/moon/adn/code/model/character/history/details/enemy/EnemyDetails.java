@@ -24,7 +24,7 @@ public class EnemyDetails {
 
 	public static EnemyDetails random() {
 		EnemyDetails enemyDetails = new EnemyDetails();
-		CulpritEnum culprit = CulpritEnum.random();
+		CulpritEnum culprit = CulpritEnum.SecureRandom();
 		enemyDetails.whoIsTheCulprit = culprit;
 		enemyDetails.doYouknowHim = DoYouKnowHimEnum.random();
 		enemyDetails.whatWillYouDo = WhatWillYouDoEnum.random();

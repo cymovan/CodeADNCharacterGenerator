@@ -1,5 +1,6 @@
 package moon.adn.code.character.generator;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -54,7 +55,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter> implements CharacterGenerator<Clazz> {
 	protected final Logger logger = LoggerFactory.getLogger(AbstractCharacterGenerator.class);
 
-	protected static Random random = new Random();
+	protected static Random random = new SecureRandom();
 	// Parameterized random generations
 	private Set<SpeciesEnum> selectedSpeciesforRandom = new HashSet<SpeciesEnum>();
 	private Optional<SexEnum> selectedSex = Optional.empty();

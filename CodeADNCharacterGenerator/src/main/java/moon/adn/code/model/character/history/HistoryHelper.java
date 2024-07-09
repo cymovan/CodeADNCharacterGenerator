@@ -2,6 +2,7 @@ package moon.adn.code.model.character.history;
 
 import static moon.adn.code.system.RandomDiceUtil.random;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class HistoryHelper {
@@ -27,7 +28,7 @@ public class HistoryHelper {
 	}
 
 	public static int randomValuesBetween(int min, int max) {
-		Random r = new Random();
+		Random r = new SecureRandom();
 		int diff = r.nextInt(min, max);
 		return diff;
 	}
