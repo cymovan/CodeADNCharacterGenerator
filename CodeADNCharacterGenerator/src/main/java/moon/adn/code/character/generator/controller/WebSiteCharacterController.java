@@ -88,7 +88,7 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 
 		// Redirection
 		model.addAttribute(SESSION_CHARACTER_ATTRIBUTE, character);
-		ModelAndView modelView = new ModelAndView("redirect:" + URL_CHARACTER_NEW, model);
+		ModelAndView modelView = new ModelAndView(REDIRECT + URL_CHARACTER_NEW, model);
 		return modelView;
 	}
 
@@ -119,8 +119,8 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 		String target = URL_HOME;
 		// Check if the file is empty
 		if (file.isEmpty()) {
-			redirectAttributes.addFlashAttribute("message", "Please select a JSON file to upload.");
-			return "redirect:" + target;
+			redirectAttributes.addFlashAttribute(MESSAGE, "Please select a JSON file to upload.");
+			return REDIRECT + target;
 		}
 
 		try {
@@ -131,12 +131,12 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 			httpSession.setAttribute(SESSION_CHARACTER_ATTRIBUTE, character);
 
 			// Add success message
-			redirectAttributes.addFlashAttribute("message",
+			redirectAttributes.addFlashAttribute(MESSAGE,
 					"JSON file uploaded successfully and character saved in session.");
 		} catch (IOException e) {
 			// Add error message for invalid JSON format
-			redirectAttributes.addFlashAttribute("message", "Error: Invalid JSON format or unable to parse the file.");
+			redirectAttributes.addFlashAttribute(MESSAGE, "Error: Invalid JSON format or unable to parse the file.");
 		}
-		return "redirect:" + URL_CHARACTER_NEW;
+		return REDIRECT + URL_CHARACTER_NEW;
 	}
 }

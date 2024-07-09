@@ -36,6 +36,8 @@ public abstract class AbstractWebSiteController {
 	public static final String URL_CHARACTERS = "/characters";
 
 	public static final String APPLICATION_CARACTERISTICS_ENUMS = "caracteristicsEnum";
+	protected static final String REDIRECT = "redirect:";
+	protected static final String MESSAGE = "message";
 
 	@Autowired
 	@Getter
