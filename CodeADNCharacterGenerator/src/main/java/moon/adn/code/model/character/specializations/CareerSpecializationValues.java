@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.specializations;
 
-import static moon.adn.code.model.character.specializations.SpecializationType.career;
+import static moon.adn.code.model.character.specializations.SpecializationType.CAREER;
 
 /**
  * {@link SpecializationValues} used for work career specializations.
@@ -14,7 +14,7 @@ final public class CareerSpecializationValues extends SpecializationValuesAbstra
 	private static final int MAX_BOXES = 10;
 
 	public CareerSpecializationValues() {
-		super(MAX_CONTAINER, MAX_SEGMENTS, MAX_BOXES, career);
+		super(MAX_CONTAINER, MAX_SEGMENTS, MAX_BOXES, CAREER);
 	}
 
 	@Override

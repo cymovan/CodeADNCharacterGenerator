@@ -30,7 +30,7 @@ public class CareerSpecializationValuesTests {
 		assertThat(careerSpecializationValues.getMaxSegments()).isEqualTo(MAX_SEGMENTS_DEFAULT);
 		assertThat(careerSpecializationValues.getBoxesChecked()).isEqualTo(DEFAULT_BOXES_CHECKED);
 		assertThat(careerSpecializationValues.getSegmentsChecked()).isEqualTo(DEFAULT_SEGMENTS_CHECKED);
-		assertThat(careerSpecializationValues.getType()).isEqualTo(SpecializationType.career);
+		assertThat(careerSpecializationValues.getType()).isEqualTo(SpecializationType.CAREER);
 	}
 
 	@Test

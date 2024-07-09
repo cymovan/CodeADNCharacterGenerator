@@ -63,7 +63,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 	protected Identity identity;
 	protected Map<CaracteristicEnum, CaractValues> caracteristicsMap = new TreeMap<>();
 	protected Map<SkillEnum, SkillValues> skillsMap = new TreeMap<>();
-	protected SpecializationsAtCreation speciesSpecializations = new SpecializationsAtCreation();
+	protected SpecializationsAtCreation speciesSpecializationsAtCreation = new SpecializationsAtCreation();
 	protected Map<SpecializationsAtCreation, Integer> specializationChoices = new HashMap<>();
 	protected Map<CareerEnum, Integer> careersMapChoosed = new HashMap<>();
 	protected SocialOriginEnum socialOriginEnum;
@@ -112,7 +112,7 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 
 	protected void speciesSpecializations() {
 		SpeciesEnum species = identity.getSpecies();
-		speciesSpecializations = species.getSpecializations();
+		speciesSpecializationsAtCreation = species.getSpecializations();
 	}
 
 	protected Identity generateIdentity() {
@@ -211,8 +211,8 @@ public abstract class AbstractCharacterGenerator<Clazz extends AbstractCharacter
 		character.setSkillsMap(skillsMap);
 
 		// Add default Specializations
-		if (null != speciesSpecializations) {
-			character.setSpecializations(speciesSpecializations.getSpecializationsMap());
+		if (null != speciesSpecializationsAtCreation) {
+			character.setSpecializations(speciesSpecializationsAtCreation.getSpecializationsMap());
 		}
 	}
 

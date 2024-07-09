@@ -1,5 +1,7 @@
 package moon.adn.code.model.character.caracteristics;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import lombok.Getter;
@@ -11,7 +13,9 @@ import moon.adn.code.model.character.builder.Modifier;
  * @author Cédric DELRUE
  */
 @Getter
-public class CaractValues {
+public class CaractValues implements Serializable {
+	private static final long serialVersionUID = -6078819957592308659L;
+
 	public static final int DEFAULT_MIN = 1;
 	public static final int DEFAULT_MAX = 10;
 	private int creationValue, currentValue;

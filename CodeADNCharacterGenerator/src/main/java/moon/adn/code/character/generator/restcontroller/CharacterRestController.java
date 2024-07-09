@@ -125,13 +125,13 @@ public class CharacterRestController
 	}
 
 	@GetMapping(RAEC_CHARACTER_PATH + SPECIES_PARAMETERS_PATH + "/age/{age}")
-	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) int age) {
+	public RAEC generateRAEC(@PathVariable SpeciesEnum species, @PathVariable(required = false) Integer age) {
 		return new RAECProcedure(species, age).generate();
 	}
 
 	@GetMapping(RAEC_CHARACTER_PATH + "/sibling" + SPECIES_PARAMETERS_PATH + "/age/{age}")
 	public Map<Integer, RAEC> generateSibling(@PathVariable(required = true) SpeciesEnum species,
-			@PathVariable(required = true) int age) {
+			@PathVariable(required = true) Integer age) {
 		CharacterHistoryGenerator chg = new CharacterHistoryGenerator(species, age);
 		chg.generateSiblings();
 		return chg.getRaecMap();

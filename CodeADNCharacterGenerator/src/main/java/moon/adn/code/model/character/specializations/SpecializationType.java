@@ -19,7 +19,7 @@ public enum SpecializationType {
 	 * career specialization. Need to be taken twice for each level. maxSegments =
 	 * 20. maxBoxes = 10;
 	 */
-	career,
+	CAREER,
 	/**
 	 * Container made of 4 boxes maxSegments = 0, maxContainers = 1 or 2, maxBoxes =
 	 * 4 or 8

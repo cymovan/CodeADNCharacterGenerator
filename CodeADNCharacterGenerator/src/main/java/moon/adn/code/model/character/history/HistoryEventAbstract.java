@@ -12,7 +12,7 @@ import moon.adn.code.system.RandomDiceUtil;
  */
 public abstract class HistoryEventAbstract {
 	private static final String NUMBER_FORMAT = "00";
-	private static final String ROOT_I18n = "hist.";
+	private static final String ROOT_I18N = "hist.";
 	protected final int maxInterval;
 
 	protected int[] intervalValues = { 0 };
@@ -20,7 +20,7 @@ public abstract class HistoryEventAbstract {
 	protected String i18nPrefix;
 
 	protected HistoryEventAbstract(String i18nPrefix, int[] intervalValues, int maxInterval) {
-		this.i18nPrefix = ROOT_I18n + i18nPrefix;
+		this.i18nPrefix = ROOT_I18N + i18nPrefix;
 		this.maxInterval = maxInterval;
 		this.intervalValues = intervalValues;
 		if (intervalValues.length == 1) {
@@ -30,7 +30,7 @@ public abstract class HistoryEventAbstract {
 	}
 
 	protected HistoryEventAbstract(String i18nPrefix, int maxInterval) {
-		this.i18nPrefix = ROOT_I18n + i18nPrefix;
+		this.i18nPrefix = ROOT_I18N + i18nPrefix;
 		this.maxInterval = maxInterval;
 		if (intervalValues.length == 1) {
 			initIntervalValues();

@@ -11,7 +11,7 @@ public interface RAECGenerator {
 	 * @param age
 	 * @return
 	 */
-	RAEC generateRAEC(SpeciesEnum species, int age);
+	RAEC generateRAEC(SpeciesEnum species, Integer age);
 
 	/**
 	 * Generate a sibling
@@ -20,5 +20,5 @@ public interface RAECGenerator {
 	 * @param age
 	 * @return
 	 */
-	Map<Integer, RAEC> generateSibling(SpeciesEnum species, int age);
+	Map<Integer, RAEC> generateSibling(SpeciesEnum species, Integer age);
 }

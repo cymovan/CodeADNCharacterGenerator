@@ -1,5 +1,7 @@
 package moon.adn.code.model.character.specializations;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +18,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SpecializationValuesAbstract implements SpecializationValues {
+public class SpecializationValuesAbstract implements SpecializationValues, Serializable {
+	private static final long serialVersionUID = 7266558293532034181L;
+
 	protected SpecializationType type;
 	protected int maxContainer = 0, maxSegments = 0, maxBoxes = 0;
 	protected int segmentsChecked = 0, boxesChecked = 0;

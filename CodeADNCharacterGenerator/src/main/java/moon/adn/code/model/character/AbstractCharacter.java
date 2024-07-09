@@ -23,7 +23,7 @@ public class AbstractCharacter implements Serializable {
 
 	protected Identity identity;
 	@JsonKey
-	protected transient Map<CaracteristicEnum, CaractValues> caracteristicsMap;
+	protected Map<CaracteristicEnum, CaractValues> caracteristicsMap;
 
 	@JsonKey
 	protected Map<SkillEnum, SkillValues> skillsMap;
