@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,6 +21,7 @@ import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton
 import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 
 @Configuration
+@EnableAspectJAutoProxy
 public class CodeAdnConfiguration {
 
 	private static final Logger LOG = LoggerFactory.getLogger(CodeAdnConfiguration.class);
