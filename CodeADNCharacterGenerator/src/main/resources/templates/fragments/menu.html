@@ -26,15 +26,14 @@
 							<li><a class="dropdown-item" href="#"
 								th:text="#{nav.character.generate}" data-bs-toggle="modal"
 								data-bs-target="#characterGeneratorModal"></a></li>
-<!-- /* 
-							<li><a class="dropdown-item" href="/modify"
-								th:text="#{nav.character.load}"></a></li>
-							<li><a class="dropdown-item" href="/save"
-								th:text="#{nav.character.save}"></a></li>
-*/ -->
+							<li><a class="dropdown-item" th:text="#{nav.character.load}"
+								data-bs-toggle="modal" data-bs-target="#uploadCharacterModal"></a></li>
+							<li th:if="${session_character}"><a class="dropdown-item"
+								href="/character/save" th:text="#{nav.character.save}"></a></li>
 						</ul></li>
-					<li class="nav-item"><a class="nav-link" href="/swagger-ui/index.html" target="_blank">API</a></li>
-<!-- /* 					
+					<li class="nav-item"><a class="nav-link"
+						href="/swagger-ui/index.html" target="_blank">API</a></li>
+					<!-- /* 					
 					<li class="nav-item"><a class="nav-link disabled">Disabled</a> 
 					</li>
 */ -->

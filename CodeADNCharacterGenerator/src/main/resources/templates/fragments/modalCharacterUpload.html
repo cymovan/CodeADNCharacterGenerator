@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block th:fragment="modal">
+		<div class="modal fade" id="uploadCharacterModal" tabindex="-1"
+			aria-labelledby="uploadModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="uploadModalLabel">Upload
+							Character JSON File</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<form th:action=@{/character/load} method="post"
+						enctype="multipart/form-data" id="uploadForm">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="file">Choose File:</label> <input type="file"
+									class="form-control-file" id="file" name="file" accept=".json">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal" th:text="#{modal.button.close}"></button>
+							<button type="submit" class="btn btn-primary" id="uploadButton">Upload</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</th:block>
+</body>
+</html>

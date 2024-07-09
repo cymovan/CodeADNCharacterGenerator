@@ -3,6 +3,8 @@ package moon.adn.code.model.character;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -34,5 +36,10 @@ public class CharacterFileHelper {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static Character loadCharacterFromMultipartFile(MultipartFile file) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.readValue(file.getBytes(), Character.class);
 	}
 }

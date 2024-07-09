@@ -18,7 +18,7 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					<form th:action="@{/generate}" th:object="${characterFormVO}"
+					<form th:action="@{/character/generate}" th:object="${characterFormVO}"
 						method="post">
 						<div class="modal-body">
 							<div class="form-group">
@@ -68,6 +68,7 @@
 												</select>
 											</div>
 										</div>
+									</div>
 								</fieldset>
 							</div>
 						</div>
