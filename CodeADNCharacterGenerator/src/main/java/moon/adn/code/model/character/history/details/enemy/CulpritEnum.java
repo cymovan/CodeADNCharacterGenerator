@@ -14,7 +14,7 @@ public enum CulpritEnum {
 
 	private static Random random = new SecureRandom();
 
-	public static CulpritEnum SecureRandom() {
+	public static CulpritEnum random() {
 		return values()[random.nextInt(values().length)];
 	}
 }
