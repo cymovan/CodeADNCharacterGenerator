@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.specializations;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -18,5 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SpecializationsAtCreation {
-	private Map<SpecializationEnum, SpecializationValuesAbstract> specializationsMap = new HashMap<>();
+	private Map<SpecializationEnum, SpecializationValuesAbstract> specializationsMap = new EnumMap<>(
+			SpecializationEnum.class);
 }

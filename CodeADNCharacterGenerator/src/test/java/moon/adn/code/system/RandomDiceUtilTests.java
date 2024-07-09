@@ -25,7 +25,7 @@ public class RandomDiceUtilTests {
 	private int minDice = 1, maxDice;
 
 	@Test
-	void d2MethodReturnsAlwaysNumberBetween1And2() throws Exception {
+	void d2MethodReturnsAlwaysNumberBetween1And2() {
 		maxDice = 2;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d2();
@@ -34,7 +34,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d3MethodReturnsAlwaysNumberBetween1And3() throws Exception {
+	void d3MethodReturnsAlwaysNumberBetween1And3() {
 		maxDice = 3;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d3();
@@ -43,7 +43,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d4MethodReturnsAlwaysNumberBetween1And4() throws Exception {
+	void d4MethodReturnsAlwaysNumberBetween1And4() {
 		maxDice = 4;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d4();
@@ -52,7 +52,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d5MethodReturnsAlwaysNumberBetween1And5() throws Exception {
+	void d5MethodReturnsAlwaysNumberBetween1And5() {
 		maxDice = 5;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d5();
@@ -61,7 +61,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d6MethodReturnsAlwaysNumberBetween1And6() throws Exception {
+	void d6MethodReturnsAlwaysNumberBetween1And6() {
 		maxDice = 6;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d6();
@@ -70,7 +70,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d8MethodReturnsAlwaysNumberBetween1And8() throws Exception {
+	void d8MethodReturnsAlwaysNumberBetween1And8() {
 		maxDice = 8;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d8();
@@ -79,7 +79,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d10MethodReturnsAlwaysNumberBetween1And10() throws Exception {
+	void d10MethodReturnsAlwaysNumberBetween1And10() {
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10();
@@ -88,7 +88,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d10HeroicMethodReturnsAlwaysNumberBetween3And10() throws Exception {
+	void d10HeroicMethodReturnsAlwaysNumberBetween3And10() {
 		minDice = 3;
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
@@ -98,7 +98,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d10WeakMethodReturnsAlwaysNumberBetween1And7() throws Exception {
+	void d10WeakMethodReturnsAlwaysNumberBetween1And7() {
 		minDice = 1;
 		maxDice = 7;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
@@ -108,7 +108,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d100MethodReturnsAlwaysNumberBetween1And100() throws Exception {
+	void d100MethodReturnsAlwaysNumberBetween1And100() {
 		maxDice = 100;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d100();
@@ -117,7 +117,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void randomValuesBetweenMinAndMaxGiveGoodValues() throws Exception {
+	void randomValuesBetweenMinAndMaxGiveGoodValues() {
 		maxDice = 437;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			minDice = d100();
@@ -127,7 +127,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d4ExplodeMethodReturnsNumberBetween1And4AndExplodeOn4() throws Exception {
+	void d4ExplodeMethodReturnsNumberBetween1And4AndExplodeOn4() {
 		maxDice = 4;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d4Explode();
@@ -136,7 +136,7 @@ public class RandomDiceUtilTests {
 	}
 
 	@Test
-	void d10ExplodeMethodReturnsNumberBetween1And10AndExplodeOn10() throws Exception {
+	void d10ExplodeMethodReturnsNumberBetween1And10AndExplodeOn10() {
 		maxDice = 10;
 		for (int i = 0; i < MAX_ITERATIONS; i++) {
 			int diceValue = d10Explode();
