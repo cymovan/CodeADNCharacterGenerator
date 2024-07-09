@@ -17,19 +17,19 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.identity.Identity;
 
 @SpringBootTest
-public class CharacterGeneratorTests {
+class CharacterGeneratorTests {
 
 	private static final int CARACTERISTICS_COUNT = 12;
 	private CharacterGeneratorImpl characterGenerator;
 	private Character character;
 
 	@BeforeEach
-	public void initTests() {
+	void initTests() {
 		this.characterGenerator = new CharacterGeneratorImpl();
 	}
 
 	@Test
-	public void whenGenerateARandomCaractersThenRulesAreCorrectAndCharacterIsCorrect() {
+	void whenGenerateARandomCaractersThenRulesAreCorrectAndCharacterIsCorrect() {
 		characterGenerator.setCaracteristicsMap(randomCaracteristics());
 		this.character = this.characterGenerator.build();
 		assertThat(character.getCaracteristicsMap()).size().isEqualTo(CARACTERISTICS_COUNT);
@@ -42,7 +42,7 @@ public class CharacterGeneratorTests {
 	}
 
 	@Test
-	public void whenGenerateARandomCaractersFromArchetypeThenRulesAreCorrectAndCharacterIsCorrect() {
+	void whenGenerateARandomCaractersFromArchetypeThenRulesAreCorrectAndCharacterIsCorrect() {
 		this.character = this.characterGenerator.buildFromArchetype(new RoninArchetype().getArchetype());
 		assertThat(character.getCaracteristicsMap()).size().isEqualTo(CARACTERISTICS_COUNT);
 		identityAssertions(character.getIdentity());

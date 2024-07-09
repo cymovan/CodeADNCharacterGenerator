@@ -1,7 +1,20 @@
 package moon.adn.code.character.generator;
 
-import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.*;
-import static moon.adn.code.model.character.specializations.CareerEnum.*;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.AG;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.CON;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.EMP;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.INT;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.LUCK;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.POW;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.REF;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.STR;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.TECH;
+import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WILL;
+import static moon.adn.code.model.character.specializations.CareerEnum.FIGHTER;
+import static moon.adn.code.model.character.specializations.CareerEnum.GENERAL;
+import static moon.adn.code.model.character.specializations.CareerEnum.MYSTIC;
+import static moon.adn.code.model.character.specializations.CareerEnum.SCIENTIST;
+import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 import static moon.adn.code.system.RandomDiceUtil.d10;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,45 +32,45 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.specializations.CareerEnum;
 
 @SpringBootTest
-public class HobbiesSkillsTests {
+class HobbiesSkillsTests {
 
 	private CareerEnum career;
 	private AbstractCharacter character;
 	private final Map<CaracteristicEnum, CaractValues> mapCaracteristicsWithValues = new TreeMap<>();
 
 	@BeforeEach
-	public void init() {
+	void init() {
 		character = new Character();
 		initCaracteristicsMapWithRandomValues();
 		character.setCaracteristicsMap(mapCaracteristicsWithValues);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromGeneralcareerThenItsCorrect() {
+	void whenCalculaterHobbiesPointsFromGeneralcareerThenItsCorrect() {
 		career = GENERAL;
 		assertByComparingHobbiesPointToExpectedValues(CON, WILL);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromFightercareerThenItsCorrect() {
+	void whenCalculaterHobbiesPointsFromFightercareerThenItsCorrect() {
 		career = FIGHTER;
 		assertByComparingHobbiesPointToExpectedValues(STR, REF);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromScientitscareerThenItsCorrect() {
+	void whenCalculaterHobbiesPointsFromScientitscareerThenItsCorrect() {
 		career = SCIENTIST;
 		assertByComparingHobbiesPointToExpectedValues(INT, EMP);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromSpycareerThenItsCorrect() {
+	void whenCalculaterHobbiesPointsFromSpycareerThenItsCorrect() {
 		career = SPY;
 		assertByComparingHobbiesPointToExpectedValues(TECH, AG);
 	}
 
 	@Test
-	public void whenCalculaterHobbiesPointsFromMysticcareerThenItsCorrect() {
+	void whenCalculaterHobbiesPointsFromMysticcareerThenItsCorrect() {
 		career = MYSTIC;
 		assertByComparingHobbiesPointToExpectedValues(POW, LUCK);
 	}
