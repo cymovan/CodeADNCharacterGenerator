@@ -44,10 +44,11 @@ public class NPCRestController implements NPCGeneratorController<NPC> {
 
 	MessageSource messageSource;
 
+	@Autowired
 	public NPCRestController(MessageSource messageSource) {
 		this.messageSource = messageSource;
 	}
-	
+
 	@Override
 	@GetMapping(NPC_PATH)
 	public NPC createCaracter() {

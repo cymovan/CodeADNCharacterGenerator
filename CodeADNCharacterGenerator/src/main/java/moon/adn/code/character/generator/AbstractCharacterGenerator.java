@@ -262,7 +262,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 					logger.trace("{}: {} : {} - random : {}", identity.getName(), skill, currentValue, choice);
 					value.setCurrentScore(score);
 
-					if (checkMaxScoreCondition(maxScore, countMaxScore)) {
+					if (maxScore > 3 && countMaxScore == 3) {
 						countMaxScore = 0;
 						maxScore--;
 						addRandomSkill();
@@ -288,13 +288,6 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 		if (choice < skillsPoints) {
 			skillsPoints -= choice;
 		}
-	}
-
-	private boolean checkMaxScoreCondition(int maxScore, int countMaxScore) {
-		if (maxScore > 3 && countMaxScore == 3) {
-			return true;
-		}
-		return false;
 	}
 
 	private void addRandomSkill() {

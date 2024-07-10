@@ -23,14 +23,14 @@ public class AbstractCharacter implements Serializable {
 
 	protected Identity identity;
 	@JsonKey
-	protected Map<CaracteristicEnum, CaractValues> caracteristicsMap;
+	private Map<CaracteristicEnum, CaractValues> caracteristicsMap;
 
 	@JsonKey
-	protected Map<SkillEnum, SkillValues> skillsMap;
+	private Map<SkillEnum, SkillValues> skillsMap;
 
 	@JsonKey
-	protected Map<SpecializationEnum, SpecializationValuesAbstract> specializations;
+	private Map<SpecializationEnum, SpecializationValuesAbstract> specializations;
 
 	@JsonKey
-	protected Map<CareerEnum, Integer> careersMap;
+	private Map<CareerEnum, Integer> careersMap;
 }
