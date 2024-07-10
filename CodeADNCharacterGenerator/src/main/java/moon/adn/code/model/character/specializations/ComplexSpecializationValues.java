@@ -9,7 +9,8 @@ import static moon.adn.code.model.character.specializations.SpecializationType.C
  * @author Cédric DELRUE
  *
  */
-final public class ComplexSpecializationValues extends SpecializationValuesAbstract {
+public final class ComplexSpecializationValues extends SpecializationValuesAbstract {
+	private static final long serialVersionUID = 3366274797234666101L;
 
 	private static final int DEFAULT_MIN_CONTAINER = 1;
 	private static final int BOXES_COUNT_IN_CONTAINER = 4;

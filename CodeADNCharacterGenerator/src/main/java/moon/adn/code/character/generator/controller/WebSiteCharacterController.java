@@ -38,7 +38,6 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 	public static final String URL_CHARACTER_LOAD = "/character/load";
 	public static final String URL_CHARACTER_SAVE = "/character/save";
 	public static final String URL_GENERATE = "/character/generate";
-	public static final String URL_CHARACTER_FORM = "/characterForm";
 
 	public static final String MODEL_HOME = "home";
 	public static final String MODEL_ATTRIBUTE_CHARACTER = "character";
@@ -67,11 +66,6 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 		target.addObject(VIEW_OBJECT_ARCHETYPES_LIST, ArchetypeEnum.values());
 		target.addObject(APPLICATION_CARACTERISTICS_ENUMS, getCharacteristicsEnums());
 		return target;
-	}
-
-	@GetMapping(URL_CHARACTER_FORM)
-	public void character() {
-
 	}
 
 	@GetMapping(URL_CHARACTER_NEW)

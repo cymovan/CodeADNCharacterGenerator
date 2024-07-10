@@ -8,9 +8,11 @@ import static moon.adn.code.model.character.specializations.SpecializationType.B
  * @author Cédric DELRUE
  *
  */
-final public class BooleanSpecializationValues extends SpecializationValuesAbstract {
+public final class BooleanSpecializationValues extends SpecializationValuesAbstract {
+	private static final long serialVersionUID = 2812758764677714887L;
+
 	private static final int MAX_BOXES = 1;
-	
+
 	public BooleanSpecializationValues() {
 		super(MAX_BOXES, BOOLEAN);
 	}

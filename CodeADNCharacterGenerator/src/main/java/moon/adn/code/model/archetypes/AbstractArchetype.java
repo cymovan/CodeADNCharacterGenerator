@@ -61,8 +61,6 @@ public abstract class AbstractArchetype implements Archetype {
 		return d10();
 	}
 
-	public abstract void initCaracteristics();
-
 	@Override
 	public void initSkillsToLearn() {
 		// Usefull for all archetypes

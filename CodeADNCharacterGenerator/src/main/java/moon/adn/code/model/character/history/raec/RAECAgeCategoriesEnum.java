@@ -19,11 +19,13 @@ public enum RAECAgeCategoriesEnum {
 	OLDSTER(40, 60), RETIRED(25, 40), OLDER(10, 25), ALMOST_SAME(-5, 10), YOUNGER(-10, -5), TEENAGER(-20, -10),
 	CHILD(-50, -20);
 
+	private static final int MIN_AGE = 13;
+
 	private static int[] ageInterval = { 5, 15, 40, 60, 80, 95, 100 };
-	private static int MIN_AGE = 13;
 	private Random random = new SecureRandom();
 
-	private @Getter int min = 0, max = 0;
+	private @Getter int min = 0;
+	private @Getter int max = 0;
 
 	private RAECAgeCategoriesEnum(int max) {
 		this.max = max;

@@ -48,12 +48,12 @@ class RomanceDetailsTests {
 			assertThat(durationInYears).isZero();
 			break;
 		case SEVERAL_TIMES, COUPLE_OF_WEEKS_MONTHS:
-			assertThat(durationInMonths).isGreaterThan(0);
+			assertThat(durationInMonths).isPositive();
 			assertThat(durationInYears).isZero();
 			break;
 		case FEW_YEARS, LONG_STORY, SOME_YEARS:
 			assertThat(durationInMonths).isZero();
-			assertThat(durationInYears).isGreaterThan(0);
+			assertThat(durationInYears).isPositive();
 			break;
 		default:
 			throw new RuntimeException("New duration with no test : " + duration.name());

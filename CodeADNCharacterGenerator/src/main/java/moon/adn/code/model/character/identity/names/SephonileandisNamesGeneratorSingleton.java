@@ -6,16 +6,16 @@ public class SephonileandisNamesGeneratorSingleton extends AbstractNamesGenerato
 	private static final String NEUTRAL_FILES = "SephonileandisNeutralFirstNames.txt";
 	private static final String NAMES_FILES = "SephonileandisNames.txt";
 
-	private static NamesGenerator INSTANCE;
+	private static NamesGenerator instance;
 
 	private SephonileandisNamesGeneratorSingleton() {
 		super(FEMALE_FILES, MALE_FILES, NEUTRAL_FILES, NAMES_FILES, false, false);
 	}
 
 	public static NamesGenerator getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new SephonileandisNamesGeneratorSingleton();
+		if (instance == null) {
+			instance = new SephonileandisNamesGeneratorSingleton();
 		}
-		return INSTANCE;
+		return instance;
 	}
 }

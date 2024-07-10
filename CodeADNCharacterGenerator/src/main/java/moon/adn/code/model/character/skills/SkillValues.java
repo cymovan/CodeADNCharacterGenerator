@@ -14,9 +14,11 @@ import moon.adn.code.model.character.builder.Modifier;
 @Data
 public class SkillValues implements Serializable {
 	private static final long serialVersionUID = -8128199424902958779L;
-
-	private int initScore, currentScore, speciesModifier;
 	public static final int MAX_SCORE = 10;
+
+	private int initScore;
+	private int currentScore;
+	private int speciesModifier;
 
 	@JsonCreator
 	public SkillValues() {

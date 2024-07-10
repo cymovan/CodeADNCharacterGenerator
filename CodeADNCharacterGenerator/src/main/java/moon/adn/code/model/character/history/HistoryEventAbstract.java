@@ -55,8 +55,8 @@ public abstract class HistoryEventAbstract {
 		return i18nKey(getPositionFromIntervals(maxInterval));
 	}
 
-	protected int getPositionFromIntervals(int MaxSides) {
-		int valeur = RandomDiceUtil.random(MaxSides);
+	protected int getPositionFromIntervals(int maxSides) {
+		int valeur = RandomDiceUtil.random(maxSides);
 		for (int i = 0; i < segments.size(); i++) {
 			if (valeur <= segments.get(i)) {
 				return i;

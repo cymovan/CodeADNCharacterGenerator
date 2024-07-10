@@ -15,7 +15,7 @@ import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -32,10 +32,9 @@ public enum JobEnum implements I18N {
 	// Standards jobs
 	WORKER(STANDARD), SECRETARY(STANDARD), CLERK(STANDARD), ACCOUNTANT(STANDARD), CRAFTSMAN(STANDARD),
 	ENGINEER(STANDARD, CareerEnum.SCIENTIST), COMMERCIAL(STANDARD), MARKETING(STANDARD, SPY), SENIOR_MANAGER(STANDARD),
-	FREELANCE(STANDARD), VENDOR(STANDARD), SHOPKEEPER(STANDARD), UBER(STANDARD),
-	DOCTOR(STANDARD, CareerEnum.SCIENTIST), NURSING_STAFF(STANDARD, CareerEnum.SCIENTIST), PILOT(STANDARD),
-	SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD), STUDENT(STANDARD, GENERAL),
-	TEACHER(STANDARD, CareerEnum.SCIENTIST), PROFESSOR(STANDARD, CareerEnum.SCIENTIST),
+	FREELANCE(STANDARD), VENDOR(STANDARD), SHOPKEEPER(STANDARD), UBER(STANDARD), DOCTOR(STANDARD, CareerEnum.SCIENTIST),
+	NURSING_STAFF(STANDARD, CareerEnum.SCIENTIST), PILOT(STANDARD), SOCIAL_WORKER(STANDARD), HOTEL_EMPLOYEE(STANDARD),
+	STUDENT(STANDARD, GENERAL), TEACHER(STANDARD, CareerEnum.SCIENTIST), PROFESSOR(STANDARD, CareerEnum.SCIENTIST),
 	SCIENTIST(STANDARD, CareerEnum.SCIENTIST),
 
 	// Street jobs
@@ -65,9 +64,9 @@ public enum JobEnum implements I18N {
 	ACTOR(ENTERTAINMENT), ARTIST(ENTERTAINMENT), DIGITAL_ARTIST(ENTERTAINMENT), VIDEO_GAME_DEV(ENTERTAINMENT),
 	ENTERTAINMENT_TECH(ENTERTAINMENT), ENTERTAINMENT_EMPLOYEE(ENTERTAINMENT), SOUND_ENGINEER(ENTERTAINMENT),
 	SINGER(ENTERTAINMENT), DANCER(ENTERTAINMENT), MUSICIAN(ENTERTAINMENT), WRITER(ENTERTAINMENT),
-	REALITY_TV_CELEBRITY(ENTERTAINMENT), INFLUENCER(ENTERTAINMENT), MEDIA_STREAMER(ENTERTAINMENT), JOURNALIST(ENTERTAINMENT),
-	TV_REPORTER(ENTERTAINMENT), TV_PRESENTER(ENTERTAINMENT), TV_SPORTS_REPORTER(ENTERTAINMENT),
-	ON_SITE_CORRESPONDANT(ENTERTAINMENT), MODEL(ENTERTAINMENT), STAR(ENTERTAINMENT),
+	REALITY_TV_CELEBRITY(ENTERTAINMENT), INFLUENCER(ENTERTAINMENT), MEDIA_STREAMER(ENTERTAINMENT),
+	JOURNALIST(ENTERTAINMENT), TV_REPORTER(ENTERTAINMENT), TV_PRESENTER(ENTERTAINMENT),
+	TV_SPORTS_REPORTER(ENTERTAINMENT), ON_SITE_CORRESPONDANT(ENTERTAINMENT), MODEL(ENTERTAINMENT), STAR(ENTERTAINMENT),
 
 	// Government jobs
 	PUCHASING(GOVERNMENT), LEGAL_AFFAIRS(GOVERNMENT), URBAN_PLANNING(GOVERNMENT), REAL_ESTATES(GOVERNMENT),
@@ -83,8 +82,8 @@ public enum JobEnum implements I18N {
 
 	private @Getter JobCategoryEnum jobCategory;
 	private @Getter CareerEnum careerEnum = CareerEnum.GENERAL;
-	private static Map<CareerEnum, List<JobEnum>> mapOfJobFromCarrer = new HashMap<>();
-	private static Map<JobCategoryEnum, List<JobEnum>> mapOfJobFromJobCategory = new HashMap<>();
+	private static Map<CareerEnum, List<JobEnum>> mapOfJobFromCarrer = new EnumMap<>(CareerEnum.class);
+	private static Map<JobCategoryEnum, List<JobEnum>> mapOfJobFromJobCategory = new EnumMap<>(JobCategoryEnum.class);
 
 	private static Random random = new Random();
 
@@ -146,7 +145,7 @@ public enum JobEnum implements I18N {
 		List<JobEnum> jobsListFromCarrer = mapOfJobFromCarrer.get(career);
 		// No Job for MYSTIC
 		// TODO : Evolution when MYSTIC jobs defined.
-		if (null == jobsListFromCarrer || jobsListFromCarrer.size() == 0) {
+		if (null == jobsListFromCarrer || jobsListFromCarrer.isEmpty()) {
 			return null;
 		}
 		Collections.shuffle(jobsListFromCarrer);

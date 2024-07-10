@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class RandomDiceUtilTests {
+class RandomDiceUtilTests {
 
 	private static int MAX_ITERATIONS = 50;
 	private int minDice = 1, maxDice;

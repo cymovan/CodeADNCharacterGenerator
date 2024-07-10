@@ -18,8 +18,12 @@ public class CaractValues implements Serializable {
 
 	public static final int DEFAULT_MIN = 1;
 	public static final int DEFAULT_MAX = 10;
-	private int creationValue, currentValue;
-	private int speciesMin = DEFAULT_MIN, speciesMax = DEFAULT_MAX, speciesModificator;
+
+	private int creationValue;
+	private int currentValue;
+	private int speciesMin = DEFAULT_MIN;
+	private int speciesMax = DEFAULT_MAX;
+	private int speciesModificator;
 
 	@JsonCreator
 	public CaractValues() {

@@ -85,7 +85,7 @@ public class CharacterGeneratorImpl extends AbstractCharacterGenerator<Character
 		if (archetypeSet == null) {
 			return null;
 		}
-		List<ArchetypeEnum> archetypeEnumList = new ArrayList<ArchetypeEnum>(archetypeSet);
+		List<ArchetypeEnum> archetypeEnumList = new ArrayList<>(archetypeSet);
 		Collections.shuffle(archetypeEnumList);
 		return archetypeEnumList.get(0);
 	}

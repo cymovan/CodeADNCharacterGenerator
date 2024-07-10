@@ -17,13 +17,14 @@ import moon.adn.code.model.character.identity.apparence.HairColourEnum;
 @NoArgsConstructor
 public class Identity implements Serializable {
 	private static final long serialVersionUID = 3909194497406094012L;
-	
+
 	private String name;
 	private int age;
 	private HairColourEnum hairColor;
 	private EyesColorEnum eyeColor;
 	private SpeciesEnum species;
 	private SexEnum sex;
-	private int socialLevel, socialOrigin;
+	private int socialLevel;
+	private int socialOrigin;
 	private JobEnum job;
 }

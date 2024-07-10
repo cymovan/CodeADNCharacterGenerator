@@ -12,7 +12,8 @@ public class Romance {
 	private HistoryRomanceEnum kindOfRomance;
 	private HowItArrivedEnum howItArrived;
 	private RomanceDurationEnum duration;
-	private @Setter int durationInMonths, durationInYears;
+	private @Setter int durationInMonths;
+	private @Setter int durationInYears;
 	private String tragicOrProblematicStory;
 	private MutualFeelingsEnum mutualFeelings;
 

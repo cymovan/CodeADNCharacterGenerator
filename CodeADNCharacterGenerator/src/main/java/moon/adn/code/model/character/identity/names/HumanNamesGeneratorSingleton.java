@@ -2,16 +2,16 @@ package moon.adn.code.model.character.identity.names;
 
 public class HumanNamesGeneratorSingleton extends AbstractNamesGeneratorSingleton {
 	
-	private static NamesGenerator INSTANCE;
+	private static NamesGenerator instance;
 	
 	private HumanNamesGeneratorSingleton() {
 		super();
 	}
 
 	public static NamesGenerator getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new HumanNamesGeneratorSingleton();
+		if (instance == null) {
+			instance = new HumanNamesGeneratorSingleton();
 		}
-		return INSTANCE;
+		return instance;
 	}
 }

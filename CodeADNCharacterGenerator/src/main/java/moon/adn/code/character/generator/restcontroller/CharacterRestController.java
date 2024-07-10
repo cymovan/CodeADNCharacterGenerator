@@ -93,8 +93,7 @@ public class CharacterRestController
 	@Override
 	@GetMapping(RESTORE_CHARACTER_PATH)
 	public Character restoreCharacter() {
-		Character character = CharacterFileHelper.loadCharacter(CharacterFileHelper.DEFAULT_JSON_FILE);
-		return character;
+		return CharacterFileHelper.loadCharacter(CharacterFileHelper.DEFAULT_JSON_FILE);
 	}
 
 	@Override
@@ -148,8 +147,7 @@ public class CharacterRestController
 	private Character generate() {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Character generateHuman() {
@@ -158,8 +156,7 @@ public class CharacterRestController
 		speciesSet.add(SpeciesEnum.HUMAN);
 		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Character generateElfic() {
@@ -174,8 +171,7 @@ public class CharacterRestController
 		speciesSet.add(SpeciesEnum.S_URB);
 		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Character generateBarar() {
@@ -184,15 +180,13 @@ public class CharacterRestController
 		speciesSet.add(SpeciesEnum.B_IRON);
 		characterBuilder.setSelectedSpeciesforRandom(speciesSet);
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Character generateHeroic() {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomHeroicCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Character generateFromSpeciesAndArchetype(SpeciesEnum species, CareerEnum career) {
@@ -203,9 +197,7 @@ public class CharacterRestController
 		if (null == career) {
 			career = CareerEnum.random();
 		}
-		Character character = characterBuilder
-				.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
-		return character;
+		return characterBuilder.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
 	}
 
 	private Character generateFromArchetype(CareerEnum career) {
@@ -213,16 +205,13 @@ public class CharacterRestController
 		if (null == career) {
 			career = CareerEnum.random();
 		}
-		Character character = characterBuilder
-				.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
-		return character;
+		return characterBuilder.buildFromArchetype(ArchetypeEnum.randomFromcareer(career).getArchetype());
 	}
 
 	private Character generateWeakCharacter() {
 		AbstractCharacterGenerator<Character> characterBuilder = new CharacterGeneratorImpl();
 		characterBuilder.setCaracteristicsMap(randomWeakCaracteristics());
-		Character character = characterBuilder.build();
-		return character;
+		return characterBuilder.build();
 	}
 
 	private Map<CaracteristicEnum, CaractValues> randomCaracteristics() {

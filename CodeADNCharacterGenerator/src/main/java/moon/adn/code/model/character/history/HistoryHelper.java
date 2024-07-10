@@ -11,8 +11,8 @@ public class HistoryHelper {
 		throw new IllegalStateException("Utility class");
 	}
 
-	public static int getPositionFromIntervals(int[] intervalValues, int MaxSides) {
-		int valeur = random(MaxSides);
+	public static int getPositionFromIntervals(int[] intervalValues, int maxSides) {
+		int valeur = random(maxSides);
 		for (int i = 0; i < intervalValues.length - 1; i++) {
 			if (valeur <= intervalValues[i]) {
 				return i;
@@ -33,7 +33,6 @@ public class HistoryHelper {
 
 	public static int randomValuesBetween(int min, int max) {
 		Random r = new SecureRandom();
-		int diff = r.nextInt(min, max);
-		return diff;
+		return r.nextInt(min, max);
 	}
 }

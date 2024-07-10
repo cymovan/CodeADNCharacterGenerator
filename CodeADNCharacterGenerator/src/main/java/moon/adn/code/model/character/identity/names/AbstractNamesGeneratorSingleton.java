@@ -34,8 +34,9 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	protected final List<String> firstNamesNeutral = new ArrayList<>();
 	protected final List<String> names = new ArrayList<>();
 
-	protected Set<String> firstNamesFemaleFiles = new HashSet<>(), firstNamesMaleFiles = new HashSet<>(),
-			firstNamesNeutralFiles = new HashSet<>();
+	protected Set<String> firstNamesFemaleFiles = new HashSet<>();
+	protected Set<String> firstNamesMaleFiles = new HashSet<>();
+	protected Set<String> firstNamesNeutralFiles = new HashSet<>();
 	protected Set<String> namesFiles = new HashSet<>();
 
 	protected AbstractNamesGeneratorSingleton() {
@@ -125,7 +126,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	public String generateCompleteName(SexEnum sex) {
 		String first = generateFirstName(sex);
 		String lastName = "";
-		if (names.size() != 0) {
+		if (!names.isEmpty()) {
 			lastName = names.get(random.nextInt(names.size())).toUpperCase();
 		}
 		return first + " " + lastName;
@@ -139,7 +140,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 		} else {
 			searchFirstNames.addAll(firstNamesMale);
 		}
-		if (searchFirstNames.size() != 0) {
+		if (!searchFirstNames.isEmpty()) {
 			first = searchFirstNames.get(random.nextInt(searchFirstNames.size()));
 		}
 		return first;

@@ -5,16 +5,16 @@ public class DarkElvesNamesGeneratorSingleton extends AbstractNamesGeneratorSing
 	private static final String MALE_FILES = "DarkElvesMaleFirstNames.txt";
 	private static final String NAMES_FILES = "DarkElvesNames.txt";
 
-	private static NamesGenerator INSTANCE;
+	private static NamesGenerator instance;
 	
 	private DarkElvesNamesGeneratorSingleton() {
 		super(FEMALE_FILES, MALE_FILES, null, NAMES_FILES, false, false);
 	}
 
 	public static NamesGenerator getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new DarkElvesNamesGeneratorSingleton();
+		if (instance == null) {
+			instance = new DarkElvesNamesGeneratorSingleton();
 		}
-		return INSTANCE;
+		return instance;
 	}
 }

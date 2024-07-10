@@ -1,18 +1,20 @@
 package moon.adn.code.model.character.identity;
 
-import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.*;
+import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.aquaticElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.darkElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.goldElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.greyElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.humanModifiers;
+import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.ironBararModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.nightElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.paleElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.sylvanElfModifiers;
 import static moon.adn.code.model.character.identity.CaracteristicModifiersHelper.urbanElfModifiers;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.aquaticElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.darkElfSkills;
-import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.*;
+import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.goldElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.greyElfSkills;
+import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.ironBararSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.nightElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.paleElfSkills;
 import static moon.adn.code.model.character.identity.SkillSpeciesModifiersHelper.sylvanElfSkills;
@@ -66,7 +68,7 @@ public enum SpeciesEnum {
 	B_IRON(ironBararModifiers(), ironBararSkills());
 
 	private @Getter CaracteristicSpeciesModifiers caractModifiers;
-	private @Getter SkillsSpeciesModifiers SkillModifiers;
+	private @Getter SkillsSpeciesModifiers skillModifiers;
 	private @Getter SpecializationsAtCreation specializations = new SpecializationsAtCreation();
 	private @Getter NamesGenerator namesGenerator = HumanNamesGeneratorSingleton.getInstance();
 
@@ -96,7 +98,7 @@ public enum SpeciesEnum {
 	private SpeciesEnum(CaracteristicSpeciesModifiers caractSpeciesModifier,
 			SkillsSpeciesModifiers skillSpecicesModifier) {
 		this.caractModifiers = caractSpeciesModifier;
-		this.SkillModifiers = skillSpecicesModifier;
+		this.skillModifiers = skillSpecicesModifier;
 	}
 
 	SpeciesEnum(CaracteristicSpeciesModifiers caractSpeciesModifier, SkillsSpeciesModifiers skillSpecicesModifier,
@@ -136,7 +138,8 @@ public enum SpeciesEnum {
 	}
 
 	public int ageDiffSibling() {
-		int minDiff = 0, maxDiff = 20;
+		int minDiff = 0;
+		int maxDiff = 20;
 		int ageDiff = 2;
 		switch (this) {
 		case HUMAN: {
