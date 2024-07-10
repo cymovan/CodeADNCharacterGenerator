@@ -257,7 +257,7 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 
 				if (currentValue < maxScore) {
 					Integer choice = calculateChoice(currentValue, maxScore);
-					updateSkillsPoints(choice, skillsPoints);
+					skillsPoints = updateSkillsPoints(choice, skillsPoints);
 					Integer score = currentValue + choice;
 					logger.trace("{}: {} : {} - random : {}", identity.getName(), skill, currentValue, choice);
 					value.setCurrentScore(score);
@@ -284,10 +284,11 @@ public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> im
 		return choice;
 	}
 
-	private void updateSkillsPoints(int choice, Integer skillsPoints) {
+	private int updateSkillsPoints(int choice, Integer skillsPoints) {
 		if (choice < skillsPoints) {
 			skillsPoints -= choice;
 		}
+		return skillsPoints;
 	}
 
 	private void addRandomSkill() {

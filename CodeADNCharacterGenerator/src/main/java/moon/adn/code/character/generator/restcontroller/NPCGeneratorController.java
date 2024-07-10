@@ -9,21 +9,20 @@ import moon.adn.code.model.character.PunchingBall;
  * @author Cédric DELRUE
  *
  */
-public interface NPCGeneratorController<Clazz extends NPC> {
+public interface NPCGeneratorController<T extends NPC> {
 
 	/**
 	 * @return Standard {@link NPC}
 	 */
-	Clazz createCaracter();
+	T createCaracter();
 
 	/**
 	 * @return Standard {@link NPC}
 	 */
-	Clazz createMedTech();
+	T createMedTech();
 
 	/**
 	 * @return Standard {@link PunchingBall}
 	 */
 	PunchingBall createPunchingBall();
-
 }

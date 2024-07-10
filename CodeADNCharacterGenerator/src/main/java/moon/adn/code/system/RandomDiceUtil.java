@@ -22,6 +22,10 @@ public class RandomDiceUtil {
 	private static final int MAX_WEAK = 7;
 	private static Random random = new SecureRandom();
 
+	private RandomDiceUtil() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * @return value beetwen 1 and 2.
 	 */
@@ -49,7 +53,7 @@ public class RandomDiceUtil {
 	public static int d5() {
 		return random(MAX_D5);
 	}
-	
+
 	/**
 	 * @return value beetwen 1 and 6.
 	 */
@@ -63,7 +67,7 @@ public class RandomDiceUtil {
 	public static int d8() {
 		return random(MAX_D8);
 	}
-	
+
 	/**
 	 * @return value beetwen 1 and 10.
 	 */
@@ -74,7 +78,7 @@ public class RandomDiceUtil {
 	public static int d4Explode() {
 		return diceExplode(MAX_D4, 0);
 	}
-	
+
 	public static int d10Explode() {
 		return diceExplode(MAX_D10, 0);
 	}
@@ -115,7 +119,7 @@ public class RandomDiceUtil {
 	public static int random(int maxDiceSide) {
 		return random.nextInt(maxDiceSide) + 1;
 	}
-	
+
 	public static int random(int min, int maxDiceSide) {
 		return random.nextInt(min, maxDiceSide) + 1;
 	}

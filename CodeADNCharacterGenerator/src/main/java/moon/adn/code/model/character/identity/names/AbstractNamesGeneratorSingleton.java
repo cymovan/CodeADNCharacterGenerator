@@ -71,9 +71,9 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	}
 
 	protected Set<String> readFile(String classPathFile) {
-		Set<String> names = new TreeSet<>();
+		Set<String> namesSet = new TreeSet<>();
 		if (classPathFile == null) {
-			return names;
+			return namesSet;
 		}
 
 		// using ClassLoader to load file from the classpath
@@ -81,12 +81,12 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 				Scanner scanner = new Scanner(inputStream)) {
 
 			while (scanner.hasNextLine()) {
-				names.add(scanner.nextLine());
+				namesSet.add(scanner.nextLine());
 			}
 		} catch (IOException e) {
 			logger.error("Unable to read File {} from classPath.", classPathFile);
 		}
-		return names;
+		return namesSet;
 	}
 
 	protected AbstractNamesGeneratorSingleton(String firstNamesFemaleFile, String firstNamesMaleFile,

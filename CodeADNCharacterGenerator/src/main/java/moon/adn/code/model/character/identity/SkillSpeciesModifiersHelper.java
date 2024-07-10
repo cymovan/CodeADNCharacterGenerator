@@ -8,6 +8,10 @@ import moon.adn.code.model.character.skills.SkillEnum;
 import moon.adn.code.model.character.skills.SkillsSpeciesModifiers;
 
 public class SkillSpeciesModifiersHelper {
+	private SkillSpeciesModifiersHelper() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	static SkillsSpeciesModifiers urbanElfSkills() {
 		Map<SkillEnum, Modifier> modifiersMap = new EnumMap<>(SkillEnum.class);
 		modifiersMap.put(SkillEnum.BIO, new Modifier(-1));

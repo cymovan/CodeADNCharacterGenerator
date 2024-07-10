@@ -50,12 +50,6 @@ class StandardSpecializationValuesTests {
 	}
 
 	private void assertSpecializationValues(int boxesChecked) {
-		assertSpecializationValues(CONTAINER_DEFAULT, MAX_BOXES_DEFAULT, SEGMENTS_DEFAULT, boxesChecked,
-				DEFAULT_SEGMENTS_CHECKED);
-	}
-
-	private void assertSpecializationValues(int maxContainer, int maxBoxes, int maxSegments, int boxesChecked,
-			int segmentsChecked) {
 		assertThat(standardSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(standardSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(standardSpecialization.getMaxSegments()).isEqualTo(SEGMENTS_DEFAULT);
