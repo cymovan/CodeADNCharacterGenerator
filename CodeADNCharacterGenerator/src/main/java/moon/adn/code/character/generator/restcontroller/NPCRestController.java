@@ -42,9 +42,12 @@ public class NPCRestController implements NPCGeneratorController<NPC> {
 	private static final String MEDTECH_PATH = "/medTech";
 	private static final String PUNCHINGBALL_PATH = "/punchingBall";
 
-	@Autowired
 	MessageSource messageSource;
 
+	public NPCRestController(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+	
 	@Override
 	@GetMapping(NPC_PATH)
 	public NPC createCaracter() {

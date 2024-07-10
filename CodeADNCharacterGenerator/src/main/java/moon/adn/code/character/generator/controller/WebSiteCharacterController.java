@@ -1,7 +1,9 @@
 package moon.adn.code.character.generator.controller;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import moon.adn.code.character.generator.restcontroller.CharacterRestController;
 import moon.adn.code.model.archetypes.ArchetypeEnum;
 import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.CharacterFileHelper;
+import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 import moon.adn.code.model.character.identity.SexEnum;
 import moon.adn.code.model.character.identity.SpeciesEnum;
 import moon.adn.code.view.model.CharacterFormVO;
@@ -30,6 +33,7 @@ import moon.adn.code.view.model.CharacterFormVO;
 @Controller
 @SessionAttributes(WebSiteCharacterController.SESSION_CHARACTER_ATTRIBUTE)
 public class WebSiteCharacterController extends AbstractWebSiteController {
+
 	public static final String URL_CHARACTER_NEW = "/character/new";
 	public static final String URL_CHARACTER_LOAD = "/character/load";
 	public static final String URL_CHARACTER_SAVE = "/character/save";
@@ -44,6 +48,10 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 	public static final String VIEW_OBJECT_SPECIES_LIST = "speciesList";
 
 	public static final String SESSION_CHARACTER_ATTRIBUTE = "session_character";
+
+	protected WebSiteCharacterController(List<CaracteristicEnum> characteristicsEnums) {
+		super(characteristicsEnums);
+	}
 
 	@GetMapping(URL_HOME)
 	public ModelAndView index(ModelMap model) {

@@ -40,7 +40,7 @@ import moon.adn.code.model.character.specializations.CareerEnum;
 
 abstract class AbstractFighterArchetype extends AbstractArchetype {
 
-	public AbstractFighterArchetype(int carrerLevel) {
+	protected AbstractFighterArchetype(int carrerLevel) {
 		super(CareerEnum.FIGHTER, carrerLevel);
 	}
 
