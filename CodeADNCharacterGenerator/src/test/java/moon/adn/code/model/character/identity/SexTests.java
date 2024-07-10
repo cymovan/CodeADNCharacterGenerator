@@ -17,9 +17,9 @@ class SexTests {
 
 	private static final int MAX_ITERATIONS_COUNT = 25;
 	private static final int MAX_SEX_COUNT = 2;
-	
+
 	private static final String I18N_ROOT_SEX = "sex.";
-	
+
 	private SexEnum sex;
 	private Set<SexEnum> sexEnumSet, verificationSet;
 

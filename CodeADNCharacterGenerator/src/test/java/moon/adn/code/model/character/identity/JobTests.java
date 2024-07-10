@@ -71,7 +71,7 @@ class JobTests {
 	}
 
 	@Test
-	public void jobCategoriesAreCorrects() {
+	void jobCategoriesAreCorrects() {
 		assertThat(JobCategoryEnum.values()).hasSize(JOB_CATEGORIES_COUNT);
 	}
 

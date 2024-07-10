@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.specializations;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,14 +15,14 @@ class StandardSpecializationValuesTests {
 	private static final int MAX_BOXES_DEFAULT = 4;
 	private static final int DEFAULT_SEGMENTS_CHECKED = 0;
 	private static final int DEFAULT_BOXES_CHECKED = 0;
-	
+
 	private StandardSpecializationValues standardSpecialization;
 
 	@BeforeEach
 	void init() {
 		standardSpecialization = new StandardSpecializationValues();
 	}
-	
+
 	@Test
 	void whenStandardSpecializationValuesAreCreatedValuesThenHAveOnly4BocesAndNotChecked() {
 		assertThat(standardSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);

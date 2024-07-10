@@ -44,15 +44,15 @@ class RomanceDetailsTests {
 		assertThat(duration).isNotNull();
 		switch (duration) {
 		case FOREVER:
-			assertThat(durationInMonths).isEqualTo(0);
-			assertThat(durationInYears).isEqualTo(0);
+			assertThat(durationInMonths).isZero();
+			assertThat(durationInYears).isZero();
 			break;
 		case SEVERAL_TIMES, COUPLE_OF_WEEKS_MONTHS:
 			assertThat(durationInMonths).isGreaterThan(0);
-			assertThat(durationInYears).isEqualTo(0);
+			assertThat(durationInYears).isZero();
 			break;
 		case FEW_YEARS, LONG_STORY, SOME_YEARS:
-			assertThat(durationInMonths).isEqualTo(0);
+			assertThat(durationInMonths).isZero();
 			assertThat(durationInYears).isGreaterThan(0);
 			break;
 		default:

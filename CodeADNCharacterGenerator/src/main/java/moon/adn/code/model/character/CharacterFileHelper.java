@@ -3,6 +3,8 @@ package moon.adn.code.model.character;
 import java.io.File;
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CharacterFileHelper {
 	public static final String DEFAULT_JSON_FILE = "character.json";
 
+	private static final Logger logger = LoggerFactory.getLogger(CharacterFileHelper.class);
+
 	private CharacterFileHelper() {
 		throw new IllegalStateException("Utility class");
 	}
@@ -24,16 +28,16 @@ public class CharacterFileHelper {
 		try {
 			mapper.writeValue(new File(fileName), character);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error while saving file {} on disk. Unable to write maybe.", fileName);
 		}
 	}
 
-	public static Character loadCharacter(String filename) {
+	public static Character loadCharacter(String fileName) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			return mapper.readValue(new File(filename), Character.class);
+			return mapper.readValue(new File(fileName), Character.class);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error while loading file {} on disk.", fileName);
 		}
 		return null;
 	}

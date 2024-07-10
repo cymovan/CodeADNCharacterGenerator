@@ -10,11 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import moon.adn.code.model.character.identity.SexEnum;
-import moon.adn.code.model.character.identity.names.AbstractNamesGeneratorSingleton;
-import moon.adn.code.model.character.identity.names.DarkElvesNamesGeneratorSingleton;
-import moon.adn.code.model.character.identity.names.HumanNamesGeneratorSingleton;
-import moon.adn.code.model.character.identity.names.NamesGenerator;
-import moon.adn.code.model.character.identity.names.SephonileandisNamesGeneratorSingleton;
 
 @SpringBootTest
 class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
@@ -97,8 +92,8 @@ class NameGeneratorsTests extends AbstractNamesGeneratorSingleton {
 	@SafeVarargs
 	private void assertNameIsInSets(NamesGenerator namesGenerator, SexEnum sex, Set<String>... set) {
 		Set<String> checkList = new TreeSet<>();
-		for (int i = 0; i < set.length; i++) {
-			checkList.addAll(set[i]);
+		for (Set<String> element : set) {
+			checkList.addAll(element);
 		}
 		String generatedFirstName = namesGenerator.generateFirstName(sex);
 		assertThat(generatedFirstName).isIn(checkList);

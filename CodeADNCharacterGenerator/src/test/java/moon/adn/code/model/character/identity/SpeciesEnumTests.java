@@ -1,6 +1,6 @@
 package moon.adn.code.model.character.identity;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.EnumSet;
 import java.util.Set;

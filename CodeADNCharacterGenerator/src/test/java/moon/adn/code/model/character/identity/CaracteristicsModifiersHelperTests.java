@@ -34,7 +34,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenHumanModifiersCaractModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.humanModifiers();
 		this.caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(1);
+		assertThat(caractsModifierMap).hasSize(1);
 		compareCaracteristicsModifiers(2, LUCK);
 	}
 
@@ -42,7 +42,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenSylvanElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.sylvanElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(8);
+		assertThat(caractsModifierMap).hasSize(8);
 		compareCaracteristicsModifiers(2, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(-1, CON);
@@ -57,7 +57,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenUrbanElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.urbanElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(4);
+		assertThat(caractsModifierMap).hasSize(4);
 		compareCaracteristicsModifiers(1, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(-1, CON);
@@ -68,7 +68,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenPaleElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.paleElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(8);
+		assertThat(caractsModifierMap).hasSize(8);
 		compareCaracteristicsModifiers(1, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(-1, CON);
@@ -83,7 +83,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenGreyElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.greyElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(6);
+		assertThat(caractsModifierMap).hasSize(6);
 		compareCaracteristicsModifiers(1, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(1, LUCK);
@@ -96,7 +96,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenGoldElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.goldElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(7);
+		assertThat(caractsModifierMap).hasSize(7);
 		compareCaracteristicsModifiers(2, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(-1, CON);
@@ -110,7 +110,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenNightElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.nightElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(5);
+		assertThat(caractsModifierMap).hasSize(5);
 		compareCaracteristicsModifiers(2, AG);
 		compareCaracteristicsModifiers(1, BT);
 		compareCaracteristicsModifiers(-1, CON);
@@ -122,7 +122,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenAquaticElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.aquaticElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(5);
+		assertThat(caractsModifierMap).hasSize(5);
 		compareCaracteristicsModifiers(-1, STR);
 		compareCaracteristicsModifiers(1, REF);
 		compareCaracteristicsModifiers(-1, CON);
@@ -134,7 +134,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenDarkElfModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.darkElfModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(6);
+		assertThat(caractsModifierMap).hasSize(6);
 		compareCaracteristicsModifiers(1, AG);
 		compareCaracteristicsModifiers(-1, CON);
 		compareCaracteristicsModifiers(-1, EMP);
@@ -147,7 +147,7 @@ class CaracteristicsModifiersHelperTests {
 	void whenIronBararModifiersCaractThenModifiersAreGood() {
 		this.csm = CaracteristicModifiersHelper.ironBararModifiers();
 		caractsModifierMap = csm.getModifiersMap();
-		assertThat(caractsModifierMap.size()).isEqualTo(10);
+		assertThat(caractsModifierMap).hasSize(10);
 		compareCaracteristicsModifiers(-1, AG);
 		compareCaracteristicsModifiers(-2, BT);
 		compareCaracteristicsModifiers(2, CON);
@@ -162,17 +162,16 @@ class CaracteristicsModifiersHelperTests {
 
 	private void compareCaracteristicsModifiers(int score, CaracteristicEnum caract) {
 		Modifier modifier = new CaracteristicsModifier(score);
-		assertThat(caractsModifierMap.get(caract)).isEqualTo(modifier);
+		assertThat(caractsModifierMap).containsEntry(caract, modifier);
 	}
 
 	private void compareCaracteristicsModifiers(int score, int min, CaracteristicEnum caract) {
 		Modifier modifier = new CaracteristicsModifier(score, min);
-		assertThat(caractsModifierMap.get(caract)).isEqualTo(modifier);
+		assertThat(caractsModifierMap).containsEntry(caract, modifier);
 	}
 
 	private void compareCaracteristicsModifiers(int score, int min, int max, CaracteristicEnum caract) {
 		Modifier modifier = new CaracteristicsModifier(score, min, max);
-		assertThat(caractsModifierMap.get(caract)).isEqualTo(modifier);
+		assertThat(caractsModifierMap).containsEntry(caract, modifier);
 	}
-
 }

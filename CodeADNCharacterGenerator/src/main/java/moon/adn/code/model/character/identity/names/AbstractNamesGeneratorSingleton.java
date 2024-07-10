@@ -10,6 +10,9 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import moon.adn.code.model.character.identity.SexEnum;
 
 abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
@@ -18,6 +21,8 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	private static final String DEFAULT_MALE_FILE = "HumanMaleFirstNames.txt";
 	private static final String DEFAULT_NEUTRAL_FILE = "HumanNeutralFirstNames.txt";
 	private static final String DEFAULT_NAMES_FILE = "HumanNames.txt";
+
+	private static final Logger logger = LoggerFactory.getLogger(AbstractNamesGeneratorSingleton.class);
 
 	protected boolean keepDefautFirstNames = true;
 	protected boolean keepDefautNames = true;
@@ -70,7 +75,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 			return names;
 		}
 
-		// Utilisation de ClassLoader pour charger le fichier depuis le classpath
+		// using ClassLoader to load file from the classpath
 		try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(classPathFile);
 				Scanner scanner = new Scanner(inputStream)) {
 
@@ -78,10 +83,8 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 				names.add(scanner.nextLine());
 			}
 		} catch (IOException e) {
-			// Gérer l'exception ici
-			e.printStackTrace();
+			logger.error("Unable to read File {} from classPath.", classPathFile);
 		}
-
 		return names;
 	}
 

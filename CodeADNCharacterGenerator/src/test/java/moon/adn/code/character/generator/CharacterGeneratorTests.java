@@ -1,7 +1,7 @@
 package moon.adn.code.character.generator;
 
 import static moon.adn.code.system.RandomDiceUtil.d10;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -35,7 +35,7 @@ class CharacterGeneratorTests {
 		assertThat(character.getCaracteristicsMap()).size().isEqualTo(CARACTERISTICS_COUNT);
 		identityAssertions(character.getIdentity());
 		assertThat(character.getSkillsMap()).size().isGreaterThan(5);
-		assertThat(character.getSpecializations()).size().isGreaterThanOrEqualTo(1);
+		assertThat(character.getSpecializations()).size().isPositive();
 		assertThat(character.getEventsMap()).size().isPositive();
 		assertThat(character.getRaecMap()).size().isPositive();
 		assertThat(character.getCareersMap()).size().isPositive();

@@ -1,8 +1,35 @@
 package moon.adn.code.model.character.builder;
 
-import static moon.adn.code.model.character.identity.SocialOriginEnum.*;
-import static moon.adn.code.model.character.skills.SkillEnum.*;
-import static org.assertj.core.api.Assertions.*;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.LOW_CLASS;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.MIDDLE_CLASS;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.NAOHM;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.RICH;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.STREET;
+import static moon.adn.code.model.character.identity.SocialOriginEnum.UPPER_CLASS;
+import static moon.adn.code.model.character.skills.SkillEnum.BRAWL;
+import static moon.adn.code.model.character.skills.SkillEnum.CHAT;
+import static moon.adn.code.model.character.skills.SkillEnum.COMEDY;
+import static moon.adn.code.model.character.skills.SkillEnum.DIY;
+import static moon.adn.code.model.character.skills.SkillEnum.DODGE;
+import static moon.adn.code.model.character.skills.SkillEnum.DRIVE_CAR;
+import static moon.adn.code.model.character.skills.SkillEnum.EDUCATION;
+import static moon.adn.code.model.character.skills.SkillEnum.ELECTRONIC;
+import static moon.adn.code.model.character.skills.SkillEnum.ELOQUENCE;
+import static moon.adn.code.model.character.skills.SkillEnum.EVAL;
+import static moon.adn.code.model.character.skills.SkillEnum.FORGERY;
+import static moon.adn.code.model.character.skills.SkillEnum.HUMAN_PERCEPTION;
+import static moon.adn.code.model.character.skills.SkillEnum.LAW;
+import static moon.adn.code.model.character.skills.SkillEnum.MANAGEMENT;
+import static moon.adn.code.model.character.skills.SkillEnum.MATH;
+import static moon.adn.code.model.character.skills.SkillEnum.MORAL_CODE_CORPO;
+import static moon.adn.code.model.character.skills.SkillEnum.MORAL_CODE_NAOHM;
+import static moon.adn.code.model.character.skills.SkillEnum.READ_SELENITE;
+import static moon.adn.code.model.character.skills.SkillEnum.SOCIAL;
+import static moon.adn.code.model.character.skills.SkillEnum.SPEAK_SELENITE;
+import static moon.adn.code.model.character.skills.SkillEnum.STEAL;
+import static moon.adn.code.model.character.skills.SkillEnum.STREET_KNOWLEDGE;
+import static moon.adn.code.model.character.skills.SkillEnum.TECH_GEN;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
