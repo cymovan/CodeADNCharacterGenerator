@@ -31,7 +31,7 @@ import moon.adn.code.model.character.specializations.CareerEnum;
 
 abstract class AbstractGeneralArchetype extends AbstractArchetype {
 
-	public AbstractGeneralArchetype(int carrerLevel) {
+	protected AbstractGeneralArchetype(int carrerLevel) {
 		super(CareerEnum.GENERAL, carrerLevel);
 	}
 

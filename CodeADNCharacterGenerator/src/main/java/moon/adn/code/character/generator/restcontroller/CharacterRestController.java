@@ -61,8 +61,16 @@ public class CharacterRestController
 	private static final String CAREER_PARAMETERS_PATH = "/career/{career}";
 	private static final String SPECIES_PARAMETERS_PATH = "/species/{species}";
 
-	@Autowired
 	MessageSource messageSource;
+
+	public CharacterRestController() {
+
+	}
+
+	@Autowired
+	protected CharacterRestController(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
 
 	@Override
 	public Character createCharacter() {

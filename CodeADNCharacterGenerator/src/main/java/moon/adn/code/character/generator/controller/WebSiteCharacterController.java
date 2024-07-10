@@ -49,6 +49,7 @@ public class WebSiteCharacterController extends AbstractWebSiteController {
 
 	public static final String SESSION_CHARACTER_ATTRIBUTE = "session_character";
 
+	@Autowired
 	protected WebSiteCharacterController(List<CaracteristicEnum> characteristicsEnums) {
 		super(characteristicsEnums);
 	}

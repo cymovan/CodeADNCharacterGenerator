@@ -26,11 +26,11 @@ import moon.adn.code.model.character.caracteristics.CaractValues;
 
 abstract class AbstractSpiesArchetype extends AbstractArchetype {
 
-	public AbstractSpiesArchetype() {
+	protected AbstractSpiesArchetype() {
 		this(1);
 	}
 
-	public AbstractSpiesArchetype(int carrerLevel) {
+	protected AbstractSpiesArchetype(int carrerLevel) {
 		super(SPY, carrerLevel);
 	}
 
@@ -49,6 +49,7 @@ abstract class AbstractSpiesArchetype extends AbstractArchetype {
 		caracteristicsMap.put(WILL, new CaractValues(randomCaracteristics()));
 	}
 
+	@Override
 	public void initSkillsToLearn() {
 		super.initSkillsToLearn();
 		skillsToLearn.add(BIBLIO);
