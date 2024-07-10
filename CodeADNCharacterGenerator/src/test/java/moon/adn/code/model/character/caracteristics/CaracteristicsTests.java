@@ -52,7 +52,7 @@ class CaracteristicsTests {
 
 	@Test
 	void thereAre12CaracteristicsAndPositionsAreCorrects() {
-		assertEquals(CaracteristicEnum.values().length, CARACTERISTICS_COUNT, "Bad caractEnum count");
+		assertEquals(CARACTERISTICS_COUNT, CaracteristicEnum.values().length,"Bad caractEnum count");
 		for (CaracteristicEnum caract : CaracteristicEnum.values()) {
 			assertEquals(caract, mapCaracteristics.get(caract.getPosition()), "Bad CaracteristicEnum position");
 		}

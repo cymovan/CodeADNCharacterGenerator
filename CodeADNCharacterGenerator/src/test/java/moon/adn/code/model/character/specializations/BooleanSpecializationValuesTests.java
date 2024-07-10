@@ -46,12 +46,6 @@ class BooleanSpecializationValuesTests {
 	}
 
 	private void assertSpecializationValues(int boxesChecked) {
-		assertSpecializationValues(CONTAINER_DEFAULT, MAX_BOXES_DEFAULT, SEGMENTS_DEFAULT, boxesChecked,
-				DEFAULT_SEGMENTS_CHECKED);
-	}
-
-	private void assertSpecializationValues(int maxContainer, int maxBoxes, int maxSegments, int boxesChecked,
-			int segmentsChecked) {
 		assertThat(booleanSpecialization.getMaxContainer()).isEqualTo(CONTAINER_DEFAULT);
 		assertThat(booleanSpecialization.getMaxBoxes()).isEqualTo(MAX_BOXES_DEFAULT);
 		assertThat(booleanSpecialization.getMaxSegments()).isEqualTo(SEGMENTS_DEFAULT);
