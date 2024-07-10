@@ -9,6 +9,11 @@ import moon.adn.code.model.character.builder.Modifier;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 
 class CaracteristicModifiersHelper {
+
+	private CaracteristicModifiersHelper() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static CaracteristicSpeciesModifiers humanModifiers() {
 		Map<CaracteristicEnum, Modifier> modifiersMap = new EnumMap<>(CaracteristicEnum.class);
 		modifiersMap.put(CaracteristicEnum.LUCK, new CaracteristicsModifier(2));

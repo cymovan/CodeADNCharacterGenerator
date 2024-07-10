@@ -26,6 +26,7 @@ public class TechieArchetype extends AbstractScientistsArchetype {
 		super(carrerLevel);
 	}
 
+	@Override
 	public void initSkillsToLearn() {
 		super.initSkillsToLearn();
 		skillsToLearn.add(TRAPS);

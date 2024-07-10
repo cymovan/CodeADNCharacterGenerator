@@ -28,6 +28,7 @@ public class FixerArchetype extends AbstractSpiesArchetype {
 		super(carrerLevel);
 	}
 
+	@Override
 	public void initSkillsToLearn() {
 		super.initSkillsToLearn();
 		skillsToLearn.add(CHEMISTRY);

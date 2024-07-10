@@ -47,7 +47,6 @@ public class CharacterHistoryGenerator {
 	public CharacterHistoryGenerator(SpeciesEnum species, int age) {
 		this.species = species;
 		this.age = age;
-
 	}
 
 	public CharacterHistory generate() {
@@ -123,8 +122,8 @@ public class CharacterHistoryGenerator {
 	private int randomNbEvents() {
 		int result = 0;
 		AgeCategoryEnum ageCategoryEnum = AgeCategoryEnum.getAgeCategory(age);
-		for (AgeCategoryEnum age : ageCategoryEnum.getAgeCategoriesList()) {
-			result += species.nbEventsbyAge(age);
+		for (AgeCategoryEnum ageCatEnum : ageCategoryEnum.getAgeCategoriesList()) {
+			result += species.nbEventsbyAge(ageCatEnum);
 		}
 		return result;
 	}

@@ -44,6 +44,10 @@ import moon.adn.code.model.character.identity.SpeciesEnum;
  */
 public class SpecializationsCreationHelper {
 
+	private SpecializationsCreationHelper() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static SpecializationsAtCreation sylvanElfSpecializations() {
 		Map<SpecializationEnum, SpecializationValuesAbstract> specializationsMap = new EnumMap<>(
 				SpecializationEnum.class);

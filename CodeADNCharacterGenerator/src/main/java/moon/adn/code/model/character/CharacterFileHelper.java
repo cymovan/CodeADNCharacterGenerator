@@ -14,12 +14,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CharacterFileHelper {
 	public static final String DEFAULT_JSON_FILE = "character.json";
 
+	private CharacterFileHelper() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static void saveCharacter(Character character) {
 		String fileName = DEFAULT_JSON_FILE;
-//		if(null != character.getIdentity().getName()) {
-//			fileName = character.getIdentity().getName() + ".json";
-//		}
-//		System.out.println(fileName);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			mapper.writeValue(new File(fileName), character);

@@ -27,6 +27,7 @@ public class NetRunnerArchetype extends AbstractSpiesArchetype {
 		super(carrerLevel);
 	}
 
+	@Override
 	public void initSkillsToLearn() {
 		super.initSkillsToLearn();
 		skillsToLearn.add(DECODE);
