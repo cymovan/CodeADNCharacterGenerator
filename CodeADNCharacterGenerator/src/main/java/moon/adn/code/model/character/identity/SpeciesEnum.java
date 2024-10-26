@@ -170,6 +170,11 @@ public enum SpeciesEnum {
 			maxDiff = 200;
 			break;
 		}
+		case B_IRON: {
+			minDiff = 25;
+			maxDiff = 400;
+			break;
+		}
 		default:
 			return ageDiff;
 		}
