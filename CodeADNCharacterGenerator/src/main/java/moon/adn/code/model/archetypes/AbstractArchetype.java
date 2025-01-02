@@ -6,7 +6,6 @@ import static moon.adn.code.system.RandomDiceUtil.d10;
 import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -26,7 +25,7 @@ import moon.adn.code.model.character.specializations.SpecializationEnum;
  */
 @Data
 public abstract class AbstractArchetype implements Archetype {
-	protected Random random = new SecureRandom();
+	protected SecureRandom random = new SecureRandom();
 	protected int carrerLevel = 1;
 	protected CareerEnum maincareer;
 	protected JobEnum job;

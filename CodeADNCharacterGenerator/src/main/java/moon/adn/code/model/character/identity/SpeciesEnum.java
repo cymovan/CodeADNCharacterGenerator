@@ -34,7 +34,7 @@ import static moon.adn.code.system.RandomDiceUtil.d5;
 import static moon.adn.code.system.RandomDiceUtil.d6;
 import static moon.adn.code.system.RandomDiceUtil.d8;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import lombok.Getter;
 import moon.adn.code.model.character.builder.CaracteristicSpeciesModifiers;
@@ -72,7 +72,7 @@ public enum SpeciesEnum {
 	private @Getter SpecializationsAtCreation specializations = new SpecializationsAtCreation();
 	private @Getter NamesGenerator namesGenerator = HumanNamesGeneratorSingleton.getInstance();
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 	public static final String MESSAGE_PREFIX = "species.";
 
 	public static SpeciesEnum random() {

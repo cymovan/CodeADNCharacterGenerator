@@ -3,7 +3,6 @@ package moon.adn.code.model.character.history.raec;
 import static moon.adn.code.model.character.history.HistoryHelper.getPositionFromIntervals;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 import lombok.Getter;
 import moon.adn.code.model.character.history.HistoryHelper;
@@ -22,7 +21,7 @@ public enum RAECAgeCategoriesEnum {
 	private static final int MIN_AGE = 13;
 
 	private static int[] ageInterval = { 5, 15, 40, 60, 80, 95, 100 };
-	private Random random = new SecureRandom();
+	private SecureRandom random = new SecureRandom();
 
 	private @Getter int min = 0;
 	private @Getter int max = 0;

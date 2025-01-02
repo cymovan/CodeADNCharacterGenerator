@@ -1,7 +1,6 @@
 package moon.adn.code.model.character.history.details.enemy;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * Define who is the culprit that leads to create this enemy.
@@ -12,7 +11,7 @@ import java.util.Random;
 public enum CulpritEnum {
 	YOU, HIM_HER, TIERS_FOOLS_YOU, TIERS_FOOLS_ENNEMY;
 
-	private static Random random = new SecureRandom();
+	private static SecureRandom random = new SecureRandom();
 
 	public static CulpritEnum random() {
 		return values()[random.nextInt(values().length)];

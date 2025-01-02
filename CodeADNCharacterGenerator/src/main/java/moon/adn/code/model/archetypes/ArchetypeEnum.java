@@ -8,7 +8,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import lombok.Getter;
 import moon.adn.code.model.archetypes.fighters.RoninArchetype;
@@ -30,7 +29,7 @@ public enum ArchetypeEnum {
 	MEDTECHIE(SCIENTIST, new MedTechieArchetype()), TECHIE(SCIENTIST, new TechieArchetype()),
 	NETRUNNER(SPY, new NetRunnerArchetype()), FIXER(SPY, new FixerArchetype());
 
-	private static Random random = new SecureRandom();
+	private static SecureRandom random = new SecureRandom();
 
 	private @Getter CareerEnum career;
 	private @Getter AbstractArchetype archetype;

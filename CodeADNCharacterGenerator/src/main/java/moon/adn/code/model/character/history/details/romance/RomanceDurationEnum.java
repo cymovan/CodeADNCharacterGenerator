@@ -4,14 +4,14 @@ import static moon.adn.code.system.RandomDiceUtil.d10;
 import static moon.adn.code.system.RandomDiceUtil.d10Explode;
 import static moon.adn.code.system.RandomDiceUtil.d4Explode;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import lombok.Getter;
 
 public enum RomanceDurationEnum {
 	COUPLE_OF_WEEKS_MONTHS(2), SEVERAL_TIMES(3), FEW_YEARS(5), SOME_YEARS(7), LONG_STORY(9), FOREVER(10);
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 	private @Getter int maxD10Value;
 
 	RomanceDurationEnum(int maxD10Value) {

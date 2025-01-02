@@ -11,8 +11,8 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.STR
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.TECH;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WILL;
 
+import java.security.SecureRandom;
 import java.util.Map;
-import java.util.Random;
 
 import moon.adn.code.model.character.AbstractCharacter;
 import moon.adn.code.model.character.caracteristics.CaractValues;
@@ -21,7 +21,7 @@ import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
 public enum CareerEnum {
 	GENERAL, FIGHTER, SPY, SCIENTIST, MYSTIC;
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 
 	public static int getHobbiesPoints(CareerEnum career, AbstractCharacter character) {
 		int result = 30;

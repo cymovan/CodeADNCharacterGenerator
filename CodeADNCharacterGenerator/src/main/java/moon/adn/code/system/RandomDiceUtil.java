@@ -1,7 +1,6 @@
 package moon.adn.code.system;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * Utility class for random launch dices.
@@ -20,7 +19,7 @@ public class RandomDiceUtil {
 	private static final int MAX_D100 = 100;
 
 	private static final int MAX_WEAK = 7;
-	private static Random random = new SecureRandom();
+	private static SecureRandom random = new SecureRandom();
 
 	private RandomDiceUtil() {
 		throw new IllegalStateException("Utility class");

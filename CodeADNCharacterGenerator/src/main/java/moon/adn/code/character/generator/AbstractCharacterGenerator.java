@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -56,7 +55,7 @@ import moon.adn.code.model.character.specializations.SpecializationsAtCreation;
 public abstract class AbstractCharacterGenerator<T extends AbstractCharacter> implements CharacterGenerator<T> {
 	protected final Logger logger = LoggerFactory.getLogger(AbstractCharacterGenerator.class);
 
-	protected static Random random = new SecureRandom();
+	protected static SecureRandom random = new SecureRandom();
 	// Parameterized random generations
 	private Set<SpeciesEnum> selectedSpeciesforRandom = new HashSet<>();
 	private Optional<SexEnum> selectedSex = Optional.empty();

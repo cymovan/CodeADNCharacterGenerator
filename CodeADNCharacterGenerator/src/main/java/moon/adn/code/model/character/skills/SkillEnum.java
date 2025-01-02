@@ -11,7 +11,7 @@ import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.STR
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.TECH;
 import static moon.adn.code.model.character.caracteristics.CaracteristicEnum.WILL;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import lombok.Getter;
 import moon.adn.code.model.character.caracteristics.CaracteristicEnum;
@@ -73,7 +73,7 @@ public enum SkillEnum {
 	private @Getter CaracteristicEnum caracteristic;
 	private @Getter boolean forRandom = true;
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 
 	public static final String MESSAGE_PREFIX = "skill.";
 

@@ -2,10 +2,10 @@ package moon.adn.code.model.character.identity.names;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -27,7 +27,7 @@ abstract class AbstractNamesGeneratorSingleton implements NamesGenerator {
 	protected boolean keepDefautFirstNames = true;
 	protected boolean keepDefautNames = true;
 
-	private final Random random = new Random();
+	private final SecureRandom random = new SecureRandom();
 
 	protected final List<String> firstNamesFemale = new ArrayList<>();
 	protected final List<String> firstNamesMale = new ArrayList<>();

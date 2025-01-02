@@ -13,12 +13,12 @@ import static moon.adn.code.model.character.specializations.CareerEnum.FIGHTER;
 import static moon.adn.code.model.character.specializations.CareerEnum.GENERAL;
 import static moon.adn.code.model.character.specializations.CareerEnum.SPY;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import lombok.Getter;
 import moon.adn.code.model.character.specializations.CareerEnum;
@@ -85,7 +85,7 @@ public enum JobEnum implements I18N {
 	private static Map<CareerEnum, List<JobEnum>> mapOfJobFromCarrer = new EnumMap<>(CareerEnum.class);
 	private static Map<JobCategoryEnum, List<JobEnum>> mapOfJobFromJobCategory = new EnumMap<>(JobCategoryEnum.class);
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 
 	private static final String I18N_ROOT = "jobs.";
 

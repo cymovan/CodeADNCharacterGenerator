@@ -1,13 +1,13 @@
 package moon.adn.code.model.character.identity;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import moon.adn.code.system.I18N;
 
 public enum SexEnum implements I18N {
 	M, F;
 
-	private static Random random = new Random();
+	private static SecureRandom random = new SecureRandom();
 
 	public static final String MESSAGE_PREFIX = "sex.";
 
